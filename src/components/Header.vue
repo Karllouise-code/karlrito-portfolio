@@ -35,9 +35,7 @@ import { ref } from "vue";
 export default {
   name: "Header",
   setup() {
-    // Use exact same profile image from original
-    // const profileImage = ref("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face&auto=format");
-    const profileImage = ref("/src/assets/img/01-KARLRITO.jpeg");
+    const profileImage = ref("/images/01-KARLRITO.jpeg");
 
     const name = ref("Karl Louise Rito");
 

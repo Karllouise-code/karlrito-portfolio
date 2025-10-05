@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:themewagon.github.io)",
       "Bash(grep:*)",
-      "Bash(curl -s \"https://themewagon.github.io/iPortfolio/assets/css/main.css\")"
+      "Bash(curl -s \"https://themewagon.github.io/iPortfolio/assets/css/main.css\")",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []

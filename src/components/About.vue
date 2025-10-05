@@ -48,7 +48,7 @@ import { ref } from "vue";
 export default {
   name: "About",
   setup() {
-    const profileImage = ref("/src/assets/img/01-KARLRITO.jpeg");
+    const profileImage = ref("/images/01-KARLRITO.jpeg");
 
     const aboutDescription = ref(`Full-Stack Web Developer specializing in building scalable, secure, and high-performance web applications. Currently working at SVEN - The Digital 1st Agency, balancing professional work with academic studies as a scholar at Trimex Colleges.`);
 

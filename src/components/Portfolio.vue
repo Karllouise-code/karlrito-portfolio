@@ -12,7 +12,7 @@
       <About />
 
       <!-- Facts Section -->
-      <Facts />
+      <!-- <Facts /> -->
 
       <!-- Skills Section -->
       <Skills />
@@ -27,7 +27,7 @@
       <Services />
 
       <!-- Testimonials Section -->
-      <Testimonials />
+      <!-- <Testimonials /> -->
 
       <!-- Contact Section -->
       <Contact />

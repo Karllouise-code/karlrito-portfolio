@@ -76,7 +76,7 @@ export default {
     onMounted(() => {
       const serviceId = props.id || route.params.id || "1";
       serviceDetails.value = servicesData[serviceId] || servicesData[1];
-      serviceImage.value = new URL("@/assets/img/services.jpg", import.meta.url).href;
+      serviceImage.value = "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop&auto=format";
     });
 
     return {
