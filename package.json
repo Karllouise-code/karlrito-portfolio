@@ -13,8 +13,11 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "aos": "^2.3.4",
     "bootstrap": "^5.3.8",
-    "vue": "^3.5.22"
+    "typed.js": "^2.1.0",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
