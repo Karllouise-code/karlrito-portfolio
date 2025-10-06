@@ -191,8 +191,18 @@ export default {
 
 .pdf-viewer {
   width: 100%;
-  height: calc(100vh - 180px);
-  min-height: 600px;
+  height: auto;
+  min-height: 800px;
+  overflow: auto;
+}
+
+.pdf-viewer :deep(.vue-pdf-embed) {
+  width: 100%;
+}
+
+.pdf-viewer :deep(.vue-pdf-embed > div) {
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .pdf-viewer iframe {

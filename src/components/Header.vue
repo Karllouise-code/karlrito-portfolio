@@ -19,7 +19,7 @@
     <nav id="navmenu" class="navmenu">
       <ul>
         <li v-for="item in navItems" :key="item.id">
-          <a :href="item.hash" :class="{ active: item.active }" @click="closeMobileMenu">
+          <a :href="item.hash" :class="{ active: item.active }" @click="handleNavClick(item.hash)">
             <i :class="item.icon + ' navicon'"></i>{{ item.name }}
           </a>
         </li>
@@ -37,10 +37,14 @@
 
 <script>
 import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 export default {
   name: "Header",
   setup() {
+    const router = useRouter();
+    const route = useRoute();
+
     const profileImage = ref("/images/01-KARLRITO.jpeg");
 
     const name = ref("Karl Louise Rito");
@@ -82,6 +86,21 @@ export default {
       }
     };
 
+    const handleNavClick = (hash) => {
+      closeMobileMenu();
+
+      // If we're not on the home page, navigate to home page first
+      if (route.path !== '/') {
+        router.push({ path: '/', hash: hash });
+      } else {
+        // We're already on home page, just scroll to section
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
     return {
       profileImage,
       name,
@@ -89,6 +108,7 @@ export default {
       navItems,
       toggleMobileMenu,
       closeMobileMenu,
+      handleNavClick,
     };
   },
 };
