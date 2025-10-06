@@ -19,8 +19,8 @@ export default {
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 @import url("https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css");
 
-/* Import the exact iPortfolio CSS */
-@import '@/assets/css/iportfolio.css';
+/* Import custom portfolio CSS */
+@import '@/assets/css/main-styles.css';
 
 /* Global app styles */
 html, body {
