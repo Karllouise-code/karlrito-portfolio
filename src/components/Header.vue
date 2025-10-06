@@ -26,6 +26,12 @@
       </ul>
     </nav>
 
+    <div class="resume-download">
+      <router-link to="/resume" class="btn-download">
+        <i class="bi bi-file-earmark-pdf"></i> View Resume
+      </router-link>
+    </div>
+
   </header>
 </template>
 
@@ -155,4 +161,41 @@ export default {
 </script>
 
 <style scoped>
+.resume-download {
+  margin-top: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-color);
+}
+
+.btn-download:hover {
+  background: transparent;
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.btn-download i {
+  font-size: 16px;
+}
+
+/* Hide on mobile/tablet, show only on desktop */
+@media (max-width: 1549px) {
+  .resume-download {
+    display: none;
+  }
+}
 </style>

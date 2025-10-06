@@ -9,7 +9,7 @@
       <p>I'm <span class="typed" ref="typedElement"></span></p>
 
       <div class="hero-actions" data-aos="fade-up" data-aos-delay="200">
-        <router-link to="/resume" class="btn-resume">
+        <router-link to="/resume" class="btn-resume btn-resume-mobile">
           <i class="bi bi-file-earmark-pdf"></i> View My Resume
         </router-link>
       </div>
@@ -85,6 +85,17 @@ export default {
 
 .btn-resume i {
   font-size: 18px;
+}
+
+/* Show on mobile/tablet, hide on desktop */
+.btn-resume-mobile {
+  display: inline-flex;
+}
+
+@media (min-width: 1550px) {
+  .btn-resume-mobile {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
