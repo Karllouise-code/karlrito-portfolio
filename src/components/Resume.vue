@@ -4,8 +4,8 @@
 
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-      <h2>Resume</h2>
-      <p>Full-stack web developer with 3+ years of experience delivering scalable solutions and mentoring junior developers</p>
+      <h2>Experience</h2>
+      <p>Full-stack web developer with 3+ years of experience delivering scalable solutions</p>
     </div><!-- End Section Title -->
 
     <div class="container">
@@ -13,18 +13,6 @@
       <div class="row">
 
         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="resume-title">Summary</h3>
-
-          <div class="resume-item pb-0">
-            <h4>Karl Louise Rito</h4>
-            <p><em>Full-Stack Web Developer with 3+ years of experience specializing in Laravel, Vue.js, and API integrations. Proven track record of delivering high-performance web applications for major clients while balancing academic studies as a scholar at Trimex Colleges.</em></p>
-            <ul>
-              <li>Quezon City / Biñan, Calabarzon, Philippines</li>
-              <li>+63 976 366 7638</li>
-              <li>karllouiserito08@gmail.com</li>
-            </ul>
-          </div><!-- End Resume Item -->
-
           <h3 class="resume-title">Education</h3>
           <div class="resume-item">
             <h4>Bachelor of Science in Information Technology</h4>
@@ -39,59 +27,52 @@
             <p><em>Biñan Integrated National High School, Philippines</em></p>
             <p>Science, Technology, Engineering, and Mathematics (STEM) strand, building a strong foundation in technical and analytical skills.</p>
           </div><!-- End Resume Item -->
-
         </div>
 
         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
           <h3 class="resume-title">Professional Experience</h3>
+          <div class="resume-scroll-container">
+            <div class="resume-item">
+              <h4>Web Developer</h4>
+              <h5>Sept 2024 - Present</h5>
+              <p><em>SVEN - The Digital 1st Agency (Remote)</em></p>
+              <ul>
+                <li>Full-stack development delivering scalable applications</li>
+                <li>API integration and system architecture</li>
+              </ul>
+            </div><!-- End Resume Item -->
 
-          <div class="resume-item">
-            <h4>Web Developer</h4>
-            <h5>September 2024 - Present</h5>
-            <p><em>SVEN - The Digital 1st Agency, Quezon City, Philippines (Remote)</em></p>
-            <ul>
-              <li>Focus on full-stack web development, delivering scalable applications tailored to diverse client requirements</li>
-              <li>Handle API integration, system architecture, and ensure high-performance web solutions</li>
-              <li>Actively participate in project planning and collaborate with team members to troubleshoot technical issues</li>
-              <li>Maintain strong commitment to continuous learning in emerging technologies</li>
-            </ul>
-          </div><!-- End Resume Item -->
+            <div class="resume-item">
+              <h4>Full-Stack Developer</h4>
+              <h5>Sept 2023 - Oct 2024</h5>
+              <p><em>Switch Connect, Laguna</em></p>
+              <ul>
+                <li>Core developer for Honda and major clients</li>
+                <li>Laravel, Vue.js, GraphQL, MySQL</li>
+                <li>Mentored junior developers</li>
+              </ul>
+            </div><!-- End Resume Item -->
 
-          <div class="resume-item">
-            <h4>Full-Stack Developer</h4>
-            <h5>September 2023 - October 2024</h5>
-            <p><em>Switch Connect, Laguna, Calabarzon, Philippines</em></p>
-            <ul>
-              <li>Acted as core developer for key clients including Honda, driving critical web application development</li>
-              <li>Delivered high-quality solutions using Laravel, Vue.js, GraphQL, and MySQL</li>
-              <li>Provided mentoring and technical guidance for junior developers, fostering skill growth and best practices</li>
-              <li>Managed tasks and workflows efficiently using Jira in Agile and Scrum environments</li>
-            </ul>
-          </div><!-- End Resume Item -->
+            <div class="resume-item">
+              <h4>Junior Web Developer</h4>
+              <h5>Apr 2022 - Sept 2023</h5>
+              <p><em>Switch Connect, Laguna</em></p>
+              <ul>
+                <li>Developed coche.ph web application</li>
+                <li>Vue.js frontend and Laravel backend</li>
+              </ul>
+            </div><!-- End Resume Item -->
 
-          <div class="resume-item">
-            <h4>Junior Web Developer</h4>
-            <h5>April 2022 - September 2023</h5>
-            <p><em>Switch Connect, Laguna, Calabarzon, Philippines</em></p>
-            <ul>
-              <li>Developed and contributed to coche.ph web application, playing a key role in acquiring Honda client account</li>
-              <li>Collaborated with senior developers to build responsive, user-friendly frontend features using Vue.js</li>
-              <li>Assisted in backend development with Laravel and MySQL</li>
-              <li>Participated in Agile development cycles, including sprint planning and daily stand-ups</li>
-            </ul>
-          </div><!-- End Resume Item -->
-
-          <div class="resume-item">
-            <h4>AI Trainer for Developers</h4>
-            <h5>October 2024 - January 2025</h5>
-            <p><em>Outlier, Remote</em></p>
-            <ul>
-              <li>Trained and fine-tuned AI models designed for developer assistance and code generation</li>
-              <li>Collaborated with cross-functional teams to improve AI model performance in coding patterns and debugging</li>
-              <li>Contributed to development of AI-powered tools that enhance developer productivity and code quality</li>
-            </ul>
-          </div><!-- End Resume Item -->
-
+            <div class="resume-item">
+              <h4>AI Trainer for Developers</h4>
+              <h5>Oct 2024 - Jan 2025</h5>
+              <p><em>Outlier (Remote)</em></p>
+              <ul>
+                <li>Trained AI models for code generation</li>
+                <li>Enhanced developer productivity tools</li>
+              </ul>
+            </div><!-- End Resume Item -->
+          </div>
         </div>
 
       </div>
@@ -106,3 +87,89 @@ export default {
   name: "Resume",
 };
 </script>
+
+<style scoped>
+.resume .row {
+  align-items: flex-start;
+}
+
+.resume-scroll-container {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 15px;
+  padding-left: 10px;
+  padding-top: 2px;
+  margin-left: -10px;
+}
+
+.resume-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.resume-scroll-container::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--default-color), transparent 95%);
+  border-radius: 3px;
+}
+
+.resume-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+.resume-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+/* Fix for timeline dots being cut off */
+.resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid var(--accent-color);
+  position: relative;
+  margin-bottom: 0;
+}
+
+.resume-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+}
+
+.resume-item h4 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.resume-item h5 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.resume-item p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.resume-item ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.resume-item ul li {
+  font-size: 13px;
+  padding-bottom: 6px;
+}
+
+@media (max-width: 991px) {
+  .resume-scroll-container {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+</style>
