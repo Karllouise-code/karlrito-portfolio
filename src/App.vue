@@ -23,22 +23,61 @@ export default {
 @import '@/assets/css/iportfolio.css';
 
 /* Global app styles */
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
 #app {
   font-family: var(--default-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden !important;
+  width: 100%;
+  position: relative;
 }
 
 /* Override for main wrapper */
 .main {
   margin-left: 300px;
   min-height: 100vh;
+  overflow-x: hidden !important;
+  width: calc(100% - 300px);
+  max-width: calc(100vw - 300px);
 }
 
 /* Mobile responsive adjustments */
 @media (max-width: 1199px) {
   .main {
     margin-left: 0;
+    width: 100%;
+    max-width: 100vw;
   }
+}
+
+/* Minimalist active state for sidebar navigation */
+.navmenu a,
+.navmenu a:hover,
+.navmenu .active,
+.navmenu .active:hover {
+  background: transparent !important;
+}
+
+.navmenu .active {
+  position: relative;
+}
+
+.navmenu .active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background-color: var(--accent-color);
+  border-radius: 0 2px 2px 0;
 }
 </style>

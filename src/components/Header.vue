@@ -26,17 +26,11 @@
       </ul>
     </nav>
 
-    <div class="resume-download">
-      <router-link to="/resume" class="btn-download">
-        <i class="bi bi-file-earmark-pdf"></i> View Resume
-      </router-link>
-    </div>
-
   </header>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 export default {
@@ -94,12 +88,58 @@ export default {
         router.push({ path: '/', hash: hash });
       } else {
         // We're already on home page, just scroll to section
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            const yOffset = 0;
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 100);
       }
     };
+
+    // Scroll spy to update active nav item
+    const updateActiveNav = () => {
+      // Only run on home page
+      if (route.path !== '/') return;
+
+      const scrollPosition = window.scrollY + 100;
+
+      // Get all sections
+      const sections = navItems.value.map(item => {
+        const element = document.querySelector(item.hash);
+        return {
+          id: item.id,
+          hash: item.hash,
+          offsetTop: element ? element.offsetTop : 0,
+          offsetBottom: element ? element.offsetTop + element.offsetHeight : 0,
+        };
+      });
+
+      // Find current section
+      let currentSection = sections[0];
+      for (const section of sections) {
+        if (scrollPosition >= section.offsetTop) {
+          currentSection = section;
+        }
+      }
+
+      // Update active states
+      navItems.value.forEach(item => {
+        item.active = item.hash === currentSection.hash;
+      });
+    };
+
+    // Add scroll listener
+    onMounted(() => {
+      window.addEventListener('scroll', updateActiveNav);
+      updateActiveNav(); // Initial check
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', updateActiveNav);
+    });
 
     return {
       profileImage,
@@ -115,40 +155,4 @@ export default {
 </script>
 
 <style scoped>
-.resume-download {
-  margin-top: auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.btn-download {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  padding: 12px 24px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  border: 2px solid var(--accent-color);
-}
-
-.btn-download:hover {
-  background: transparent;
-  color: var(--accent-color);
-  transform: translateY(-2px);
-}
-
-.btn-download i {
-  font-size: 16px;
-}
-
-@media (max-width: 1199px) {
-  .resume-download {
-    padding: 15px;
-  }
-}
 </style>
