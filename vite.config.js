@@ -11,7 +11,7 @@
            '@components': resolve(__dirname, 'src/components')
          }
        },
-       assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.ico'],
+       assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.ico', '**/*.pdf'],
        css: {
          preprocessorOptions: {
            scss: {

@@ -11,7 +11,7 @@
     </a>
 
     <div class="social-links text-center">
-      <a v-for="social in socialLinks" :key="social.name" :href="social.url" :class="social.name">
+      <a v-for="social in socialLinks" :key="social.name" :href="social.url" :class="social.name" target="_blank" rel="noopener noreferrer">
         <i :class="social.icon"></i>
       </a>
     </div>
@@ -25,6 +25,12 @@
         </li>
       </ul>
     </nav>
+
+    <div class="resume-download">
+      <router-link to="/resume" class="btn-download">
+        <i class="bi bi-file-earmark-pdf"></i> View Resume
+      </router-link>
+    </div>
 
   </header>
 </template>
@@ -40,11 +46,11 @@ export default {
     const name = ref("Karl Louise Rito");
 
     const socialLinks = ref([
-      { name: "twitter", url: "#", icon: "bi bi-twitter-x" },
-      { name: "facebook", url: "#", icon: "bi bi-facebook" },
-      { name: "instagram", url: "#", icon: "bi bi-instagram" },
-      { name: "google-plus", url: "#", icon: "bi bi-skype" },
-      { name: "linkedin", url: "#", icon: "bi bi-linkedin" },
+      { name: "linkedin", url: "https://www.linkedin.com/in/karllouise08/", icon: "bi bi-linkedin" },
+      { name: "github", url: "https://github.com/Karllouise-code/", icon: "bi bi-github" },
+      { name: "twitter", url: "https://x.com/karl_rito", icon: "bi bi-twitter-x" },
+      { name: "facebook", url: "https://www.facebook.com/karllouise08", icon: "bi bi-facebook" },
+      { name: "instagram", url: "https://www.instagram.com/kalowies_/", icon: "bi bi-instagram" },
     ]);
 
     const navItems = ref([
@@ -87,3 +93,42 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.resume-download {
+  margin-top: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-color);
+}
+
+.btn-download:hover {
+  background: transparent;
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.btn-download i {
+  font-size: 16px;
+}
+
+@media (max-width: 1199px) {
+  .resume-download {
+    padding: 15px;
+  }
+}
+</style>

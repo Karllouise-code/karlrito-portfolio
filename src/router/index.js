@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const Portfolio = () => import("@/components/Portfolio.vue");
 const PortfolioDetails = () => import("@/components/PortfolioDetails.vue").catch(() => import("@/components/Portfolio.vue"));
 const ServiceDetails = () => import("@/components/ServiceDetails.vue").catch(() => import("@/components/Portfolio.vue"));
+const ResumePage = () => import("@/views/ResumePage.vue");
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     name: "ServiceDetails",
     component: ServiceDetails,
     props: true,
+  },
+  {
+    path: "/resume",
+    name: "ResumePage",
+    component: ResumePage,
   },
 ];
 

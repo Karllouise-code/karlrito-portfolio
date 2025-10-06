@@ -62,7 +62,7 @@ export default {
       { label: "City", value: "Biñan, Calabarzon, Philippines" },
       // { label: "Age", value: "30" },
       { label: "Degree", value: "Bachelor's in Information Technology" },
-      { label: "Email", value: "karllouiserito08@gmail.com" },
+      { label: "Email", value: "karllouiserito.1@gmail.com" },
       { label: "Freelance", value: "Available" },
     ]);
 

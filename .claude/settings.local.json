@@ -4,7 +4,11 @@
       "WebFetch(domain:themewagon.github.io)",
       "Bash(grep:*)",
       "Bash(curl -s \"https://themewagon.github.io/iPortfolio/assets/css/main.css\")",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Read(//c/**)",
+      "Bash(curl:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
