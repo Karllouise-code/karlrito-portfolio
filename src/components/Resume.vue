@@ -12,7 +12,7 @@
 
       <div class="row">
 
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
           <h3 class="resume-title">Education</h3>
           <div class="resume-item">
             <h4>Bachelor of Science in Information Technology</h4>
@@ -29,7 +29,7 @@
           </div><!-- End Resume Item -->
         </div>
 
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
           <h3 class="resume-title">Professional Experience</h3>
           <div class="resume-scroll-container">
             <div class="resume-item">

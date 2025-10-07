@@ -1,0 +1,77 @@
+/**
+ * Layout Styles
+ * Global layout structure including overflow handling, main content area, and responsive behavior
+ */
+
+@import './variables';
+
+// Prevent horizontal overflow globally
+html,
+body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+// Remove aggressive overflow rules - let sections behave naturally
+
+// App container
+#app {
+  font-family: $font-default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden !important;
+  width: 100%;
+  position: relative;
+}
+
+// Main content area (accounts for sidebar)
+.main {
+  margin-left: $sidebar-width;
+  min-height: 100vh;
+  overflow-x: hidden !important;
+  width: auto;
+  position: relative;
+
+  // Ensure containers don't overflow
+  .container,
+  .container-fluid {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+// Mobile responsive adjustments
+@media (max-width: $breakpoint-lg - 1px) {
+  .main {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+// Minimalist active state for sidebar navigation
+.navmenu {
+  a,
+  a:hover,
+  .active,
+  .active:hover {
+    background: transparent !important;
+  }
+
+  .active {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 20px;
+      background-color: $accent-color;
+      border-radius: 0 2px 2px 0;
+    }
+  }
+}

@@ -86,22 +86,48 @@ export default {
       }
     };
 
-    const handleNavClick = (hash) => {
+    const handleNavClick = async (hash) => {
       closeMobileMenu();
 
       // If we're not on the home page, navigate to home page first
       if (route.path !== '/') {
-        router.push({ path: '/', hash: hash });
-      } else {
-        // We're already on home page, just scroll to section
+        // Navigate to home page without hash
+        await router.push('/');
+
+        // Force a reflow to ensure styles are applied
         setTimeout(() => {
-          const element = document.querySelector(hash);
-          if (element) {
-            const yOffset = 0;
-            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
+          // Force DOM reflow
+          document.body.offsetHeight;
+
+          if (hash === '#hero') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.history.replaceState(null, '', '/');
+          } else {
+            const element = document.querySelector(hash);
+            if (element) {
+              const yOffset = 0;
+              const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+              window.history.replaceState(null, '', '/');
+            }
           }
-        }, 100);
+        }, 150);
+      } else {
+        // We're already on home page
+        if (hash === '#hero') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.history.replaceState(null, '', '/');
+        } else {
+          setTimeout(() => {
+            const element = document.querySelector(hash);
+            if (element) {
+              const yOffset = 0;
+              const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+              window.history.replaceState(null, '', '/');
+            }
+          }, 100);
+        }
       }
     };
 

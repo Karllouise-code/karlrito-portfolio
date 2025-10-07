@@ -1,0 +1,211 @@
+/**
+ * All Projects Page Styles
+ * Dedicated styles for the all projects page including filters and project cards
+ */
+
+@import '../variables';
+
+.all-projects-page {
+  background-color: $gray-100;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+// Page title section with gradient background
+.page-title {
+  padding: 60px 0 40px 0;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  color: $white;
+  width: 100%;
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+
+  .container {
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: $white;
+  }
+}
+
+// Title row with breadcrumbs and filter pills
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  width: 100%;
+}
+
+// Breadcrumbs navigation
+.breadcrumbs {
+  margin-bottom: 20px;
+
+  ol {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: $spacing-xs;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child)::after {
+      content: "/";
+      margin-left: $spacing-xs;
+      color: rgba($white, 0.7);
+    }
+  }
+
+  a {
+    color: rgba($white, 0.8);
+    text-decoration: none;
+    transition: $transition-base;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  .current {
+    color: $white;
+  }
+}
+
+// Filter pills for Company/Personal
+.filter-pills {
+  display: flex;
+  gap: $spacing-xs;
+  background: rgba($white, 0.1);
+  padding: 0.3rem;
+  border-radius: $border-radius-pill;
+  position: relative;
+  z-index: 100;
+}
+
+.pill {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: rgba($white, 0.8);
+  border-radius: $border-radius-pill;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition-base;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 101;
+  pointer-events: all;
+
+  &:hover {
+    color: $white;
+    background: rgba($white, 0.1);
+  }
+
+  &.active {
+    background: $white;
+    color: $primary-color;
+  }
+}
+
+// Projects section
+.projects-section {
+  padding: 60px 0;
+}
+
+// Individual project card
+.project-card {
+  background: $white;
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  transition: $transition-base;
+  height: 100%;
+  border: 1px solid $gray-200;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-md;
+  }
+}
+
+.project-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: $border-radius-pill;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: $spacing-sm;
+
+  &.company {
+    background: rgba($primary-color, 0.1);
+    color: $primary-color;
+  }
+
+  &.personal {
+    background: rgba(#28a745, 0.1);
+    color: #28a745;
+  }
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $gray-800;
+  margin-bottom: $spacing-sm;
+}
+
+.project-description {
+  color: $text-light;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: $spacing-md;
+}
+
+.project-link {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: $gray-100;
+  color: $gray-600;
+  text-decoration: none;
+  border-radius: $border-radius-sm;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  transition: $transition-base;
+
+  &:hover {
+    background: $primary-color;
+    color: $white;
+  }
+}
+
+// Mobile responsive
+@media (max-width: $breakpoint-sm) {
+  .title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-pills {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .page-title h1 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,13 @@
+/**
+ * Main SCSS Entry Point
+ * This file imports all SCSS modules in the correct order
+ */
+
+// 1. Variables (must be first)
+@import './variables';
+
+// 2. Layout and structure
+@import './layout';
+
+// 3. Page-specific styles
+@import './pages/all-projects';

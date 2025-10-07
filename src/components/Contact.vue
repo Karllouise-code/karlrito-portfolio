@@ -8,11 +8,11 @@
     </div>
     <!-- End Section Title -->
 
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-      <div class="row gy-4">
-        <div class="col-lg-5">
+    <div class="container">
+      <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="200">
           <div class="info-wrap">
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Address</h3>
@@ -21,7 +21,7 @@
             </div>
             <!-- End Info Item -->
 
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
                 <h3>Call Me</h3>
@@ -30,7 +30,7 @@
             </div>
             <!-- End Info Item -->
 
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Me</h3>
@@ -43,8 +43,8 @@
           </div>
         </div>
 
-        <div class="col-lg-7">
-          <form @submit.prevent="submitForm" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
+          <form @submit.prevent="submitForm" class="php-email-form">
             <div class="row gy-4">
               <div class="col-md-6">
                 <label for="name-field" class="pb-2">Your Name</label>
@@ -137,11 +137,15 @@ export default {
 </script>
 
 <style scoped>
+.contact .container {
+  overflow: visible !important;
+}
+
 .contact .info-wrap {
   background-color: var(--surface-color);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  /* height: 100%; */
+  overflow: visible;
 }
 
 .contact .info-item {
@@ -185,6 +189,7 @@ export default {
   height: 100%;
   padding: 30px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  overflow: visible;
 }
 
 .contact .php-email-form input[type="text"],

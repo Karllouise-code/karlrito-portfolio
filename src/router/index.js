@@ -5,6 +5,8 @@ const Portfolio = () => import("@/components/Portfolio.vue");
 const PortfolioDetails = () => import("@/components/PortfolioDetails.vue").catch(() => import("@/components/Portfolio.vue"));
 const ServiceDetails = () => import("@/components/ServiceDetails.vue").catch(() => import("@/components/Portfolio.vue"));
 const ResumePage = () => import("@/views/ResumePage.vue");
+const AllProjects = () => import("@/views/AllProjects.vue");
+const AllSkills = () => import("@/views/AllSkills.vue");
 
 const routes = [
   {
@@ -28,6 +30,16 @@ const routes = [
     path: "/resume",
     name: "ResumePage",
     component: ResumePage,
+  },
+  {
+    path: "/all-projects",
+    name: "AllProjects",
+    component: AllProjects,
+  },
+  {
+    path: "/all-skills",
+    name: "AllSkills",
+    component: AllSkills,
   },
 ];
 

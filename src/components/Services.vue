@@ -5,59 +5,59 @@
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
       <h2>Services</h2>
-      <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      <p>Professional development services tailored to your business needs</p>
     </div><!-- End Section Title -->
 
     <div class="container">
 
       <div class="row gy-4">
 
-        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-          <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="zoom-in" data-aos-delay="100">
+          <div class="icon flex-shrink-0"><i class="bi bi-code-slash"></i></div>
           <div>
-            <h4 class="title"><a href="service-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            <h4 class="title">Full-Stack Development</h4>
+            <p class="description">End-to-end web application development using Vue.js, React, Laravel, and Node.js with modern best practices</p>
           </div>
         </div>
         <!-- End Service Item -->
 
-        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon flex-shrink-0"><i class="bi bi-palette"></i></div>
           <div>
-            <h4 class="title"><a href="service-details.html" class="stretched-link">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            <h4 class="title">Frontend Development</h4>
+            <p class="description">Responsive and performant user interfaces with Vue.js, React, TypeScript, and modern CSS frameworks</p>
           </div>
         </div><!-- End Service Item -->
 
-        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-          <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon flex-shrink-0"><i class="bi bi-server"></i></div>
           <div>
-            <h4 class="title"><a href="service-details.html" class="stretched-link">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            <h4 class="title">Backend Development</h4>
+            <p class="description">Scalable server-side solutions with Laravel, Node.js, and RESTful/GraphQL APIs backed by robust databases</p>
           </div>
         </div><!-- End Service Item -->
 
-        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-          <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="zoom-in" data-aos-delay="400">
+          <div class="icon flex-shrink-0"><i class="bi bi-bezier2"></i></div>
           <div>
-            <h4 class="title"><a href="service-details.html" class="stretched-link">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <h4 class="title">API Development</h4>
+            <p class="description">Design and implementation of RESTful and GraphQL APIs with comprehensive documentation and testing</p>
           </div>
         </div><!-- End Service Item -->
 
-        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-          <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="zoom-in" data-aos-delay="500">
+          <div class="icon flex-shrink-0"><i class="bi bi-database"></i></div>
           <div>
-            <h4 class="title"><a href="service-details.html" class="stretched-link">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            <h4 class="title">Database Design</h4>
+            <p class="description">Efficient database architecture and optimization using MySQL, PostgreSQL, SQLite, and Firebase</p>
           </div>
         </div><!-- End Service Item -->
 
-        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-          <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="zoom-in" data-aos-delay="600">
+          <div class="icon flex-shrink-0"><i class="bi bi-cloud-upload"></i></div>
           <div>
-            <h4 class="title"><a href="service-details.html" class="stretched-link">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            <h4 class="title">Cloud Deployment</h4>
+            <p class="description">Application deployment and management on Netlify and Render with CI/CD pipeline setup</p>
           </div>
         </div><!-- End Service Item -->
 
@@ -110,15 +110,7 @@ export default {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
-}
-
-.services .service-item .title a {
   color: var(--heading-color);
-  text-decoration: none;
-}
-
-.services .service-item .title a:hover {
-  color: var(--accent-color);
 }
 
 .services .service-item .description {
