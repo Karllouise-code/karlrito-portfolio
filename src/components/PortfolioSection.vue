@@ -72,7 +72,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .project-card {
   background: #fff;
   padding: 2rem;
@@ -80,11 +80,11 @@ export default {
   transition: all 0.3s ease;
   height: 100%;
   border: 1px solid #e9ecef;
-}
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .project-title {
@@ -111,11 +111,11 @@ export default {
   font-family: 'Courier New', monospace;
   font-size: 0.85rem;
   transition: all 0.3s ease;
-}
 
-.project-link:hover {
-  background: #0563bb;
-  color: #fff;
+  &:hover {
+    background: #0563bb;
+    color: #fff;
+  }
 }
 
 .btn-view-all {
@@ -127,11 +127,11 @@ export default {
   border-radius: 50px;
   font-weight: 500;
   transition: all 0.3s ease;
-}
 
-.btn-view-all:hover {
-  background: #044a94;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(5, 99, 187, 0.3);
+  &:hover {
+    background: #044a94;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(5, 99, 187, 0.3);
+  }
 }
 </style>

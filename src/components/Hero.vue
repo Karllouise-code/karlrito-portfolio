@@ -55,7 +55,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .hero-actions {
   margin-top: 30px;
 }
@@ -74,34 +74,30 @@ export default {
   transition: all 0.3s ease;
   border: 2px solid var(--accent-color);
   box-shadow: 0 4px 15px rgba(20, 157, 221, 0.3);
-}
 
-.btn-resume:hover {
-  background: transparent;
-  color: var(--accent-color);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(20, 157, 221, 0.4);
-}
+  &:hover {
+    background: transparent;
+    color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(20, 157, 221, 0.4);
+  }
 
-.btn-resume i {
-  font-size: 18px;
+  i {
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
 }
 
 /* Show on mobile/tablet, hide on desktop */
 .btn-resume-mobile {
   display: inline-flex;
-}
 
-@media (min-width: 1550px) {
-  .btn-resume-mobile {
+  @media (min-width: 1550px) {
     display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .btn-resume {
-    padding: 12px 28px;
-    font-size: 15px;
   }
 }
 </style>

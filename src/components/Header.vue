@@ -186,11 +186,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .resume-download {
   margin-top: auto;
   padding: 20px;
   text-align: center;
+
+  /* Hide on mobile/tablet, show only on desktop */
+  @media (max-width: 1549px) {
+    display: none;
+  }
 }
 
 .btn-download {
@@ -206,22 +211,15 @@ export default {
   font-size: 14px;
   transition: all 0.3s ease;
   border: 2px solid var(--accent-color);
-}
 
-.btn-download:hover {
-  background: transparent;
-  color: var(--accent-color);
-  transform: translateY(-2px);
-}
+  &:hover {
+    background: transparent;
+    color: var(--accent-color);
+    transform: translateY(-2px);
+  }
 
-.btn-download i {
-  font-size: 16px;
-}
-
-/* Hide on mobile/tablet, show only on desktop */
-@media (max-width: 1549px) {
-  .resume-download {
-    display: none;
+  i {
+    font-size: 16px;
   }
 }
 </style>

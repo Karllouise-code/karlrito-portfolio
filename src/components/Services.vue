@@ -74,47 +74,51 @@ export default {
 };
 </script>
 
-<style scoped>
-.services .service-item {
-  position: relative;
-}
+<style scoped lang="scss">
+.services {
+  .service-item {
+    position: relative;
 
-.services .service-item .icon {
-  background: var(--accent-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  transition: 0.5s;
-  border: 1px solid var(--accent-color);
-  margin-right: 20px;
-}
+    .icon {
+      background: var(--accent-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      transition: 0.5s;
+      border: 1px solid var(--accent-color);
+      margin-right: 20px;
 
-.services .service-item .icon i {
-  color: var(--contrast-color);
-  font-size: 24px;
-  line-height: 0;
-}
+      i {
+        color: var(--contrast-color);
+        font-size: 24px;
+        line-height: 0;
+      }
+    }
 
-.services .service-item:hover .icon {
-  background: transparent;
-}
+    &:hover {
+      .icon {
+        background: transparent;
 
-.services .service-item:hover .icon i {
-  color: var(--accent-color);
-}
+        i {
+          color: var(--accent-color);
+        }
+      }
+    }
 
-.services .service-item .title {
-  font-weight: 700;
-  margin-bottom: 15px;
-  font-size: 18px;
-  color: var(--heading-color);
-}
+    .title {
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: var(--heading-color);
+    }
 
-.services .service-item .description {
-  line-height: 24px;
-  font-size: 14px;
+    .description {
+      line-height: 24px;
+      font-size: 14px;
+    }
+  }
 }
 </style>

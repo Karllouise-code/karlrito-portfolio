@@ -51,34 +51,47 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .skill-item {
   text-align: center;
   padding: 1.5rem 1rem;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
-}
 
-.skill-item i {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 0.75rem;
-  display: block;
-}
+  i {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
 
-.skill-item h4 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--heading-color);
-  margin: 0;
-}
+  h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--heading-color);
+    margin: 0;
+  }
 
-.skill-item:hover {
-  transform: translateY(-5px);
-}
+  &:hover {
+    transform: translateY(-5px);
 
-.skill-item:hover i {
-  color: color-mix(in srgb, var(--accent-color), transparent 20%);
+    i {
+      color: color-mix(in srgb, var(--accent-color), transparent 20%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 0.5rem;
+    margin-bottom: 1rem;
+
+    i {
+      font-size: 2rem;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+    }
+  }
 }
 
 .btn-view-all {
@@ -90,26 +103,11 @@ export default {
   border-radius: 50px;
   font-weight: 500;
   transition: all 0.3s ease;
-}
 
-.btn-view-all:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 15%);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(5, 99, 187, 0.3);
-}
-
-@media (max-width: 768px) {
-  .skill-item {
-    padding: 1rem 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .skill-item i {
-    font-size: 2rem;
-  }
-
-  .skill-item h4 {
-    font-size: 0.9rem;
+  &:hover {
+    background: color-mix(in srgb, var(--accent-color), transparent 15%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(5, 99, 187, 0.3);
   }
 }
 </style>
