@@ -4,7 +4,7 @@
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
       <h2>Contact</h2>
-      <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      <p>Let's work together on your next project</p>
     </div>
     <!-- End Section Title -->
 
@@ -48,30 +48,45 @@
             <div class="row gy-4">
               <div class="col-md-6">
                 <label for="name-field" class="pb-2">Your Name</label>
-                <input type="text" name="name" id="name-field" class="form-control" required v-model="form.name" />
+                <input type="text" name="name" id="name-field" class="form-control" :class="{ 'is-invalid': validationErrors.name }" v-model="form.name" />
+                <div class="invalid-feedback" v-if="validationErrors.name">{{ validationErrors.name }}</div>
               </div>
 
               <div class="col-md-6">
                 <label for="email-field" class="pb-2">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email-field" required v-model="form.email" />
+                <input type="email" class="form-control" name="email" id="email-field" :class="{ 'is-invalid': validationErrors.email }" v-model="form.email" />
+                <div class="invalid-feedback" v-if="validationErrors.email">{{ validationErrors.email }}</div>
               </div>
 
               <div class="col-md-12">
                 <label for="subject-field" class="pb-2">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject-field" required v-model="form.subject" />
+                <input type="text" class="form-control" name="subject" id="subject-field" :class="{ 'is-invalid': validationErrors.subject }" v-model="form.subject" />
+                <div class="invalid-feedback" v-if="validationErrors.subject">{{ validationErrors.subject }}</div>
               </div>
 
               <div class="col-md-12">
                 <label for="message-field" class="pb-2">Message</label>
-                <textarea class="form-control" name="message" rows="10" id="message-field" required v-model="form.message"></textarea>
+                <textarea class="form-control" name="message" rows="10" id="message-field" :class="{ 'is-invalid': validationErrors.message }" v-model="form.message"></textarea>
+                <div class="invalid-feedback" v-if="validationErrors.message">{{ validationErrors.message }}</div>
               </div>
 
               <div class="col-md-12 text-center">
-                <div class="loading" v-if="isLoading">Loading</div>
-                <div class="error-message" v-if="errorMessage">{{ errorMessage }}</div>
-                <div class="sent-message" v-if="successMessage">Your message has been sent. Thank you!</div>
+                <div class="error-message" v-if="errorMessage && !isLoading">
+                  <i class="bi bi-exclamation-circle"></i>
+                  {{ errorMessage }}
+                </div>
+                <div class="sent-message" v-if="successMessage && !isLoading">
+                  <i class="bi bi-check-circle"></i>
+                  {{ successMessage }}
+                </div>
 
-                <button type="submit">Send Message</button>
+                <button type="submit" :disabled="isLoading">
+                  <span v-if="isLoading" class="button-loading">
+                    <span class="spinner"></span>
+                    Sending...
+                  </span>
+                  <span v-else>Send Message</span>
+                </button>
               </div>
             </div>
           </form>
@@ -85,6 +100,7 @@
 
 <script>
 import { ref } from "vue";
+import emailjs from "@emailjs/browser";
 
 export default {
   name: "Contact",
@@ -99,15 +115,79 @@ export default {
     const isLoading = ref(false);
     const errorMessage = ref("");
     const successMessage = ref("");
+    const validationErrors = ref({});
+
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const validateForm = () => {
+      const errors = {};
+
+      // Name validation
+      if (!form.value.name.trim()) {
+        errors.name = "Name is required";
+      } else if (form.value.name.trim().length < 2) {
+        errors.name = "Name must be at least 2 characters";
+      }
+
+      // Email validation
+      if (!form.value.email.trim()) {
+        errors.email = "Email is required";
+      } else if (!emailRegex.test(form.value.email)) {
+        errors.email = "Please enter a valid email address";
+      }
+
+      // Subject validation
+      if (!form.value.subject.trim()) {
+        errors.subject = "Subject is required";
+      } else if (form.value.subject.trim().length < 3) {
+        errors.subject = "Subject must be at least 3 characters";
+      }
+
+      // Message validation
+      if (!form.value.message.trim()) {
+        errors.message = "Message is required";
+      } else if (form.value.message.trim().length < 10) {
+        errors.message = "Message must be at least 10 characters";
+      }
+
+      validationErrors.value = errors;
+      return Object.keys(errors).length === 0;
+    };
 
     const submitForm = async () => {
-      isLoading.value = true;
       errorMessage.value = "";
       successMessage.value = "";
 
+      // Validate form
+      if (!validateForm()) {
+        return;
+      }
+
+      isLoading.value = true;
+
       try {
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // EmailJS configuration
+        const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const contactTemplateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const autoReplyTemplateID = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        const templateParams = {
+          from_name: form.value.name,
+          from_email: form.value.email,
+          subject: form.value.subject,
+          message: form.value.message,
+          to_email: "karllouiserito.1@gmail.com",
+        };
+
+        // Send email to yourself (main contact form)
+        await emailjs.send(serviceID, contactTemplateID, templateParams, publicKey);
+
+        // Send auto-reply to the sender (only if auto-reply template is configured)
+        if (autoReplyTemplateID) {
+          await emailjs.send(serviceID, autoReplyTemplateID, templateParams, publicKey);
+        }
 
         // Reset form
         form.value = {
@@ -116,10 +196,18 @@ export default {
           subject: "",
           message: "",
         };
+        validationErrors.value = {};
 
-        successMessage.value = "Your message has been sent. Thank you!";
+        successMessage.value = "Your message has been sent successfully. Thank you!";
+
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          successMessage.value = "";
+        }, 5000);
+
       } catch (error) {
-        errorMessage.value = "There was an error sending your message. Please try again.";
+        console.error("EmailJS Error:", error);
+        errorMessage.value = "There was an error sending your message. Please try again or email me directly at karllouiserito.1@gmail.com";
       } finally {
         isLoading.value = false;
       }
@@ -130,6 +218,7 @@ export default {
       isLoading,
       errorMessage,
       successMessage,
+      validationErrors,
       submitForm,
     };
   },
@@ -212,6 +301,17 @@ export default {
   outline: none;
 }
 
+.contact .php-email-form .is-invalid {
+  border-color: #dc3545 !important;
+}
+
+.contact .php-email-form .invalid-feedback {
+  display: block;
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 .contact .php-email-form input[type="text"]::placeholder,
 .contact .php-email-form input[type="email"]::placeholder,
 .contact .php-email-form textarea::placeholder {
@@ -229,33 +329,71 @@ export default {
   font-size: 14px;
 }
 
-.contact .php-email-form button[type="submit"]:hover {
+.contact .php-email-form button[type="submit"]:hover:not(:disabled) {
   background: color-mix(in srgb, var(--accent-color), transparent 25%);
+  transform: translateY(-2px);
 }
 
-.contact .php-email-form .loading,
+.contact .php-email-form button[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.contact .php-email-form .button-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact .php-email-form .button-loading .spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .contact .php-email-form .error-message,
 .contact .php-email-form .sent-message {
   margin-bottom: 15px;
   text-align: center;
-}
-
-.contact .php-email-form .loading {
-  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .contact .php-email-form .error-message {
-  color: #df1529;
-  background: #fef0f2;
-  padding: 15px;
-  border-radius: 4px;
+  color: #dc3545;
+  background: #f8d7da;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid #f5c2c7;
+}
+
+.contact .php-email-form .error-message i {
+  font-size: 18px;
 }
 
 .contact .php-email-form .sent-message {
-  color: #059652;
-  background: #e5f8f0;
-  padding: 15px;
-  border-radius: 4px;
+  color: #198754;
+  background: #d1e7dd;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid #badbcc;
+}
+
+.contact .php-email-form .sent-message i {
+  font-size: 18px;
 }
 
 @media (max-width: 575px) {
