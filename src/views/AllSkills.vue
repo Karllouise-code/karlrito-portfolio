@@ -91,6 +91,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/scss/pages/_all-projects.scss';
+@import '@/assets/scss/components/_skills.scss';
 
 .all-skills-page {
   background-color: #f8f9fa;
@@ -100,51 +101,5 @@ export default {
 
 .skills-section {
   padding: 60px 0;
-}
-
-.skill-item {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  transition: all 0.3s ease;
-  background: #fff;
-  border-radius: 8px;
-  border: 1px solid #e9ecef;
-}
-
-.skill-item i {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 0.75rem;
-  display: block;
-}
-
-.skill-item h4 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--heading-color);
-  margin: 0;
-}
-
-.skill-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.skill-item:hover i {
-  color: color-mix(in srgb, var(--accent-color), transparent 20%);
-}
-
-@media (max-width: 768px) {
-  .skill-item {
-    padding: 1rem 0.5rem;
-  }
-
-  .skill-item i {
-    font-size: 2rem;
-  }
-
-  .skill-item h4 {
-    font-size: 0.9rem;
-  }
 }
 </style>

@@ -56,48 +56,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.hero-actions {
-  margin-top: 30px;
-}
-
-.btn-resume {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  padding: 14px 32px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 4px 15px rgba(20, 157, 221, 0.3);
-
-  &:hover {
-    background: transparent;
-    color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(20, 157, 221, 0.4);
-  }
-
-  i {
-    font-size: 18px;
-  }
-
-  @media (max-width: 768px) {
-    padding: 12px 28px;
-    font-size: 15px;
-  }
-}
-
-/* Show on mobile/tablet, hide on desktop */
-.btn-resume-mobile {
-  display: inline-flex;
-
-  @media (min-width: 1550px) {
-    display: none;
-  }
-}
+@import '@/assets/scss/components/_hero.scss';
 </style>

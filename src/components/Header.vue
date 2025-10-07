@@ -136,7 +136,17 @@ export default {
       // Only run on home page
       if (route.path !== '/') return;
 
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY;
+
+      // If at the very top, set hero as active
+      if (scrollPosition < 50) {
+        navItems.value.forEach(item => {
+          item.active = item.hash === '#hero';
+        });
+        return;
+      }
+
+      const adjustedScrollPosition = scrollPosition + 100;
 
       // Get all sections
       const sections = navItems.value.map(item => {
@@ -152,7 +162,7 @@ export default {
       // Find current section
       let currentSection = sections[0];
       for (const section of sections) {
-        if (scrollPosition >= section.offsetTop) {
+        if (adjustedScrollPosition >= section.offsetTop) {
           currentSection = section;
         }
       }
@@ -187,39 +197,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.resume-download {
-  margin-top: auto;
-  padding: 20px;
-  text-align: center;
-
-  /* Hide on mobile/tablet, show only on desktop */
-  @media (max-width: 1549px) {
-    display: none;
-  }
-}
-
-.btn-download {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  padding: 12px 24px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  border: 2px solid var(--accent-color);
-
-  &:hover {
-    background: transparent;
-    color: var(--accent-color);
-    transform: translateY(-2px);
-  }
-
-  i {
-    font-size: 16px;
-  }
-}
+@import '@/assets/scss/components/_header.scss';
 </style>
