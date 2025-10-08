@@ -57,7 +57,7 @@ export default {
 
     const personalInfo = ref([
       // { label: "Birthday", value: "1 May 1995" },
-      { label: "Website", value: "http://karllouiserito.netlify.app/" },
+      { label: "Website", value: "https://karllouiserito.netlify.app/" },
       { label: "Phone", value: "+63 976 366 7638" },
       { label: "City", value: "Biñan, Calabarzon, Philippines" },
       // { label: "Age", value: "30" },
