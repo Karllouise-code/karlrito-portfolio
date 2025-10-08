@@ -136,40 +136,41 @@ export default {
       // Only run on home page
       if (route.path !== '/') return;
 
-      const scrollPosition = window.scrollY;
+      const scrollPosition = window.scrollY - 700;
 
       // If at the very top, set hero as active
-      if (scrollPosition < 50) {
+      if (window.scrollY < 50) {
         navItems.value.forEach(item => {
           item.active = item.hash === '#hero';
         });
         return;
       }
 
-      const adjustedScrollPosition = scrollPosition + 100;
-
-      // Get all sections
+      // Get only sections that have nav items
       const sections = navItems.value.map(item => {
         const element = document.querySelector(item.hash);
-        return {
-          id: item.id,
-          hash: item.hash,
-          offsetTop: element ? element.offsetTop : 0,
-          offsetBottom: element ? element.offsetTop + element.offsetHeight : 0,
-        };
-      });
+        if (!element) return null;
 
-      // Find current section
-      let currentSection = sections[0];
-      for (const section of sections) {
-        if (adjustedScrollPosition >= section.offsetTop) {
-          currentSection = section;
+        return {
+          hash: item.hash,
+          offsetTop: element.offsetTop,
+          offsetBottom: element.offsetTop + element.offsetHeight,
+        };
+      }).filter(Boolean);
+
+      // Find which section we're currently in
+      let activeHash = '#hero';
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (scrollPosition >= sections[i].offsetTop) {
+          activeHash = sections[i].hash;
+          break;
         }
       }
 
       // Update active states
       navItems.value.forEach(item => {
-        item.active = item.hash === currentSection.hash;
+        item.active = item.hash === activeHash;
       });
     };
 
