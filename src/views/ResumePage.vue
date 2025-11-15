@@ -22,7 +22,7 @@
             <div v-if="pdfError" class="pdf-error">
               <i class="bi bi-exclamation-triangle"></i>
               <p>Unable to load PDF. <button @click="downloadPDF" class="btn-link">Click here to download</button></p>
-              <a href="/public/Karl_Louise_Rito_Resume.pdf" target="_blank">Open Resume PDF</a>
+              <a href="/public/KarlRitoResume.pdf" target="_blank">Open Resume PDF</a>
 
             </div>
             <div v-else-if="isLoading" class="pdf-loading">
@@ -49,7 +49,7 @@ import { ref, onMounted } from 'vue';
 import Header from '@/components/Header.vue';
 import VuePdfEmbed from 'vue-pdf-embed';
 // Import PDF directly from public folder
-import pdfFile from '/Karl_Louise_Rito_Resume.pdf?url';
+import pdfFile from '/KarlRitoResume.pdf?url';
 
 export default {
   name: 'ResumePage',
@@ -96,7 +96,7 @@ export default {
       // Simple direct download
       const link = document.createElement('a');
       link.href = pdfUrl.value;
-      link.download = 'Karl_Louise_Rito_Resume.pdf';
+      link.download = 'KarlRitoResume.pdf';
       link.target = '_blank';
       document.body.appendChild(link);
       link.click();
