@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import adminRoutes from "./admin/admin_routes";
 
 // Lazy load components to handle missing files better
 const Portfolio = () => import("@/components/Portfolio.vue");
@@ -7,6 +8,8 @@ const ServiceDetails = () => import("@/components/ServiceDetails.vue").catch(() 
 const ResumePage = () => import("@/views/ResumePage.vue");
 const AllProjects = () => import("@/views/AllProjects.vue");
 const AllSkills = () => import("@/views/AllSkills.vue");
+const BlogPage = () => import("@/views/BlogPage.vue");
+const BlogPost = () => import("@/views/BlogPost.vue");
 
 const routes = [
   {
@@ -41,6 +44,18 @@ const routes = [
     name: "AllSkills",
     component: AllSkills,
   },
+  {
+    path: "/blog",
+    name: "Blog",
+    component: BlogPage,
+  },
+  {
+    path: "/blog/:slug",
+    name: "BlogPost",
+    component: BlogPost,
+    props: true,
+  },
+  ...adminRoutes,
 ];
 
 const router = createRouter({

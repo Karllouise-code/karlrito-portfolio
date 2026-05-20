@@ -26,27 +26,32 @@ body {
   position: relative;
 }
 
-// Main content area (accounts for sidebar)
-.main {
-  margin-left: $sidebar-width;
-  min-height: 100vh;
-  overflow-x: hidden !important;
-  width: auto;
+// Main content area
+.main, .hero, .footer {
+  margin-left: 0 !important;
+  transition: all 0.4s ease;
   position: relative;
+  width: 100%;
+}
 
-  // Ensure containers don't overflow
-  .container,
-  .container-fluid {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
+.main {
+  padding-top: 80px; // Space for fixed header
+}
+
+.hero {
+  min-height: 100vh;
+}
+
+.footer {
+  padding: 60px 0;
+  background-color: $bg-dark;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 // Mobile responsive adjustments
-@media (max-width: $breakpoint-lg - 1px) {
+@media (max-width: $breakpoint-sm) {
   .main {
-    margin-left: 0;
-    width: 100%;
+    padding-top: 70px;
   }
 }
 
@@ -62,16 +67,16 @@ body {
   .active {
     position: relative;
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 3px;
-      height: 20px;
-      background-color: $accent-color;
-      border-radius: 0 2px 2px 0;
-    }
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   left: 0;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    //   width: 3px;
+    //   height: 20px;
+    //   background-color: $accent-color;
+    //   border-radius: 0 2px 2px 0;
+    // }
   }
 }
