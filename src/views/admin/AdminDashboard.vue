@@ -6,9 +6,14 @@
           <h1 class="admin-title">Blog Management</h1>
           <p class="text-muted">Manage your portfolio blog posts and drafts.</p>
         </div>
-        <router-link to="/admin/editor" class="btn btn-primary">
-          <i class="bi bi-plus-lg"></i> Create New Post
-        </router-link>
+        <div class="d-flex gap-2">
+          <button @click="handleLogout" class="btn btn-outline-danger">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
+          <router-link to="/admin/editor" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> Create New Post
+          </router-link>
+        </div>
       </div>
 
       <div class="admin-stats row mb-4">
@@ -124,6 +129,11 @@ const formatDate = (date) => {
 
 const editPost = (slug) => {
   router.push(`/admin/editor/${slug}`);
+};
+
+const handleLogout = () => {
+  sessionStorage.removeItem('admin_auth');
+  router.push('/admin/login');
 };
 
 const resumeDraft = (slug) => {

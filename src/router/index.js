@@ -72,4 +72,16 @@ const router = createRouter({
   },
 });
 
+// Navigation Guard
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = sessionStorage.getItem('admin_auth') === 'true';
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  if (requiresAuth && !isAuthenticated) {
+    next('/admin/login');
+  } else {
+    next();
+  }
+});
+
 export default router;
