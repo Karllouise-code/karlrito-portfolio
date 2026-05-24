@@ -31,7 +31,7 @@
           <div class="resume-timeline">
             <div class="resume-item">
               <h4>Web Developer</h4>
-              <div class="resume-date">Sept 2024 - Present</div>
+              <div class="resume-date">Sept 2025 - Present</div>
               <p class="resume-location"><em>SVEN - The Digital 1st Agency (Remote)</em></p>
               <ul class="resume-list">
                 <li>Full-stack development delivering scalable applications</li>
@@ -41,7 +41,7 @@
 
             <div class="resume-item">
               <h4>Full-Stack Developer</h4>
-              <div class="resume-date">Sept 2023 - Oct 2024</div>
+              <div class="resume-date">Sept 2023 - Sept 2025</div>
               <p class="resume-location"><em>Switch Connect, Laguna</em></p>
               <ul class="resume-list">
                 <li>Core developer for Honda and major clients</li>
