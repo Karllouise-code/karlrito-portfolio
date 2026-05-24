@@ -48,7 +48,7 @@ const personalInfo = ref([
   { label: "Freelance", value: "Available" },
 ]);
 
-const detailedDescription = ref(`With over 3 years of experience in full-stack development, I have worked on diverse projects for major clients including Honda, delivering solutions using Laravel, Vue.js, GraphQL, and MySQL. I've mentored junior developers, participated in agile workflows using Jira, and contributed to AI training for developer assistance tools at Outlier. My academic background includes AI, Machine Learning, and Data Analysis, supporting my passion for innovative, technology-driven solutions.`);
+const detailedDescription = ref(`With over 5 years of experience in full-stack development, I have worked on diverse projects for major clients including Honda, delivering solutions using Laravel, Vue.js, GraphQL, and MySQL. I've mentored junior developers, participated in agile workflows using Jira, and contributed to AI training for developer assistance tools at Outlier. My academic background includes AI, Machine Learning, and Data Analysis, supporting my passion for innovative, technology-driven solutions.`);
 </script>
 
 <style scoped lang="scss">
