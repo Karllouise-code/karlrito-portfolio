@@ -2,7 +2,7 @@
   <section id="resume" class="resume section dark-background">
     <div class="container section-title text-center mb-5" data-aos="fade-up">
       <h2 class="display-4 fw-bold">Experience</h2>
-      <p class="lead-text mx-auto">Full-stack web developer with 3+ years of experience delivering scalable solutions</p>
+      <p class="lead-text mx-auto">Full-stack web developer with 5+ years of experience delivering scalable solutions</p>
     </div>
 
     <div class="container">
