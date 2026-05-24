@@ -3,11 +3,11 @@
     <!-- Header -->
     <Header />
 
-    <!-- Hero Section -->
-    <Hero />
-
     <!-- Main Content -->
     <main class="main">
+      <!-- Hero Section -->
+      <Hero />
+
       <!-- About Section -->
       <About />
 

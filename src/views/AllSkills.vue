@@ -99,6 +99,10 @@ export default {
   width: 100%;
 }
 
+.all-skills-page .main {
+  padding-top: 100px;
+}
+
 .skills-section {
   padding: 60px 0;
 }

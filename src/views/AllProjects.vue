@@ -189,4 +189,8 @@ export default {
 
 <style lang="scss">
 @import '@/assets/scss/pages/_all-projects.scss';
+
+.all-projects-page .main {
+  padding-top: 100px;
+}
 </style>
