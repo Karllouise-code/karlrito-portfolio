@@ -125,40 +125,6 @@ export default {
           }
         }
       });
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('#navmenu a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          const href = link.getAttribute('href');
-          if (href && href.startsWith('#')) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-              // On mobile, account for header height; on desktop, header is on the side
-              const isMobile = window.innerWidth < 1200;
-              const offset = isMobile ? 60 : 0;
-              const targetPosition = target.offsetTop - offset;
-
-              window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-              });
-
-              // Update active nav item
-              document.querySelectorAll('#navmenu a').forEach(navLink => {
-                navLink.classList.remove('active');
-              });
-              link.classList.add('active');
-
-              // Close mobile menu if open
-              if (header && header.classList.contains('header-show')) {
-                header.classList.remove('header-show');
-                document.body.classList.remove('mobile-nav-active');
-              }
-            }
-          }
-        });
-      });
     });
 
     return {};
