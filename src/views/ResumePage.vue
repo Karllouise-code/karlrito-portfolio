@@ -1,10 +1,7 @@
 <template>
   <div>
-    <!-- Header -->
-    <Header />
-
     <!-- Main Content -->
-    <main class="main">
+    <main class="main resume-content">
       <div class="resume-page">
         <div class="resume-container">
           <div class="resume-header">
@@ -46,7 +43,6 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import Header from '@/components/Header.vue';
 import VuePdfEmbed from 'vue-pdf-embed';
 // Import PDF directly from public folder
 import pdfFile from '/KarlRitoResume.pdf?url';
@@ -54,7 +50,6 @@ import pdfFile from '/KarlRitoResume.pdf?url';
 export default {
   name: 'ResumePage',
   components: {
-    Header,
     VuePdfEmbed,
   },
   setup() {
@@ -117,6 +112,10 @@ export default {
 </script>
 
 <style scoped>
+.resume-content {
+  padding-top: 0 !important;
+}
+
 .resume-page {
   min-height: 100vh;
   background: var(--background-color);
