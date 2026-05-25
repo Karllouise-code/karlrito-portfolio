@@ -84,7 +84,7 @@ const formatDate = (date) => {
 
 const fetchHashnodePosts = async () => {
   try {
-    const response = await fetch('https://gql.hashnode.com/', {
+    const response = await fetch('/api/hashnode', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

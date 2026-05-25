@@ -8,6 +8,15 @@
       vue(),
       nodePolyfills(),
     ],
+    server: {
+      proxy: {
+        '/api/hashnode': {
+          target: 'https://gql.hashnode.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/hashnode/, '')
+        }
+      }
+    },
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
