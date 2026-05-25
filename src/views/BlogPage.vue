@@ -17,7 +17,7 @@
       <section class="blog-posts dark-background">
         <div class="container">
           <div class="row">
-            <div v-for="(post, index) in posts" :key="post.slug" 
+            <div v-for="(post, index) in posts" :key="post.slug || post.url" 
                  class="col-lg-4 col-md-6 mb-4" 
                  data-aos="fade-up" 
                  :data-aos-delay="index * 100">
@@ -28,13 +28,17 @@
                     <span class="post-author"><i class="bi bi-person"></i> {{ post.author || 'Karl Rito' }}</span>
                   </div>
                   <h3 class="post-title">
-                    <router-link :to="'/blog/' + post.slug">{{ post.title }}</router-link>
+                    <router-link v-if="!post.isExternal" :to="'/blog/' + post.slug">{{ post.title }}</router-link>
+                    <a v-else :href="post.url" target="_blank">{{ post.title }} <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 0.8rem;"></i></a>
                   </h3>
                   <p class="post-excerpt">{{ post.description }}</p>
                   <div class="post-footer">
-                    <router-link :to="'/blog/' + post.slug" class="read-more">
+                    <router-link v-if="!post.isExternal" :to="'/blog/' + post.slug" class="read-more">
                       Read Post <i class="bi bi-arrow-right"></i>
                     </router-link>
+                    <a v-else :href="post.url" target="_blank" class="read-more">
+                      Read on Hashnode <i class="bi bi-arrow-right"></i>
+                    </a>
                   </div>
                 </div>
               </article>
@@ -68,6 +72,8 @@ import Footer from '@/components/Footer.vue';
 const posts = ref([]);
 const error = ref(null);
 
+const HASHNODE_HOST = 'karllouiserito.hashnode.dev';
+
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
@@ -76,22 +82,87 @@ const formatDate = (date) => {
   });
 };
 
+const fetchHashnodePosts = async () => {
+  try {
+    const response = await fetch('https://gql.hashnode.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `
+          query Publication($host: String!) {
+            publication(host: $host) {
+              posts(first: 10) {
+                edges {
+                  node {
+                    title
+                    brief
+                    url
+                    publishedAt
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        `,
+        variables: {
+          host: HASHNODE_HOST
+        },
+      }),
+    });
+
+    const result = await response.json();
+    
+    if (result.errors) {
+      console.error('Hashnode API Errors:', result.errors);
+      return [];
+    }
+
+    return result.data.publication.posts.edges.map(({ node }) => ({
+      title: node.title,
+      description: node.brief,
+      date: new Date(node.publishedAt),
+      url: node.url,
+      slug: node.slug,
+      isExternal: true,
+      author: 'Karl Rito'
+    }));
+  } catch (err) {
+    console.error('Failed to fetch Hashnode posts:', err);
+    return [];
+  }
+};
+
 onMounted(async () => {
   try {
+    // Fetch Local Posts
     const postModules = import.meta.glob('../posts/*.md', { as: 'raw' });
-
-    const postPromises = Object.entries(postModules).map(async ([path, getRawContent]) => {
+    const localPostPromises = Object.entries(postModules).map(async ([path, getRawContent]) => {
       const rawContent = await getRawContent();
       const { data } = matter(rawContent);
       return {
         ...data,
         date: new Date(data.date),
+        isExternal: false
       };
     });
 
-    let loadedPosts = await Promise.all(postPromises);
-    loadedPosts.sort((a, b) => b.date - a.date);
-    posts.value = loadedPosts;
+    // Fetch Hashnode Posts
+    const hashnodePostsPromise = fetchHashnodePosts();
+
+    const [localPosts, hashnodePosts] = await Promise.all([
+      Promise.all(localPostPromises),
+      hashnodePostsPromise
+    ]);
+
+    let allPosts = [...localPosts, ...hashnodePosts];
+    
+    // Sort all posts by date descending
+    allPosts.sort((a, b) => b.date - a.date);
+    
+    posts.value = allPosts;
   } catch (e) {
     console.error("Error loading blog posts:", e);
     error.value = e;
