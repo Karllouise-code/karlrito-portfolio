@@ -72,67 +72,12 @@ import Footer from '@/components/Footer.vue';
 const posts = ref([]);
 const error = ref(null);
 
-const HASHNODE_HOST = 'karllouiserito.hashnode.dev';
-
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric'
   });
-};
-
-const fetchHashnodePosts = async () => {
-  try {
-    const response = await fetch('/api/hashnode', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-          query Publication($host: String!) {
-            publication(host: $host) {
-              posts(first: 10) {
-                edges {
-                  node {
-                    title
-                    brief
-                    url
-                    publishedAt
-                    slug
-                  }
-                }
-              }
-            }
-          }
-        `,
-        variables: {
-          host: HASHNODE_HOST
-        },
-      }),
-    });
-
-    const result = await response.json();
-    
-    if (result.errors) {
-      console.error('Hashnode API Errors:', result.errors);
-      return [];
-    }
-
-    return result.data.publication.posts.edges.map(({ node }) => ({
-      title: node.title,
-      description: node.brief,
-      date: new Date(node.publishedAt),
-      url: node.url,
-      slug: node.slug,
-      isExternal: true,
-      author: 'Karl Rito'
-    }));
-  } catch (err) {
-    console.error('Failed to fetch Hashnode posts:', err);
-    return [];
-  }
 };
 
 onMounted(async () => {
@@ -142,27 +87,22 @@ onMounted(async () => {
     const localPostPromises = Object.entries(postModules).map(async ([path, getRawContent]) => {
       const rawContent = await getRawContent();
       const { data } = matter(rawContent);
+      // Extract slug from filename (e.g., '../posts/my-post.md' -> 'my-post')
+      const slug = path.split('/').pop().replace('.md', '');
       return {
         ...data,
+        slug: data.slug || slug,
         date: new Date(data.date),
         isExternal: false
       };
     });
 
-    // Fetch Hashnode Posts
-    const hashnodePostsPromise = fetchHashnodePosts();
-
-    const [localPosts, hashnodePosts] = await Promise.all([
-      Promise.all(localPostPromises),
-      hashnodePostsPromise
-    ]);
-
-    let allPosts = [...localPosts, ...hashnodePosts];
+    const localPosts = await Promise.all(localPostPromises);
     
-    // Sort all posts by date descending
-    allPosts.sort((a, b) => b.date - a.date);
+    // Sort posts by date descending
+    localPosts.sort((a, b) => b.date - a.date);
     
-    posts.value = allPosts;
+    posts.value = localPosts;
   } catch (e) {
     console.error("Error loading blog posts:", e);
     error.value = e;
