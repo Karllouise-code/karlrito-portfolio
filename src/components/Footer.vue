@@ -7,8 +7,8 @@
           <p class="mb-0">© <span>{{ new Date().getFullYear() }}</span> <span class="fw-bold">Karl Louise Rito</span>. <span>All Rights Reserved</span></p>
         </div>
         <div class="social-links-minimal mt-3">
-          <a href="https://github.com/karlrito" target="_blank" class="mx-2"><i class="bi bi-github"></i></a>
-          <a href="https://linkedin.com/in/karllouiserito" target="_blank" class="mx-2"><i class="bi bi-linkedin"></i></a>
+          <a href="https://github.com/Karllouise-code" target="_blank" class="mx-2"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/karllouise08/" target="_blank" class="mx-2"><i class="bi bi-linkedin"></i></a>
         </div>
         <div class="admin-link mt-4">
           <router-link to="/admin" class="lock-link">
