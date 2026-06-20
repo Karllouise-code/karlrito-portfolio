@@ -1,6 +1,6 @@
 <template>
   <header id="header" class="header fixed-top d-flex align-items-center" :class="{ 'header-scrolled': isScrolled }">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
 
       <router-link to="/" class="logo d-flex align-items-center">
         <h1 class="sitename">{{ name }}</h1>
@@ -20,7 +20,7 @@
             <router-link to="/resume" class="btn-get-started">Resume</router-link>
           </li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi" :class="isMobileShow ? 'bi-x' : 'bi-list'" @click="toggleMobileMenu"></i>
+        <i class="mobile-nav-toggle d-lg-none bi" :class="isMobileShow ? 'bi-x' : 'bi-list'" @click="toggleMobileMenu"></i>
       </nav>
 
     </div>
@@ -57,11 +57,19 @@ export default {
     const toggleMobileMenu = () => {
       isMobileShow.value = !isMobileShow.value;
       document.body.classList.toggle('mobile-nav-active', isMobileShow.value);
+      const header = document.querySelector('#header');
+      if (header) {
+        header.classList.toggle('mobile-menu-active', isMobileShow.value);
+      }
     };
 
     const closeMobileMenu = () => {
       isMobileShow.value = false;
       document.body.classList.remove('mobile-nav-active');
+      const header = document.querySelector('#header');
+      if (header) {
+        header.classList.remove('mobile-menu-active');
+      }
     };
 
     const handleNavClick = async (hash) => {

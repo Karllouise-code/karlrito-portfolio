@@ -17,6 +17,10 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
+  &.mobile-menu-active {
+    height: 100%;
+  }
+
   .logo {
     h1 {
       font-size: 24px;
@@ -100,7 +104,7 @@
   display: none;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
   }
@@ -115,13 +119,19 @@
       position: fixed;
       inset: 0;
       padding: 50px 0;
-      background: rgba(4, 11, 20, 0.98);
+      background: rgba(4, 11, 20, 1);
       flex-direction: column;
       overflow-y: auto;
+      scrollbar-width: none; /* Hide scrollbar in Firefox */
+      -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
       transition: 0.3s;
       z-index: 998;
       gap: 20px;
       text-align: center;
+    }
+    
+    ul::-webkit-scrollbar {
+      display: none; /* Hide scrollbar in Chrome/Safari */
     }
 
     a {

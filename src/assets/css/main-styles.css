@@ -178,7 +178,7 @@ h6 {
   /* margin-removed */
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 991px) {
   .footer {
     margin-left: 0;
   }
@@ -372,7 +372,7 @@ section,
   overflow: hidden;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 991px) {
   section,
   .section {
     scroll-margin-top: 60px;
@@ -1161,13 +1161,13 @@ section,
 --------------------------------------------------------------*/
 
 /* Mobile Header Adjustments */
-@media (max-width: 1199px) {
+@media (max-width: 991px) {
   .header {
     position: fixed;
     top: 0;
-    left: -300px;
+    left: -100%;
     bottom: 0;
-    width: 300px;
+    width: 100%;
     transition: all 0.5s;
     z-index: 9997;
     overflow-y: auto;
@@ -1223,14 +1223,14 @@ section,
 }
 
 /* Hide burger icon on desktop */
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .header .header-toggle {
     display: none !important;
   }
 }
 
 /* Show burger icon on tablet and mobile */
-@media (max-width: 1199px) {
+@media (max-width: 991px) {
   .header .header-toggle {
     display: flex !important;
   }
@@ -1248,6 +1248,7 @@ section,
 
 .mobile-nav-active .header {
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: hidden;
 }
 
 /* Tablet & Small Laptop Responsive */
