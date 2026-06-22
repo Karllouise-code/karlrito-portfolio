@@ -1,38 +1,59 @@
-# vite-project
+# Karl Louise Rito — Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+Personal portfolio website built with **Vue 3** + **Vite 7**. Features a single-page landing layout, blog, resume PDF viewer, and admin blog editor.
 
-## Recommended IDE Setup
+## Tech Stack
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+**Vue 3** (Composition API) · **Vite 7** · **Vue Router 4** (SPA) · **Sass** (SCSS) · **Bootstrap 5.3** · **EmailJS** · **AOS** · **Typed.js**
 
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Setup
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Copy `.env.example` to `.env` and fill in the values — the app won't function without them:
 
-```sh
-npm run dev
+| Variable | Purpose |
+|---|---|
+| `VITE_EMAILJS_SERVICE_ID` | EmailJS service ID for contact form |
+| `VITE_EMAILJS_TEMPLATE_ID` | EmailJS template ID |
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key |
+| `VITE_ADMIN_PASSWORD` | Password for `/admin` panel |
+
+## Commands
+
+| Command | Action |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build → `dist/` |
+| `npm run preview` | Preview production build locally |
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable sections (Hero, About, Skills, Resume, etc.)
+├── views/          # Page-level views + admin panel
+│   └── admin/      # Blog editor, dashboard, login
+├── router/         # Vue Router config (SPA, lazy-loaded routes)
+├── posts/          # Markdown blog posts with YAML frontmatter
+├── assets/
+│   ├── scss/       # SCSS variables, layout, component styles
+│   └── css/        # Custom CSS
+public/             # Static assets (resume PDFs, favicons)
 ```
 
-### Compile and Minify for Production
+## Blog
 
-```sh
-npm run build
-```
+Posts live in `src/posts/*.md` with YAML frontmatter (`title`, `date`, `author`, `slug`, `description`, `category`). Loaded dynamically via `import.meta.glob` + `gray-matter` + `marked`.
+
+To add a post, create a new `.md` file in `src/posts/` with valid frontmatter.
+
+## Admin Panel
+
+Routes under `/admin` — login with `VITE_ADMIN_PASSWORD`. Drafts are stored in `localStorage`. The editor exports markdown files as browser downloads (no server backend — files must be manually placed into `src/posts/`).
+
+## Deploy
+
+Deployed on **Netlify**. Build command: `npm run build`, publish directory: `dist/`. SPA redirect: `/* → /index.html`. Node 20.
