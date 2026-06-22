@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view :key="$route.fullPath" />
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" :key="$route.fullPath" />
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -12,6 +16,30 @@ export default {
   name: "App",
   setup() {
     const route = useRoute();
+
+    const updateMeta = (to) => {
+      const meta = to.meta || {};
+      document.title = meta.title || "Karl Louise Rito";
+
+      let description = document.querySelector('meta[name="description"]');
+      if (!description) {
+        description = document.createElement('meta');
+        description.setAttribute('name', 'description');
+        document.head.appendChild(description);
+      }
+      description.setAttribute('content', meta.description || "Portfolio of Karl Louise Rito, a full-stack web developer.");
+
+      let keywords = document.querySelector('meta[name="keywords"]');
+      if (!keywords) {
+        keywords = document.createElement('meta');
+        keywords.setAttribute('name', 'keywords');
+        document.head.appendChild(keywords);
+      }
+      keywords.setAttribute('content', meta.keywords || "Karl Rito, web developer, portfolio, Vue, Laravel, full-stack");
+    };
+
+    // Update meta on route change and initial load
+    watch(() => route.path, () => updateMeta(route), { immediate: true });
 
     // Clean up body classes on route change
     watch(() => route.path, () => {
@@ -41,4 +69,15 @@ export default {
 
 /* Import custom SCSS modules */
 @import '@/assets/scss/main.scss';
+
+/* Route transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
