@@ -107,41 +107,32 @@ export default {
         return;
       }
 
-      // If at the very top, default to home
-      if (window.scrollY < 50) {
-        navItems.value.forEach(item => { 
-          item.active = item.id === 'home'; 
-        });
-        return;
-      }
-
       const header = document.querySelector('#header');
       const headerHeight = header ? header.offsetHeight : 80;
-      const scrollPosition = window.scrollY + headerHeight + 50; // Increased buffer
-      
+      const buffer = headerHeight + 60;
+
       let activeHash = 'home';
-      
+
       const sections = navItems.value
         .map(item => {
           if (!item.hash) return null;
           const el = document.querySelector(item.hash);
           if (el) {
-            return { id: item.id, top: el.offsetTop };
+            const rect = el.getBoundingClientRect();
+            return { id: item.id, top: rect.top };
           }
           return null;
         })
-        .filter(Boolean)
-        .sort((a, b) => a.top - b.top);
+        .filter(Boolean);
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (scrollPosition >= sections[i].top) {
-          activeHash = sections[i].id;
-          break;
+      for (const section of sections) {
+        if (section.top <= buffer) {
+          activeHash = section.id;
         }
       }
-      
-      navItems.value.forEach(item => { 
-        item.active = item.id === activeHash; 
+
+      navItems.value.forEach(item => {
+        item.active = item.id === activeHash;
       });
     };
 
