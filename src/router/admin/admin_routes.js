@@ -7,19 +7,20 @@ const adminRoutes = [
     path: '/admin/login',
     name: 'AdminLogin',
     component: AdminLogin,
+    meta: { title: 'Admin Login — Karl Rito', description: 'Admin panel login.' },
   },
   {
     path: '/admin',
     name: 'AdminDashboard',
     component: AdminDashboard,
-    meta: { requiresAuth: true }
+    meta: { title: 'Admin Dashboard — Karl Rito', description: 'Blog management dashboard.', requiresAuth: true }
   },
   {
     path: '/admin/editor/:slug?',
     name: 'BlogEditor',
     component: BlogEditor,
     props: true,
-    meta: { requiresAuth: true }
+    meta: { title: 'Blog Editor — Karl Rito', description: 'Write and edit blog posts.', requiresAuth: true }
   }
 ];
 
