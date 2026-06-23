@@ -2,7 +2,7 @@
   <div class="blog-layout">
     <Header />
     
-    <div class="blog-page">
+    <div class="blog-page dark-background">
       <!-- Blog Hero Section -->
       <section class="blog-hero dark-background">
         <div class="container" data-aos="fade-up">
@@ -112,7 +112,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .blog-page {
-  background-color: #040b14;
+  background-color: var(--background-color);
   min-height: 100vh;
   padding-bottom: 60px;
 }

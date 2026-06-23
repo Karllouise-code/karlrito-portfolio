@@ -94,6 +94,29 @@
   }
 }
 
+/* Theme toggle button */
+.theme-toggle-li {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
 /* Mobile Navigation */
 .mobile-nav-toggle {
   color: #fff;

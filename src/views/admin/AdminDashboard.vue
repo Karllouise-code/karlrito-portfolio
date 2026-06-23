@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-dashboard">
+  <div class="admin-dashboard dark-background">
     <div class="container py-5">
       <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
@@ -192,9 +192,9 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .admin-dashboard {
-  background-color: #040b14;
+  background-color: var(--background-color);
   min-height: 100vh;
-  color: #fff;
+  color: var(--default-color);
   padding-top: 50px;
 }
 

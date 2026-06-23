@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container dark-background">
     <div class="login-card">
       <div class="text-center mb-4">
         <div class="lock-icon mb-3">
@@ -66,8 +66,8 @@ const handleLogin = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #040b14;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--default-color);
 }
 
 .login-card {

@@ -19,6 +19,11 @@
           <li>
             <router-link to="/resume" class="btn-get-started">Resume</router-link>
           </li>
+          <li class="theme-toggle-li">
+            <button class="theme-toggle" @click="toggleTheme" :title="isDark ? 'Light mode' : 'Dark mode'">
+              <i :class="isDark ? 'bi-cup-hot-fill' : 'bi-moon-fill'"></i>
+            </button>
+          </li>
         </ul>
         <i class="mobile-nav-toggle d-lg-none bi" :class="isMobileShow ? 'bi-x' : 'bi-list'" @click="toggleMobileMenu"></i>
       </nav>
@@ -30,12 +35,14 @@
 <script>
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { useTheme } from "@/composables/useTheme";
 
 export default {
   name: "Header",
   setup() {
     const router = useRouter();
     const route = useRoute();
+    const { isDark, toggleTheme } = useTheme();
     const name = ref("Karl Rito");
     const isScrolled = ref(false);
     const isMobileShow = ref(false);
@@ -148,7 +155,7 @@ export default {
       window.removeEventListener('scroll', handleScroll);
     });
 
-    return { name, isScrolled, isMobileShow, navItems, toggleMobileMenu, closeMobileMenu, handleNavClick };
+    return { name, isScrolled, isDark, isMobileShow, navItems, toggleMobileMenu, closeMobileMenu, handleNavClick, toggleTheme };
   },
 };
 </script>

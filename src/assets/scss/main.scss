@@ -6,10 +6,13 @@
 // 1. Variables (must be first)
 @import './variables';
 
-// 2. Layout and structure
+// 2. Dark theme (must come before layout/components that may override)
+@import './dark-theme';
+
+// 3. Layout and structure
 @import './layout';
 
-// 3. Components
+// 4. Components
 @import './components/header';
 @import './components/hero';
 @import './components/skills';
@@ -18,5 +21,5 @@
 @import './components/services';
 @import './components/contact';
 
-// 4. Page-specific styles
+// 5. Page-specific styles
 @import './pages/all-projects';

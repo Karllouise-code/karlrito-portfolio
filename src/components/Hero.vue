@@ -80,7 +80,7 @@ export default {
   justify-content: center;
   padding: 0;
   overflow: hidden;
-  background-color: #040b14; // Solid minimalist dark background
+  background-color: var(--background-color); // Solid minimalist dark background
 }
 
 .hero-background-effects {

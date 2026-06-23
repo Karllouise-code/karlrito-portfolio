@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-editor">
+  <div class="blog-editor dark-background">
     <div v-if="hasUnsavedSession" class="restore-banner">
       <span>We found an unsaved session from your last visit. Would you like to restore it?</span>
       <div class="banner-actions">
@@ -218,11 +218,11 @@ watch(form, (newVal) => {
 }
 
 .blog-editor {
-  background-color: #040b14;
+  background-color: var(--background-color);
   height: 100vh;
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: var(--default-color);
 }
 
 .editor-header {

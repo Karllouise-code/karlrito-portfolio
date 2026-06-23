@@ -26,8 +26,8 @@
 
 <style scoped lang="scss">
 .footer {
-  background-color: #040b14;
-  color: rgba(255, 255, 255, 0.5);
+  background-color: var(--background-color);
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
   font-family: "Poppins", sans-serif;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }

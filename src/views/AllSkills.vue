@@ -100,8 +100,8 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .all-skills-page {
-  background-color: #040b14;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--default-color);
   min-height: 100vh;
 }
 

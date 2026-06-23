@@ -61,8 +61,8 @@ const services = ref([
 <style scoped lang="scss">
 .services {
   padding: 100px 0;
-  background-color: #040b14;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--default-color);
 }
 
 .section-title {

@@ -1,5 +1,5 @@
 <template>
-  <div class="not-found-page">
+  <div class="not-found-page dark-background">
     <div class="container text-center">
       <div class="error-code">404</div>
       <h1 class="error-title">Page Not Found</h1>
@@ -23,8 +23,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #040b14;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--default-color);
   padding: 40px 20px;
 }
 

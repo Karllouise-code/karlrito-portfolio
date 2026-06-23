@@ -54,8 +54,8 @@ const detailedDescription = ref(`With over 5 years of experience in full-stack d
 <style scoped lang="scss">
 .about {
   padding: 120px 0;
-  background-color: #040b14;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--default-color);
   position: relative;
   overflow: hidden;
 
