@@ -25,7 +25,12 @@
             </button>
           </li>
         </ul>
-        <i class="mobile-nav-toggle d-lg-none bi" :class="isMobileShow ? 'bi-x' : 'bi-list'" @click="toggleMobileMenu"></i>
+        <div class="mobile-controls d-lg-none">
+          <button class="theme-toggle" @click="toggleTheme" :title="isDark ? 'Light mode' : 'Dark mode'">
+            <i :class="isDark ? 'bi-cup-hot-fill' : 'bi-moon-fill'"></i>
+          </button>
+          <i class="mobile-nav-toggle bi" :class="isMobileShow ? 'bi-x' : 'bi-list'" @click="toggleMobileMenu"></i>
+        </div>
       </nav>
 
     </div>
