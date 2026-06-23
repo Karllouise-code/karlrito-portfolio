@@ -51,7 +51,7 @@ import VuePdfEmbed from 'vue-pdf-embed';
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import AOS from "aos";
-import pdfFile from '/KarlRitoResume.pdf?url';
+import pdfFile from '/Karl_Louise_Rito_Resume.pdf?url';
 
 const pdfUrl = ref(pdfFile);
 const pdfError = ref(false);
