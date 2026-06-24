@@ -5,15 +5,18 @@
         <component :is="Component" :key="$route.fullPath" />
       </transition>
     </router-view>
+    <ChatBot />
   </div>
 </template>
 
 <script>
 import { watch } from 'vue';
 import { useRoute } from 'vue-router';
+import ChatBot from '@/components/ChatBot.vue';
 
 export default {
   name: "App",
+  components: { ChatBot },
   setup() {
     const route = useRoute();
 
