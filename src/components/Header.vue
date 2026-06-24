@@ -55,7 +55,7 @@ export default {
     const navItems = ref([
       { id: "home", name: "Home", hash: "#hero", active: true },
       { id: "about", name: "About", hash: "#about", active: false },
-      { id: "resume", name: "Resume", hash: "#resume", active: false },
+      { id: "resume", name: "Experience", hash: "#resume", active: false },
       { id: "portfolio", name: "Portfolio", hash: "#portfolio", active: false },
       { id: "blog", name: "Blog", path: "/blog", active: false },
       { id: "contact", name: "Contact", hash: "#contact", active: false },
