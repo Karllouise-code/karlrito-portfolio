@@ -60,6 +60,12 @@ const projects = ref([
     description: "Vue.js scheduling app with Firebase Firestore for managing weekly tasks, featuring drag-and-drop reordering and CSV export.",
     link: "https://karlendaryo.netlify.app/",
     slug: "karlendaryo.netlify.app"
+  },
+  {
+    title: "Happy Kids",
+    description: "A fundraising platform for children's health and education with a Content Management System (CMS) and PayPal Payment Gateway. Built for a non-profit organization at Trimex Colleges to support their feeding program and donation drives.",
+    link: "https://github.com/Lester-Fong/Happy-Kids",
+    slug: "github.com/Lester-Fong/Happy-Kids"
   }
 ]);
 </script>

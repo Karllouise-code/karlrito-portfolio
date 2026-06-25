@@ -129,6 +129,13 @@ const personalProjects = ref([
     type: "personal"
   },
   {
+    title: "Happy Kids",
+    description: "A fundraising platform for children's health and education with a Content Management System (CMS) and PayPal Payment Gateway. Built with Vue.js, Laravel, GraphQL, MySQL, and Bootstrap for a non-profit organization at Trimex Colleges to support their feeding program and donation drives.",
+    link: "https://github.com/Lester-Fong/Happy-Kids",
+    slug: "github.com/Lester-Fong/Happy-Kids",
+    type: "personal"
+  },
+  {
     title: "Webcam Fun App",
     description: "Interactive webcam effects application built with pure JavaScript. Real-time RGB split and color manipulation effects with snapshot capabilities.",
     link: "https://klr-webcamfun.netlify.app/",
