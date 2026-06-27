@@ -43,14 +43,14 @@ const items = posts
       <guid isPermaLink="true">${blogUrl}/${post.slug}</guid>
       <description><![CDATA[${post.description || ''}]]></description>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-      <author>${post.author || 'Karl Rito'}</author>
+      <dc:creator>${post.author || 'Karl Rito'}</dc:creator>
       ${post.category ? `<category>${post.category}</category>` : ''}
     </item>`
   )
   .join('\n');
 
 const feed = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>${siteTitle}</title>
     <link>${siteUrl}</link>
