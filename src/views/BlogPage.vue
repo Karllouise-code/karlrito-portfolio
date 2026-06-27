@@ -9,6 +9,36 @@
           <div class="hero-content">
             <h1>My Technical Journal</h1>
             <p>Thoughts, tutorials, and insights on web development and design.</p>
+            <div class="rss-subscribe">
+              <div class="rss-subscribe-header" @click="showRssHelp = !showRssHelp">
+                <i class="bi bi-rss"></i>
+                <span>Subscribe via RSS</span>
+                <i class="bi bi-chevron-down" :class="{ rotated: showRssHelp }"></i>
+              </div>
+              <Transition name="rss-panel">
+                <div v-if="showRssHelp" class="rss-subscribe-body">
+                  <p class="rss-explanation">Get notified in your feed reader when new posts are published — no email needed.</p>
+                  <div class="rss-url-row">
+                    <input type="text" :value="feedUrl" readonly class="rss-url-input" @click="$event.target.select()" />
+                    <button class="rss-copy-btn" @click="copyFeedUrl" :title="copied ? 'Copied!' : 'Copy URL'">
+                      <i :class="copied ? 'bi bi-check-lg' : 'bi bi-clipboard'"></i>
+                    </button>
+                  </div>
+                  <div class="rss-readers">
+                    <span class="rss-readers-label">Subscribe with:</span>
+                    <a :href="`https://feedly.com/i/subscription/feed/${encodeURIComponent(feedUrl)}`" target="_blank" class="reader-link" title="Feedly">
+                      <img src="https://www.google.com/s2/favicons?domain=feedly.com&sz=16" alt="" /> Feedly
+                    </a>
+                    <a :href="`https://www.inoreader.com/?add_feed=${encodeURIComponent(feedUrl)}`" target="_blank" class="reader-link" title="Inoreader">
+                      <img src="https://www.google.com/s2/favicons?domain=inoreader.com&sz=16" alt="" /> Inoreader
+                    </a>
+                    <a :href="`https://newsblur.com/?url=${encodeURIComponent(feedUrl)}`" target="_blank" class="reader-link" title="NewsBlur">
+                      <img src="https://www.google.com/s2/favicons?domain=newsblur.com&sz=16" alt="" /> NewsBlur
+                    </a>
+                  </div>
+                </div>
+              </Transition>
+            </div>
           </div>
         </div>
       </section>
@@ -71,6 +101,19 @@ import Footer from '@/components/Footer.vue';
 
 const posts = ref([]);
 const error = ref(null);
+const showRssHelp = ref(false);
+const copied = ref(false);
+const feedUrl = window.location.origin + '/feed.xml';
+
+const copyFeedUrl = async () => {
+  try {
+    await navigator.clipboard.writeText(feedUrl);
+    copied.value = true;
+    setTimeout(() => { copied.value = false; }, 2000);
+  } catch {
+    // fallback: select the input
+  }
+};
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -138,6 +181,112 @@ onMounted(async () => {
     color: rgba(255, 255, 255, 0.8);
     max-width: 700px;
     margin: 0 auto;
+  }
+
+  .rss-subscribe {
+    margin-top: 1.25rem;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .rss-subscribe-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f39c12;
+    cursor: pointer;
+    font-size: 0.95rem;
+    user-select: none;
+    transition: color 0.3s;
+
+    &:hover { color: #f1c40f; }
+
+    .bi-chevron-down {
+      font-size: 0.75rem;
+      transition: transform 0.25s;
+      &.rotated { transform: rotate(180deg); }
+    }
+  }
+
+  .rss-subscribe-body {
+    margin-top: 0.75rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    min-width: 360px;
+  }
+
+  .rss-explanation {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0.75rem;
+  }
+
+  .rss-url-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .rss-url-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    font-family: monospace;
+    cursor: text;
+
+    &:focus { outline: none; border-color: #f39c12; }
+  }
+
+  .rss-copy-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.4rem 0.65rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+
+    &:hover { background: rgba(255, 255, 255, 0.15); color: #f39c12; }
+  }
+
+  .rss-readers {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .rss-readers-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 0.25rem;
+  }
+
+  .reader-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    padding: 0.25rem 0.6rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #f39c12;
+      border-color: #f39c12;
+    }
   }
 }
 
@@ -246,9 +395,25 @@ onMounted(async () => {
   }
 }
 
+.rss-panel-enter-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.rss-panel-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.rss-panel-enter-from,
+.rss-panel-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
 @media (max-width: 768px) {
   .blog-hero h1 {
     font-size: 2.5rem;
+  }
+
+  .rss-subscribe-body {
+    min-width: unset;
   }
 }
 </style>

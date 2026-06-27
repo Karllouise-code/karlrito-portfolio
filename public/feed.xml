@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Karl Louise Rito</title>
+    <link>https://karlrito.netlify.app</link>
+    <description>Technical articles and tutorials by Karl Louise Rito, a full-stack web developer.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 27 Jun 2026 01:47:17 GMT</lastBuildDate>
+    <atom:link href="https://karlrito.netlify.app/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Vue 3 Composition API vs Options API: Which Should You Use in 2026?]]></title>
+      <link>https://karlrito.netlify.app/blog/vue-3-composition-api-vs-options-api-which-should-you-use-in-2026</link>
+      <guid isPermaLink="true">https://karlrito.netlify.app/blog/vue-3-composition-api-vs-options-api-which-should-you-use-in-2026</guid>
+      <description><![CDATA[Vue 3 gives you two ways to write components: the Composition API and the Options API. In this post, I break down the differences, the trade-offs, and which one you should actually reach for in 2026.]]></description>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
+      <author>Karl Rito</author>
+      <category>Vue.js</category>
+    </item>
+    <item>
+      <title><![CDATA[How I'm Writing This Blog With Comet Browser (And What I've Learned Using It)]]></title>
+      <link>https://karlrito.netlify.app/blog/how-im-writing-this-blog-with-comet-browser-and-what-ive-learned-using-it</link>
+      <guid isPermaLink="true">https://karlrito.netlify.app/blog/how-im-writing-this-blog-with-comet-browser-and-what-ive-learned-using-it</guid>
+      <description><![CDATA[A meta look at how I used Comet Browser — Perplexity AI's agentic browser — to write this very blog post, covering its standout features, real-world benefits for research and writing, and the privacy and security trade-offs you should know about.]]></description>
+      <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
+      <author>Karl Rito</author>
+      <category>Technology</category>
+    </item>
+    <item>
+      <title><![CDATA[My First Blog Post]]></title>
+      <link>https://karlrito.netlify.app/blog/my-first-post</link>
+      <guid isPermaLink="true">https://karlrito.netlify.app/blog/my-first-post</guid>
+      <description><![CDATA[This is a short summary of my first post!]]></description>
+      <pubDate>Sun, 30 Nov 2025 00:00:00 GMT</pubDate>
+      <author>Karl Rito</author>
+      
+    </item>
+  </channel>
+</rss>
