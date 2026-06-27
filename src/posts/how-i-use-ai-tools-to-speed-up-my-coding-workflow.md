@@ -1,6 +1,6 @@
 ---
 title: How I Use AI Tools to Speed Up My Coding Workflow
-date: '2026-06-23'
+date: '2026-06-27'
 author: Karl Rito
 slug: how-i-use-ai-tools-to-speed-up-my-coding-workflow
 description: >-
