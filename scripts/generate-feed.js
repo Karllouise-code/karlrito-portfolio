@@ -24,7 +24,7 @@ if (existsSync(envPath)) {
   }
 }
 
-const siteUrl = (process.env.VITE_SITE_URL || 'https://karlrito.netlify.app').replace(/\/+$/, '');
+const siteUrl = (process.env.VITE_SITE_URL || 'https://karllouiserito.netlify.app').replace(/\/+$/, '');
 const siteTitle = 'Karl Louise Rito';
 const siteDescription = 'Technical articles and tutorials by Karl Louise Rito, a full-stack web developer.';
 const blogUrl = `${siteUrl}/blog`;
