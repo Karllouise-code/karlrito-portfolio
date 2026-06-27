@@ -178,11 +178,11 @@ const publishToGithub = async () => {
     return;
   }
 
-  let token = sessionStorage.getItem('github_token');
+  let token = localStorage.getItem('github_token');
   if (!token) {
     token = prompt('Enter your GitHub personal access token (requires repo scope):');
     if (!token) return;
-    sessionStorage.setItem('github_token', token);
+    localStorage.setItem('github_token', token);
   }
 
   publishing.value = true;
