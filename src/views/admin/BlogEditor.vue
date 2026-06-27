@@ -19,8 +19,13 @@
           <button @click="saveDraft" class="btn btn-outline-light me-2">
             <i class="bi bi-save"></i> Save Draft
           </button>
-          <button @click="exportMarkdown" class="btn btn-primary">
+          <button @click="exportMarkdown" class="btn btn-outline-light me-2">
             <i class="bi bi-download"></i> Export Markdown
+          </button>
+          <button @click="publishToGithub" class="btn btn-success" :disabled="publishing">
+            <i v-if="publishing" class="bi bi-arrow-repeat spin"></i>
+            <i v-else class="bi bi-github"></i>
+            {{ publishing ? 'Publishing...' : 'Publish to GitHub' }}
           </button>
         </div>
       </div>
@@ -137,6 +142,8 @@ const saveDraft = () => {
   alert('Draft saved to local storage! You can access it from the Admin Dashboard.');
 };
 
+const publishing = ref(false);
+
 const exportMarkdown = () => {
   const frontmatter = {
     title: form.value.title,
@@ -155,6 +162,83 @@ const exportMarkdown = () => {
   a.download = `${form.value.slug || 'post'}.md`;
   a.click();
   URL.revokeObjectURL(url);
+};
+
+const publishToGithub = async () => {
+  if (!form.value.title || !form.value.slug || !form.value.content) {
+    alert('Please fill in the title, slug, and content before publishing.');
+    return;
+  }
+
+  const owner = import.meta.env.VITE_GITHUB_OWNER;
+  const repo = import.meta.env.VITE_GITHUB_REPO;
+
+  if (!owner || !repo) {
+    alert('GitHub repo not configured. Set VITE_GITHUB_OWNER and VITE_GITHUB_REPO in your .env file.');
+    return;
+  }
+
+  let token = sessionStorage.getItem('github_token');
+  if (!token) {
+    token = prompt('Enter your GitHub personal access token (requires repo scope):');
+    if (!token) return;
+    sessionStorage.setItem('github_token', token);
+  }
+
+  publishing.value = true;
+
+  try {
+    const frontmatter = {
+      title: form.value.title,
+      date: form.value.date,
+      author: form.value.author,
+      slug: form.value.slug,
+      description: form.value.description,
+      category: form.value.category
+    };
+
+    const mdContent = matter.stringify(form.value.content, frontmatter);
+    const content = btoa(unescape(encodeURIComponent(mdContent)));
+
+    const filePath = `src/posts/${form.value.slug}.md`;
+    const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+    let sha = null;
+    try {
+      const check = await fetch(apiBase, { headers: { Authorization: `token ${token}` } });
+      if (check.ok) {
+        sha = (await check.json()).sha;
+      }
+    } catch {}
+
+    const body = {
+      message: sha ? `Update post: ${form.value.title}` : `New post: ${form.value.title}`,
+      content,
+      ...(sha ? { sha } : {})
+    };
+
+    const res = await fetch(apiBase, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (res.ok) {
+      const result = await res.json();
+      const postUrl = `${import.meta.env.VITE_SITE_URL || ''}/blog/${form.value.slug}`;
+      alert(`Published! Netlify will auto-deploy shortly.\n\nView at: ${postUrl}\n\nCommit: ${result.commit?.sha?.slice(0, 7) || ''}`);
+    } else {
+      const err = await res.json();
+      alert(`GitHub error: ${err.message}`);
+    }
+  } catch (err) {
+    alert(`Network error: ${err.message}`);
+  } finally {
+    publishing.value = false;
+  }
 };
 
 onMounted(async () => {
@@ -329,6 +413,25 @@ watch(form, (newVal) => {
     max-width: 100%;
     border-radius: 8px;
   }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.btn-success {
+  background: #198754;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  &:hover { background: #157347; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
 }
 
 @media (max-width: 992px) {
