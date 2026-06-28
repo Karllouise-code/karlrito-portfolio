@@ -91,7 +91,7 @@ const knowledgeBase = [
   },
   {
     keywords: ['contact', 'email', 'phone', 'reach', 'message', 'hire', 'get in touch'],
-    answer: "You can reach me at:<br><br>📧 <strong>Email:</strong> <a href='mailto:karllouiserito.1@gmail.com'>karllouiserito.1@gmail.com</a><br>📞 <strong>Phone:</strong> +63 9763 667 638<br>📍 <strong>Location:</strong> Biñan, Laguna, Philippines<br><br>You can also use the <a href='/#contact'>contact form</a> on this site to send me a message directly!"
+    answer: "You can reach me at:<br><br>📧 <strong>Email:</strong> <a href='mailto:karllouiserito.1@gmail.com'>karllouiserito.1@gmail.com</a><br>📞 <strong>Phone:</strong> +63 976 366 7638<br>📍 <strong>Location:</strong> Biñan, Laguna, Philippines<br><br>You can also use the <a href='/#contact'>contact form</a> on this site to send me a message directly!"
   },
   {
     keywords: ['resume', 'cv', 'experience', 'work', 'job', 'background', 'career'],
