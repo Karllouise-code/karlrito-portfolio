@@ -46,15 +46,25 @@ const router = useRouter();
 const password = ref('');
 const error = ref('');
 
-const handleLogin = () => {
-  const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
-  
-  if (password.value === adminPassword) {
-    // Set a session flag
-    sessionStorage.setItem('admin_auth', 'true');
-    router.push('/admin');
-  } else {
-    error.value = 'Incorrect password. Access denied.';
+const handleLogin = async () => {
+  try {
+    const res = await fetch('/.netlify/functions/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: password.value }),
+    });
+
+    const data = await res.json();
+
+    if (data.authenticated) {
+      sessionStorage.setItem('admin_auth', 'true');
+      router.push('/admin');
+    } else {
+      error.value = 'Incorrect password. Access denied.';
+      password.value = '';
+    }
+  } catch {
+    error.value = 'Network error. Could not reach authentication server.';
     password.value = '';
   }
 };

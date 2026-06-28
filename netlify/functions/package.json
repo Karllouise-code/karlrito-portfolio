@@ -1,0 +1,5 @@
+{
+  "name": "netlify-functions",
+  "private": true,
+  "description": "Serverless functions for Karl Rito Portfolio"
+}

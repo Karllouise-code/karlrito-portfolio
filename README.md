@@ -19,7 +19,7 @@ Copy `.env.example` to `.env` and fill in the values — the app won't function 
 | `VITE_EMAILJS_SERVICE_ID` | EmailJS service ID for contact form |
 | `VITE_EMAILJS_TEMPLATE_ID` | EmailJS template ID |
 | `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key |
-| `VITE_ADMIN_PASSWORD` | Password for `/admin` panel |
+| `ADMIN_PASSWORD` | Password for `/admin` panel (server-side env var, set in Netlify dashboard) |
 
 ## Commands
 
@@ -52,7 +52,7 @@ To add a post, create a new `.md` file in `src/posts/` with valid frontmatter.
 
 ## Admin Panel
 
-Routes under `/admin` — login with `VITE_ADMIN_PASSWORD`. Drafts are stored in `localStorage`. The editor exports markdown files as browser downloads (no server backend — files must be manually placed into `src/posts/`).
+Routes under `/admin` — login via serverless function (`netlify/functions/auth.js`) using `ADMIN_PASSWORD` env var (set in Netlify dashboard, not exposed to client). Drafts are stored in `localStorage`. The editor exports markdown files as browser downloads (no server backend — files must be manually placed into `src/posts/`).
 
 ## Deploy
 

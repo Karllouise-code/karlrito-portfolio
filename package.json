@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:netlify": "netlify dev",
     "build": "node scripts/generate-feed.js && vite build",
     "preview": "vite preview"
   },

@@ -5,8 +5,17 @@
     <link>https://karllouiserito.netlify.app</link>
     <description>Technical articles and tutorials by Karl Louise Rito, a full-stack web developer.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 27 Jun 2026 02:12:46 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2026 02:24:51 GMT</lastBuildDate>
     <atom:link href="https://karllouiserito.netlify.app/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[How I Use AI Tools to Speed Up My Coding Workflow]]></title>
+      <link>https://karllouiserito.netlify.app/blog/how-i-use-ai-tools-to-speed-up-my-coding-workflow</link>
+      <guid isPermaLink="true">https://karllouiserito.netlify.app/blog/how-i-use-ai-tools-to-speed-up-my-coding-workflow</guid>
+      <description><![CDATA[AI tools have genuinely changed how I code every day. From Gemini CLI to OpenCode, and Perplexity or Comet for browser tasks, here is my honest breakdown of what I actually use, why I switched, and how it all fits together in my workflow.]]></description>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Karl Rito</dc:creator>
+      <category>Productivity</category>
+    </item>
     <item>
       <title><![CDATA[Vue 3 Composition API vs Options API: Which Should You Use in 2026?]]></title>
       <link>https://karllouiserito.netlify.app/blog/vue-3-composition-api-vs-options-api-which-should-you-use-in-2026</link>
