@@ -151,7 +151,7 @@ $accent: #0563bb;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba($accent, 0.1);
+  background: var(--background-color);
   border: 2px solid $accent;
   display: flex;
   align-items: center;
@@ -242,11 +242,6 @@ $accent: #0563bb;
     flex-shrink: 0;
     position: relative;
     z-index: 1;
-    background: var(--background-color);
-  }
-
-  .milestone:hover .milestone-dot {
-    background: $accent;
   }
 
   .milestone-content {
