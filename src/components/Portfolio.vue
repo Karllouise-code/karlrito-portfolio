@@ -11,9 +11,6 @@
       <!-- About Section -->
       <About />
 
-      <!-- Facts Section -->
-      <!-- <Facts /> -->
-
       <!-- Skills Section -->
       <Skills />
 
@@ -25,9 +22,6 @@
 
       <!-- Services Section -->
       <Services />
-
-      <!-- Testimonials Section -->
-      <!-- <Testimonials /> -->
 
       <!-- Contact Section -->
       <Contact />
@@ -49,12 +43,10 @@ import { onMounted } from "vue";
 import Header from "./Header.vue";
 import Hero from "./Hero.vue";
 import About from "./About.vue";
-import Facts from "./Facts.vue";
 import Skills from "./Skills.vue";
 import Resume from "./Resume.vue";
 import PortfolioSection from "./PortfolioSection.vue";
 import Services from "./Services.vue";
-import Testimonials from "./Testimonials.vue";
 import Contact from "./Contact.vue";
 import Footer from "./Footer.vue";
 
@@ -64,12 +56,10 @@ export default {
     Header,
     Hero,
     About,
-    Facts,
     Skills,
     Resume,
     PortfolioSection,
     Services,
-    Testimonials,
     Contact,
     Footer,
   },
