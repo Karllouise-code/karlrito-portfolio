@@ -99,8 +99,9 @@ const experience = [
     points: [
       "Full-stack development delivering scalable applications",
       "API integration and system architecture",
+      "Building frontends with React and Vue.js",
     ],
-    tags: ["Vue", "Laravel", "API"]
+    tags: ["Vue", "Laravel", "React", "API"]
   },
   {
     role: "AI Trainer for Developers",

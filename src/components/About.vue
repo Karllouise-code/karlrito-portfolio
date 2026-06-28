@@ -44,7 +44,7 @@ const milestones = ref([
   { year: "2022", label: "Junior Web Developer", icon: "bi bi-code" },
   { year: "2023", label: "Full-Stack Developer", icon: "bi bi-layers" },
   { year: "2024", label: "BS IT Graduate", icon: "bi bi-mortarboard" },
-  { year: "2025", label: "Web Developer at SVEN", icon: "bi bi-briefcase" },
+  { year: "2025", label: "Remote Full-Stack Developer", icon: "bi bi-wifi" },
 ]);
 </script>
 
