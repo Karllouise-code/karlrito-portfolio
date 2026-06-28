@@ -25,7 +25,8 @@ Copy `.env.example` to `.env` and fill in the values — the app won't function 
 
 | Command | Action |
 |---|---|
-| `npm run dev` | Start dev server |
+| `npm run dev` | Start Vite dev server only (no serverless functions) |
+| `npm run dev:netlify` | Start Netlify Dev (Vite + serverless functions for admin auth) |
 | `npm run build` | Production build → `dist/` |
 | `npm run preview` | Preview production build locally |
 
@@ -41,6 +42,7 @@ src/
 ├── assets/
 │   ├── scss/       # SCSS variables, layout, component styles
 │   └── css/        # Custom CSS
+netlify/functions/  # Serverless functions (admin auth)
 public/             # Static assets (resume PDFs, favicons)
 ```
 
@@ -49,6 +51,8 @@ public/             # Static assets (resume PDFs, favicons)
 Posts live in `src/posts/*.md` with YAML frontmatter (`title`, `date`, `author`, `slug`, `description`, `category`). Loaded dynamically via `import.meta.glob` + `gray-matter` + `marked`.
 
 To add a post, create a new `.md` file in `src/posts/` with valid frontmatter.
+
+An RSS feed (`/feed.xml`) is auto-generated during `npm run build` via `scripts/generate-feed.js`. Set `VITE_SITE_URL` in `.env` to control the feed domain (defaults to `https://karllouiserito.netlify.app`).
 
 ## Admin Panel
 
