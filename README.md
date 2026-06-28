@@ -50,7 +50,7 @@ public/             # Static assets (resume PDFs, favicons)
 
 Posts live in `src/posts/*.md` with YAML frontmatter (`title`, `date`, `author`, `slug`, `description`, `category`). Loaded dynamically via `import.meta.glob` + `gray-matter` + `marked`.
 
-To add a post, create a new `.md` file in `src/posts/` with valid frontmatter.
+To add a post, create a new `.md` file in `src/posts/` with valid frontmatter, or use the admin editor's **Publish to GitHub** button (requires a GitHub personal access token) or **Export Markdown** download.
 
 An RSS feed (`/feed.xml`) is auto-generated during `npm run build` via `scripts/generate-feed.js`. Set `VITE_SITE_URL` in `.env` to control the feed domain (defaults to `https://karllouiserito.netlify.app`).
 
