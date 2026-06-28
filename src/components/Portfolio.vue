@@ -11,8 +11,6 @@
       <!-- About Section -->
       <About />
 
-      <!-- Skills Section -->
-      <Skills />
 
       <!-- Resume Section -->
       <Resume />
@@ -43,7 +41,6 @@ import { onMounted } from "vue";
 import Header from "./Header.vue";
 import Hero from "./Hero.vue";
 import About from "./About.vue";
-import Skills from "./Skills.vue";
 import Resume from "./Resume.vue";
 import PortfolioSection from "./PortfolioSection.vue";
 import Services from "./Services.vue";
@@ -56,7 +53,6 @@ export default {
     Header,
     Hero,
     About,
-    Skills,
     Resume,
     PortfolioSection,
     Services,

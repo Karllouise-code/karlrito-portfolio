@@ -13,9 +13,18 @@
           <span class="typed" ref="typedElement"></span>
         </div>
 
+        <div class="hero-skills" data-aos="fade-up" data-aos-delay="150">
+          <span v-for="skill in skills" :key="skill.name" class="hero-skill-pill">
+            <i :class="skill.icon"></i>
+            {{ skill.name }}
+          </span>
+        </div>
+
         <div class="hero-actions" data-aos="fade-up" data-aos-delay="200">
-          <router-link to="/resume" class="btn-resume">
-            <i class="bi bi-file-earmark-pdf"></i> View My Resume
+          <router-link to="/resume" class="btn-4">
+            <span class="btn-4-prompt">$</span>
+            <span class="btn-4-text">cat resume.pdf</span>
+            <span class="btn-4-cursor">_</span>
           </router-link>
         </div>
       </div>
@@ -42,6 +51,16 @@ export default {
   setup() {
     const name = ref("Karl Louise Rito");
     const typedElement = ref(null);
+    const skills = ref([
+      { name: 'Vue.js', icon: 'bi bi-code-square' },
+      { name: 'React', icon: 'bi bi-code-slash' },
+      { name: 'Laravel', icon: 'bi bi-diagram-3' },
+      { name: 'Node.js', icon: 'bi bi-server' },
+      { name: 'JavaScript', icon: 'bi bi-filetype-js' },
+      { name: 'TypeScript', icon: 'bi bi-code' },
+      { name: 'PHP', icon: 'bi bi-filetype-php' },
+      { name: 'MySQL', icon: 'bi bi-database' },
+    ]);
     let typedInstance = null;
 
     onMounted(() => {
@@ -65,6 +84,7 @@ export default {
     return {
       name,
       typedElement,
+      skills,
     };
   },
 };
@@ -203,10 +223,92 @@ export default {
   }
 }
 
+.hero-skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.hero-skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  transition: all 0.25s ease;
+
+  i {
+    font-size: 0.9rem;
+    color: #0563bb;
+    transition: color 0.25s ease;
+  }
+
+  &:hover {
+    background: rgba(5, 99, 187, 0.1);
+    border-color: rgba(5, 99, 187, 0.25);
+    color: #fff;
+
+    i {
+      color: #fff;
+    }
+  }
+}
+
+/* ——— Terminal Prompt Button ——— */
+.btn-4 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: #0563bb;
+    color: #fff;
+  }
+}
+
+.btn-4-prompt {
+  color: #3fb950;
+  font-weight: 700;
+}
+
+.btn-4-text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-4-cursor {
+  color: rgba(255, 255, 255, 0.4);
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 @media (max-width: 768px) {
   .hero-name {
     font-size: 2.8rem;
   }
+
   .hero-typed-container {
     font-size: 1.2rem;
   }
