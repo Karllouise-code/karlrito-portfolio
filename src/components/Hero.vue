@@ -9,7 +9,6 @@
       <div class="hero-content">
         <h2 class="hero-name">{{ name }}</h2>
         <div class="hero-typed-container">
-          <span class="hero-prefix">I'm a </span>
           <span class="typed" ref="typedElement"></span>
         </div>
 
@@ -66,7 +65,17 @@ export default {
     onMounted(() => {
       if (typedElement.value) {
         typedInstance = new Typed(typedElement.value, {
-          strings: ["Web Developer", "Artisan", "Vue Enthusiast"],
+          strings: [
+  "Probably Coding",
+  "Definitely Debugging",
+  "Needs Coffee",
+  "Works on My Machine",
+  "It's Not a Bug",
+  "It's a Feature",
+  "404: Sleep Not Found",
+  "Running on Coffee",
+  "Full-Stack Developer",
+],
           typeSpeed: 100,
           backSpeed: 50,
           backDelay: 2000,
