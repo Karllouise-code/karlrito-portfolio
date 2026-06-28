@@ -67,14 +67,17 @@
 
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github-dark.css';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
 const route = useRoute();
+const router = useRouter();
 const post = ref({});
 const loading = ref(true);
 const scrollProgress = ref(0);
@@ -127,10 +130,17 @@ onMounted(async () => {
       rawContent: content
     };
   } catch (e) {
-    console.error('Could not load post:', e);
+    router.replace('/404');
+    return;
   } finally {
     loading.value = false;
   }
+
+  nextTick(() => {
+    document.querySelectorAll('.post-content pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
 });
 
 onUnmounted(() => {
