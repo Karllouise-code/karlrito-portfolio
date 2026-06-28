@@ -1,40 +1,40 @@
 <template>
   <section id="contact" class="contact section dark-background">
     <div class="container section-title text-center mb-5" data-aos="fade-up">
-      <h2 class="display-4 fw-bold">Contact</h2>
-      <p class="lead-text mx-auto">Let's work together on your next project</p>
+      <h2 class="display-4 fw-bold">Let's Connect</h2>
+      <p class="lead-text mx-auto">Have a project in mind? I'd love to hear about it.</p>
     </div>
 
     <div class="container">
       <div class="row g-5">
         <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
           <div class="contact-info">
-            <div class="info-card mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-card" data-aos="fade-up" data-aos-delay="200">
               <div class="info-icon">
                 <i class="bi bi-geo-alt"></i>
               </div>
               <div>
-                <h3>Address</h3>
+                <h3>Location</h3>
                 <p>Biñan, Calabarzon, Philippines</p>
               </div>
             </div>
 
-            <div class="info-card mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-card" data-aos="fade-up" data-aos-delay="300">
               <div class="info-icon">
                 <i class="bi bi-telephone"></i>
               </div>
               <div>
-                <h3>Call Me</h3>
+                <h3>Phone</h3>
                 <p>+63 976 366 7638</p>
               </div>
             </div>
 
-            <div class="info-card mb-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="info-card" data-aos="fade-up" data-aos-delay="400">
               <div class="info-icon">
                 <i class="bi bi-envelope"></i>
               </div>
               <div>
-                <h3>Email Me</h3>
+                <h3>Email</h3>
                 <p>karllouiserito.1@gmail.com</p>
               </div>
             </div>
@@ -51,53 +51,56 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="name-field">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" :class="{ 'is-invalid': validationErrors.name }" v-model="form.name" placeholder="John Doe" />
-                  <div class="invalid-feedback" v-if="validationErrors.name">{{ validationErrors.name }}</div>
+                  <input type="text" name="name" id="name-field" class="form-control" :class="{ 'has-error': validationErrors.name }" v-model="form.name" placeholder="John Doe" />
+                  <div class="field-error" v-if="validationErrors.name">{{ validationErrors.name }}</div>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email-field">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" :class="{ 'is-invalid': validationErrors.email }" v-model="form.email" placeholder="john@example.com" />
-                  <div class="invalid-feedback" v-if="validationErrors.email">{{ validationErrors.email }}</div>
+                  <input type="email" class="form-control" name="email" id="email-field" :class="{ 'has-error': validationErrors.email }" v-model="form.email" placeholder="john@example.com" />
+                  <div class="field-error" v-if="validationErrors.email">{{ validationErrors.email }}</div>
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="form-group">
                   <label for="subject-field">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" :class="{ 'is-invalid': validationErrors.subject }" v-model="form.subject" placeholder="Project Inquiry" />
-                  <div class="invalid-feedback" v-if="validationErrors.subject">{{ validationErrors.subject }}</div>
+                  <input type="text" class="form-control" name="subject" id="subject-field" :class="{ 'has-error': validationErrors.subject }" v-model="form.subject" placeholder="Project Inquiry" />
+                  <div class="field-error" v-if="validationErrors.subject">{{ validationErrors.subject }}</div>
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="form-group">
                   <label for="message-field">Message</label>
-                  <textarea class="form-control" name="message" rows="8" id="message-field" :class="{ 'is-invalid': validationErrors.message }" v-model="form.message" placeholder="Tell me about your project..."></textarea>
-                  <div class="invalid-feedback" v-if="validationErrors.message">{{ validationErrors.message }}</div>
+                  <textarea class="form-control" name="message" rows="6" id="message-field" :class="{ 'has-error': validationErrors.message }" v-model="form.message" placeholder="Tell me about your project..."></textarea>
+                  <div class="field-error" v-if="validationErrors.message">{{ validationErrors.message }}</div>
                 </div>
               </div>
 
               <div class="col-12 text-center">
-                <div class="status-messages mb-4">
-                  <div class="error-message" v-if="errorMessage && !isLoading">
-                    <i class="bi bi-exclamation-circle me-2"></i>
-                    {{ errorMessage }}
+                <div class="status-bar mb-4" v-if="errorMessage || successMessage">
+                  <div class="status-message error" v-if="errorMessage && !isLoading">
+                    <i class="bi bi-exclamation-circle"></i>
+                    <span>{{ errorMessage }}</span>
                   </div>
-                  <div class="sent-message" v-if="successMessage && !isLoading">
-                    <i class="bi bi-check-circle me-2"></i>
-                    {{ successMessage }}
+                  <div class="status-message success" v-if="successMessage && !isLoading">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>{{ successMessage }}</span>
                   </div>
                 </div>
 
                 <button type="submit" class="btn-submit" :disabled="isLoading">
-                  <span v-if="isLoading">
-                    <span class="spinner-border spinner-border-sm me-2"></span>
+                  <span v-if="isLoading" class="btn-loading">
+                    <span class="spinner"></span>
                     Sending...
                   </span>
-                  <span v-else>Send Message</span>
+                  <span v-else class="btn-text">
+                    Send Message
+                    <i class="bi bi-arrow-right"></i>
+                  </span>
                 </button>
               </div>
             </div>
@@ -133,7 +136,7 @@ const validateForm = () => {
   else if (!emailRegex.test(form.value.email)) errors.email = "Invalid email address";
   if (!form.value.subject.trim()) errors.subject = "Subject is required";
   if (!form.value.message.trim()) errors.message = "Message is required";
-  
+
   validationErrors.value = errors;
   return Object.keys(errors).length === 0;
 };
@@ -170,6 +173,9 @@ const submitForm = async () => {
 </script>
 
 <style scoped lang="scss">
+$accent: #0563bb;
+$accent-glow: rgba(5, 99, 187, 0.15);
+
 .contact {
   padding: 100px 0;
   background-color: var(--background-color);
@@ -177,67 +183,110 @@ const submitForm = async () => {
 }
 
 .section-title {
+  margin-bottom: 3rem !important;
+
   h2 {
     font-family: "Raleway", sans-serif;
-    letter-spacing: -1px;
+    letter-spacing: -0.02em;
     background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
+    background-clip: text;
+    margin-bottom: 0.75rem;
   }
+
   p {
     color: rgba(255, 255, 255, 0.5);
     font-size: 1.1rem;
+    max-width: 500px;
   }
 }
 
 .contact-info {
   background: rgba(255, 255, 255, 0.02);
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .info-card {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: flex-start;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: $accent;
+    border-radius: 0 3px 3px 0;
+    transition: height 0.3s ease;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+
+    &::before {
+      height: 40px;
+    }
+
+    .info-icon {
+      background: $accent;
+      i { color: #fff; }
+    }
+  }
+
+  + .info-card {
+    margin-top: 0.5rem;
+  }
 
   h3 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     font-family: "Raleway", sans-serif;
+    color: #e8ecf1;
   }
 
   p {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     margin-bottom: 0;
   }
 }
 
 .info-icon {
-  width: 50px;
-  height: 50px;
-  background: rgba(5, 99, 187, 0.1);
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  background: rgba($accent, 0.1);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.3s ease;
 
   i {
-    font-size: 1.5rem;
-    color: #0563bb;
+    font-size: 1.25rem;
+    color: $accent;
+    transition: color 0.3s ease;
   }
 }
 
 .map-container {
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  height: 250px;
-  
+  height: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
   iframe {
     width: 100%;
     height: 100%;
@@ -247,79 +296,181 @@ const submitForm = async () => {
 
 .contact-form {
   background: rgba(255, 255, 255, 0.02);
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 
   .form-group {
-    margin-bottom: 5px;
+    position: relative;
   }
 
   label {
-    font-size: 0.85rem;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: rgba(255, 255, 255, 0.6);
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .form-control {
+    width: 100%;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 12px 20px;
-    color: #fff;
-    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #e8ecf1;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    outline: none;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.15);
+    }
 
     &:focus {
       background: rgba(255, 255, 255, 0.05);
-      border-color: #0563bb;
-      box-shadow: 0 0 0 0.25rem rgba(5, 99, 187, 0.1);
-      outline: none;
+      border-color: $accent;
+      box-shadow: 0 0 0 3px $accent-glow;
     }
 
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.2);
+    &.has-error {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    }
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  .field-error {
+    font-size: 0.8rem;
+    color: #dc3545;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: #dc3545;
+      border-radius: 50%;
     }
   }
 }
 
+.status-bar {
+  .status-message {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    i { font-size: 1.1rem; }
+  }
+
+  .status-message.error {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+  }
+
+  .status-message.success {
+    color: #3fb950;
+    background: rgba(63, 185, 80, 0.1);
+    border: 1px solid rgba(63, 185, 80, 0.2);
+  }
+}
+
 .btn-submit {
-  background: #0563bb;
+  position: relative;
+  background: linear-gradient(135deg, $accent 0%, #149ddd 100%);
   color: #fff;
   border: none;
-  padding: 15px 40px;
-  border-radius: 50px;
+  padding: 14px 40px;
+  border-radius: 10px;
   font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 250px;
+  min-width: 220px;
+  overflow: hidden;
 
-  &:hover {
-    background: #0672d8;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #149ddd 0%, $accent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+  }
+
+  &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(5, 99, 187, 0.3);
+    box-shadow: 0 8px 25px rgba($accent, 0.35);
+
+    &::before { opacity: 1; }
+
+    .btn-text i {
+      transform: translateX(4px);
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
   }
 
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
   }
+
+  .btn-text, .btn-loading {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-text i {
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+  }
 }
 
-.sent-message {
-  color: #198754;
-  font-weight: 500;
+.btn-loading {
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btn-spin 0.7s linear infinite;
+  }
 }
 
-.error-message {
-  color: #dc3545;
-  font-weight: 500;
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
 }
 
 @media (max-width: 576px) {
+  .contact {
+    padding: 60px 0;
+  }
+
   .contact-info, .contact-form {
-    padding: 30px 20px;
+    padding: 1.5rem;
   }
 }
 </style>
-
