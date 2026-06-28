@@ -493,6 +493,19 @@ $accent: #0563bb;
     left: 6px;
     width: 18px;
     height: 18px;
+    background: var(--background-color);
+  }
+
+  .timeline-wrapper.education .timeline-dot {
+    background: var(--background-color);
+  }
+
+  .timeline-item:hover .timeline-dot {
+    background: $accent;
+  }
+
+  .timeline-wrapper.education .timeline-item:hover .timeline-dot {
+    background: #3fb950;
   }
 }
 </style>

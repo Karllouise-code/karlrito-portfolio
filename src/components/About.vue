@@ -210,14 +210,27 @@ $accent: #0563bb;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    padding-left: 24px;
+    padding-left: 0;
+    position: relative;
+  }
+
+  .milestone-track::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 18px;
+    bottom: 18px;
+    width: 2px;
+    background: linear-gradient(180deg, $accent 0%, rgba($accent, 0.1) 100%);
+    z-index: 0;
   }
 
   .milestone {
     flex-direction: row;
     gap: 16px;
     width: 100%;
-    padding-bottom: 1.5rem;
+    padding: 0 0 1.5rem 0;
+    align-items: flex-start;
 
     &:last-child {
       padding-bottom: 0;
@@ -227,10 +240,18 @@ $accent: #0563bb;
   .milestone-dot {
     margin-bottom: 0;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    background: var(--background-color);
+  }
+
+  .milestone:hover .milestone-dot {
+    background: $accent;
   }
 
   .milestone-content {
     align-items: flex-start;
+    padding-top: 6px;
   }
 
   .milestone-label {
@@ -239,12 +260,7 @@ $accent: #0563bb;
   }
 
   .milestone-line {
-    top: auto;
-    left: 6px;
-    bottom: 0;
-    width: 2px;
-    height: calc(100% - 18px);
-    background: linear-gradient(180deg, $accent 0%, rgba($accent, 0.1) 100%);
+    display: none;
   }
 }
 </style>
