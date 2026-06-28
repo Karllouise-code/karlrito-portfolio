@@ -1,27 +1,29 @@
 <template>
   <section id="about" class="about section dark-background">
     <div class="container" data-aos="fade-up">
-      <div class="section-header text-center mb-5">
-        <h2 class="display-4 fw-bold mb-3">About Me</h2>
-        <p class="lead-text mx-auto">{{ aboutDescription }}</p>
-      </div>
+      <div class="about-narrow">
+        <div class="bio-block" data-aos="fade-up" data-aos-delay="100">
+          <span class="bio-badge">Full-Stack Developer</span>
+          <h3 class="bio-title">{{ title }}</h3>
+          <p class="bio-subtitle">{{ subtitle }}</p>
+          <p class="bio-text">{{ detailedDescription }}</p>
+        </div>
 
-      <div class="row justify-content-center align-items-center">
-        <div class="col-lg-10">
-          <div class="about-content">
-            <div class="info-grid-container mb-5">
-              <div class="info-grid">
-                <div v-for="item in personalInfo" :key="item.label" class="info-item">
-                  <span class="info-label">{{ item.label }}</span>
-                  <span class="info-value">{{ item.value }}</span>
-                </div>
+        <div class="milestones" data-aos="fade-up" data-aos-delay="150">
+          <div class="milestone-track">
+            <div
+              v-for="(m, index) in milestones"
+              :key="index"
+              class="milestone"
+            >
+              <div class="milestone-dot">
+                <i :class="m.icon"></i>
               </div>
-            </div>
-
-            <div class="bio-content text-center">
-              <h3 class="bio-title mb-4">{{ title }}</h3>
-              <p class="bio-subtitle mb-4">{{ subtitle }}</p>
-              <p class="bio-text">{{ detailedDescription }}</p>
+              <div class="milestone-content">
+                <span class="milestone-year">{{ m.year }}</span>
+                <span class="milestone-label">{{ m.label }}</span>
+              </div>
+              <div v-if="index < milestones.length - 1" class="milestone-line" />
             </div>
           </div>
         </div>
@@ -33,25 +35,22 @@
 <script setup>
 import { ref } from "vue";
 
-const aboutDescription = ref(`Full-Stack Web Developer specializing in building scalable, secure, and high-performance web applications. Currently working at SVEN - The Digital 1st Agency, balancing professional work with academic studies as a scholar at Trimex Colleges.`);
-
-const title = ref("Full-Stack Web Developer | AI Trainer");
-const subtitle = ref("Expertise in Laravel, Vue.js, API integration, and AI model training for developer tools.");
-
-const personalInfo = ref([
-  { label: "Website", value: "karllouiserito.netlify.app" },
-  { label: "Email", value: "karllouiserito.1@gmail.com" },
-  { label: "City", value: "Calabarzon, PH" },
-  // { label: "Degree", value: "BS IT" },
-  { label: "Degree", value: "BS Information Technology" },
-  { label: "Phone", value: "+63 976 366 7638" },
-  { label: "Freelance", value: "Available" },
-]);
+const title = ref("Karl Louise Rito");
+const subtitle = ref("Building scalable web solutions with Laravel & Vue.js");
 
 const detailedDescription = ref(`With over 5 years of experience in full-stack development, I have worked on diverse projects for major clients including Honda, delivering solutions using Laravel, Vue.js, GraphQL, and MySQL. I've mentored junior developers, participated in agile workflows using Jira, and contributed to AI training for developer assistance tools at Outlier. My academic background includes AI, Machine Learning, and Data Analysis, supporting my passion for innovative, technology-driven solutions.`);
+
+const milestones = ref([
+  { year: "2022", label: "Junior Web Developer", icon: "bi bi-code" },
+  { year: "2023", label: "Full-Stack Developer", icon: "bi bi-layers" },
+  { year: "2024", label: "BS IT Graduate", icon: "bi bi-mortarboard" },
+  { year: "2025", label: "Web Developer at SVEN", icon: "bi bi-briefcase" },
+]);
 </script>
 
 <style scoped lang="scss">
+$accent: #0563bb;
+
 .about {
   padding: 120px 0;
   background-color: var(--background-color);
@@ -73,111 +72,179 @@ const detailedDescription = ref(`With over 5 years of experience in full-stack d
   }
 }
 
-.section-header {
-  position: relative;
-  z-index: 2;
-  
-  h2 {
-    font-family: "Raleway", sans-serif;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
-
-.lead-text {
-  font-size: 1.2rem;
-  max-width: 800px;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.8;
-  font-family: "Poppins", sans-serif;
-}
-
-.about-content {
+.about-narrow {
+  max-width: 720px;
+  margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
-.info-grid-container {
-  padding: 2px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border-radius: 24px;
+.bio-block {
+  text-align: center;
+  margin-bottom: 3.5rem;
 }
 
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  padding: 40px;
-  background: #040b14;
-  border-radius: 22px;
-}
-
-.info-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.info-label {
+.bio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 600;
-}
-
-.info-value {
-  font-size: 1rem;
-  color: #fff;
-  font-weight: 400;
-  transition: color 0.3s ease;
-  
-  &:hover {
-    color: #0563bb;
-  }
+  letter-spacing: 1px;
+  color: $accent;
+  background: rgba($accent, 0.08);
+  border: 1px solid rgba($accent, 0.15);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
 }
 
 .bio-title {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.2rem;
   letter-spacing: -0.5px;
   color: #fff;
+  margin: 0 0 0.5rem;
 }
 
 .bio-subtitle {
-  color: #0563bb;
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 0 1.5rem;
 }
 
 .bio-text {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.7);
-  max-width: 850px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  max-width: 640px;
   margin: 0 auto;
 }
 
-@media (max-width: 992px) {
-  .info-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+.milestones {
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+}
+
+.milestone-track {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.milestone-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba($accent, 0.1);
+  border: 2px solid $accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+  transition: all 0.3s ease;
+  z-index: 1;
+
+  i {
+    font-size: 0.75rem;
+    color: $accent;
+    transition: color 0.3s ease;
   }
 }
 
-@media (max-width: 576px) {
-  .info-grid {
-    grid-template-columns: 1fr;
-    padding: 30px;
+.milestone:hover .milestone-dot {
+  background: $accent;
+  box-shadow: 0 0 12px rgba($accent, 0.4);
+
+  i { color: #fff; }
+}
+
+.milestone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.milestone-year {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.milestone-label {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.milestone-line {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, $accent 0%, rgba($accent, 0.15) 100%);
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .milestone-track {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding-left: 24px;
   }
-  
-  .bio-title {
-    font-size: 1.5rem;
+
+  .milestone {
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+    padding-bottom: 1.5rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  .milestone-dot {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .milestone-content {
+    align-items: flex-start;
+  }
+
+  .milestone-label {
+    white-space: normal;
+    text-align: left;
+  }
+
+  .milestone-line {
+    top: auto;
+    left: 6px;
+    bottom: 0;
+    width: 2px;
+    height: calc(100% - 18px);
+    background: linear-gradient(180deg, $accent 0%, rgba($accent, 0.1) 100%);
   }
 }
 </style>
