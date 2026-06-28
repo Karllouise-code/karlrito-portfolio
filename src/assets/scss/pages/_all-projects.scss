@@ -3,7 +3,7 @@
  * Dedicated styles for the all projects page including filters and project cards
  */
 
-@import '../variables';
+@use '../variables' as *;
 
 .all-projects-page {
   background-color: $gray-100;

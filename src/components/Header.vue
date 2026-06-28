@@ -166,5 +166,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/scss/components/_header.scss';
+@use '@/assets/scss/components/header' as *;
 </style>

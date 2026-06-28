@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/scss/components/_hero.scss';
+@use '@/assets/scss/components/hero' as *;
 
 .hero {
   position: relative;

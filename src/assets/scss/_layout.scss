@@ -3,7 +3,7 @@
  * Global layout structure including overflow handling, main content area, and responsive behavior
  */
 
-@import './variables';
+@use 'variables' as *;
 
 // Prevent horizontal overflow globally
 html,

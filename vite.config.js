@@ -18,7 +18,7 @@
        css: {
          preprocessorOptions: {
            scss: {
-             additionalData: '@import "@/assets/scss/variables.scss";'
+             additionalData: '@use "@/assets/scss/variables" as *;'
            }
          }
        }
