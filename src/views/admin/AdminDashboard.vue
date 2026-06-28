@@ -154,10 +154,7 @@ const loadDrafts = () => {
     if (key.startsWith('draft_')) {
       try {
         const draftData = JSON.parse(localStorage.getItem(key));
-        localDrafts.push({
-          ...draftData,
-          lastSaved: new Date() // Ideally store timestamp in saveDraft
-        });
+        localDrafts.push(draftData);
       } catch (e) {
         console.error("Error parsing draft:", key);
       }

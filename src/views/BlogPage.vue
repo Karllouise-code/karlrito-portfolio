@@ -47,43 +47,61 @@
       <section class="blog-posts dark-background">
         <div class="container">
           <div class="row">
-            <div v-for="(post, index) in posts" :key="post.slug || post.url" 
-                 class="col-lg-4 col-md-6 mb-4" 
-                 data-aos="fade-up" 
-                 :data-aos-delay="index * 100">
-              <article class="post-card">
-                <div class="post-content">
-                  <div class="post-meta">
-                    <span class="post-date"><i class="bi bi-calendar3"></i> {{ formatDate(post.date) }}</span>
-                    <span class="post-author"><i class="bi bi-person"></i> {{ post.author || 'Karl Rito' }}</span>
-                  </div>
-                  <h3 class="post-title">
-                    <router-link v-if="!post.isExternal" :to="'/blog/' + post.slug">{{ post.title }}</router-link>
-                    <a v-else :href="post.url" target="_blank">{{ post.title }} <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 0.8rem;"></i></a>
-                  </h3>
-                  <p class="post-excerpt">{{ post.description }}</p>
-                  <div class="post-footer">
-                    <router-link v-if="!post.isExternal" :to="'/blog/' + post.slug" class="read-more">
-                      Read Post <i class="bi bi-arrow-right"></i>
-                    </router-link>
-                    <a v-else :href="post.url" target="_blank" class="read-more">
-                      Read on Hashnode <i class="bi bi-arrow-right"></i>
-                    </a>
+            <!-- Loading Skeleton -->
+            <template v-if="loading">
+              <div v-for="n in 6" :key="n" class="col-lg-4 col-md-6 mb-4">
+                <div class="post-card skeleton-card">
+                  <div class="post-content">
+                    <div class="skeleton skeleton-meta"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-title short"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-link"></div>
                   </div>
                 </div>
-              </article>
-            </div>
-            
-            <div v-if="posts.length === 0 && !error" class="col-12 text-center py-5">
-              <div class="no-posts">
-                <i class="bi bi-journal-x"></i>
-                <p>No posts found yet. Check back soon!</p>
               </div>
-            </div>
+            </template>
 
-            <div v-if="error" class="col-12 text-center py-5">
-              <p class="text-danger">Error loading blog posts. Please check back later.</p>
-            </div>
+            <template v-else>
+              <div v-for="(post, index) in posts" :key="post.slug || post.url" 
+                   class="col-lg-4 col-md-6 mb-4" 
+                   data-aos="fade-up" 
+                   :data-aos-delay="index * 100">
+                <article class="post-card">
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span class="post-date"><i class="bi bi-calendar3"></i> {{ formatDate(post.date) }}</span>
+                      <span class="post-author"><i class="bi bi-person"></i> {{ post.author || 'Karl Rito' }}</span>
+                    </div>
+                    <h3 class="post-title">
+                      <router-link v-if="!post.isExternal" :to="'/blog/' + post.slug">{{ post.title }}</router-link>
+                      <a v-else :href="post.url" target="_blank">{{ post.title }} <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 0.8rem;"></i></a>
+                    </h3>
+                    <p class="post-excerpt">{{ post.description }}</p>
+                    <div class="post-footer">
+                      <router-link v-if="!post.isExternal" :to="'/blog/' + post.slug" class="read-more">
+                        Read Post <i class="bi bi-arrow-right"></i>
+                      </router-link>
+                      <a v-else :href="post.url" target="_blank" class="read-more">
+                        Read on Hashnode <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              
+              <div v-if="posts.length === 0 && !error" class="col-12 text-center py-5">
+                <div class="no-posts">
+                  <i class="bi bi-journal-x"></i>
+                  <p>No posts found yet. Check back soon!</p>
+                </div>
+              </div>
+
+              <div v-if="error" class="col-12 text-center py-5">
+                <p class="text-danger">Error loading blog posts. Please check back later.</p>
+              </div>
+            </template>
           </div>
         </div>
       </section>
@@ -100,6 +118,7 @@ import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
 const posts = ref([]);
+const loading = ref(true);
 const error = ref(null);
 const showRssHelp = ref(false);
 const copied = ref(false);
@@ -149,6 +168,8 @@ onMounted(async () => {
   } catch (e) {
     console.error("Error loading blog posts:", e);
     error.value = e;
+  } finally {
+    loading.value = false;
   }
 });
 </script>
@@ -381,6 +402,47 @@ onMounted(async () => {
   &:hover {
     color: #149ddd;
   }
+}
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  margin-bottom: 12px;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-meta {
+  height: 14px;
+  width: 60%;
+}
+
+.skeleton-title {
+  height: 22px;
+  width: 90%;
+}
+
+.skeleton-title.short {
+  width: 65%;
+}
+
+.skeleton-text {
+  height: 14px;
+  width: 100%;
+}
+
+.skeleton-link {
+  height: 14px;
+  width: 30%;
+  margin-top: 20px;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
 .no-posts {
