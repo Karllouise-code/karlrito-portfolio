@@ -66,6 +66,7 @@
 import { ref, computed, onMounted } from "vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import { projects } from "@/data/projects.js";
 import AOS from "aos";
 
 const activeFilter = ref('all');
@@ -80,104 +81,9 @@ const filters = computed(() => [
   { key: 'personal', label: 'Personal', icon: 'bi bi-code-slash', color: '#3fb950' },
 ]);
 
-const companyProjects = ref([
-  {
-    title: "Bolted Gate Console",
-    description: "Designed and developed a secure portal for Bolted Gate clients in Australia, with real-time data integration powered by Microsoft Azure APIs. The platform features Single Sign-On (SSO) for seamless user authentication via Microsoft accounts.",
-    link: "https://console.boltedgate.app/",
-    slug: "console.boltedgate.app",
-    type: "company",
-    tags: ["Azure", "SSO", "Vue"]
-  },
-  {
-    title: "Honda Certified Pre-Owned Cars",
-    description: "Built a sophisticated car marketplace platform for Honda Certified Pre-Owned Cars, featuring a full admin CMS and dynamic user portal system with AI-powered search.",
-    link: "https://certifiedcars.hondaphil.com/",
-    slug: "certifiedcars.hondaphil.com",
-    type: "company",
-    tags: ["Vue", "Laravel", "AI", "CMS"]
-  },
-  {
-    title: "Coche.ph",
-    description: "Developed Coche.ph, a comprehensive online car rental marketplace powered by a custom CMS with advanced admin dashboard for content management.",
-    link: "https://coche.ph",
-    slug: "coche.ph",
-    type: "company",
-    tags: ["PHP", "Laravel", "CMS"]
-  },
-  {
-    title: "AI Paradigm Solutions",
-    description: "Developed a robust, CMS-driven website for AI Paradigm Solutions, an early-stage tech start-up with a user-friendly admin panel.",
-    link: "https://beta.aiparadigmsolutions.com/",
-    slug: "beta.aiparadigmsolutions.com",
-    type: "company",
-    tags: ["CMS", "PHP"]
-  }
-]);
-
-const personalProjects = ref([
-  {
-    title: "Todo Kanban Board",
-    description: "A beautiful, modern Kanban board todo application built with Laravel 12, Vue.js 3, and Inertia.js. Intuitive drag-and-drop interface and powerful project management features.",
-    link: "https://kanban-todo-vh75.onrender.com/",
-    slug: "kanban-todo-vh75.onrender.com",
-    type: "personal",
-    tags: ["Laravel 12", "Vue 3", "Inertia", "Docker"]
-  },
-  {
-    title: "Strava Activity Visualizer",
-    description: "A modern web application to visualize and analyze Strava activity data. Fetches activities from Strava API, caches them in Firebase, and provides an interactive dashboard.",
-    link: "https://karlritostrava.netlify.app/",
-    slug: "karlritostrava.netlify.app",
-    type: "personal",
-    tags: ["Vue", "Firebase", "API"]
-  },
-  {
-    title: "Karlendaryo | Sinaing Scheduler",
-    description: "A Vue.js web application for scheduling names on a weekly calendar. Built with Firebase Firestore with CSV export and drag-and-drop reordering.",
-    link: "https://karlendaryo.netlify.app/",
-    slug: "karlendaryo.netlify.app",
-    type: "personal",
-    tags: ["Vue", "Firebase", "CSV Export"]
-  },
-  {
-    title: "Personal Portfolio Website",
-    description: "My personal portfolio website, built with Vue.js and styled with SCSS to create a clean, modern, and fully responsive design.",
-    link: "https://karllouiserito.netlify.app/",
-    slug: "karllouiserito.netlify.app",
-    type: "personal",
-    tags: ["Vue 3", "SCSS", "Vite"]
-  },
-  {
-    title: "Happy Kids",
-    description: "A fundraising platform for children's health and education with a CMS and PayPal Payment Gateway. Built for a non-profit organization at Trimex Colleges.",
-    link: "https://github.com/Lester-Fong/Happy-Kids",
-    slug: "github.com/Lester-Fong/Happy-Kids",
-    type: "personal",
-    tags: ["Vue", "Laravel", "GraphQL", "PayPal"]
-  },
-  {
-    title: "Webcam Fun App",
-    description: "Interactive webcam effects application built with pure JavaScript. Real-time RGB split and color manipulation effects with snapshot capabilities.",
-    link: "https://klr-webcamfun.netlify.app/",
-    slug: "klr-webcamfun.netlify.app",
-    type: "personal",
-    tags: ["JavaScript", "Canvas API"]
-  },
-  {
-    title: "Tribute Page - Kobe Bryant",
-    description: "A responsive tribute webpage dedicated to Kobe Bryant, created using purely HTML and CSS.",
-    link: "https://koberibute.netlify.app/",
-    slug: "koberibute.netlify.app",
-    type: "personal",
-    tags: ["HTML", "CSS"]
-  }
-]);
-
-const allProjects = computed(() => [...companyProjects.value, ...personalProjects.value]);
 const filteredProjects = computed(() => {
-  if (activeFilter.value === 'all') return allProjects.value;
-  return activeFilter.value === 'company' ? companyProjects.value : personalProjects.value;
+  if (activeFilter.value === 'all') return projects;
+  return projects.filter(p => p.type === activeFilter.value);
 });
 
 onMounted(() => {
@@ -288,7 +194,7 @@ onMounted(() => {
   &:hover {
     transform: translateY(-6px);
     background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(var(--card-accent, #0563bb), 0.3);
+    border-color: rgba(var(--card-accent), 0.3);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 
     &::before { height: 100%; }

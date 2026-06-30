@@ -3,7 +3,6 @@ import adminRoutes from "./admin/admin_routes";
 
 // Lazy load components to handle missing files better
 const Portfolio = () => import("@/components/Portfolio.vue");
-const PortfolioDetails = () => import("@/components/PortfolioDetails.vue").catch(() => import("@/components/Portfolio.vue"));
 const ResumePage = () => import("@/views/ResumePage.vue");
 const AllProjects = () => import("@/views/AllProjects.vue");
 const AllSkills = () => import("@/views/AllSkills.vue");
@@ -18,13 +17,6 @@ const routes = [
     name: "Portfolio",
     component: Portfolio,
     meta: { title: "Karl Louise Rito — Full-Stack Web Developer", description: "Portfolio of Karl Louise Rito, a full-stack web developer specializing in Vue, Laravel, and modern web technologies." },
-  },
-  {
-    path: "/portfolio-details/:id?",
-    name: "PortfolioDetails",
-    component: PortfolioDetails,
-    props: true,
-    meta: { title: "Project Details — Karl Rito", description: "Detailed view of a portfolio project." },
   },
   {
     path: "/resume",

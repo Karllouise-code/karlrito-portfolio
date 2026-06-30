@@ -1,37 +1,18 @@
 <template>
   <div>
-    <!-- Header -->
     <Header />
 
-    <!-- Main Content -->
     <main class="main">
-      <!-- Hero Section -->
       <Hero />
-
-      <!-- About Section -->
-      <About />
-
-
-      <!-- Resume Section -->
       <Resume />
-
-      <!-- Portfolio Section -->
       <PortfolioSection />
-
-      <!-- Services Section -->
-      <Services />
-
-      <!-- Contact Section -->
       <Contact />
     </main>
 
-    <!-- Footer -->
     <Footer />
 
-    <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Preloader -->
     <div id="preloader"></div>
   </div>
 </template>
@@ -40,10 +21,8 @@
 import { onMounted } from "vue";
 import Header from "./Header.vue";
 import Hero from "./Hero.vue";
-import About from "./About.vue";
 import Resume from "./Resume.vue";
 import PortfolioSection from "./PortfolioSection.vue";
-import Services from "./Services.vue";
 import Contact from "./Contact.vue";
 import Footer from "./Footer.vue";
 
@@ -52,16 +31,13 @@ export default {
   components: {
     Header,
     Hero,
-    About,
     Resume,
     PortfolioSection,
-    Services,
     Contact,
     Footer,
   },
   setup() {
     onMounted(() => {
-      // Initialize AOS animations
       if (window.AOS) {
         window.AOS.init({
           duration: 600,
@@ -71,7 +47,6 @@ export default {
         });
       }
 
-      // Remove preloader after page loads
       const preloader = document.getElementById('preloader');
       if (preloader) {
         setTimeout(() => {
@@ -79,7 +54,6 @@ export default {
         }, 1000);
       }
 
-      // Scroll top button functionality
       const scrollTop = document.querySelector('.scroll-top');
       if (scrollTop) {
         window.addEventListener('scroll', () => {
@@ -98,19 +72,6 @@ export default {
           });
         });
       }
-
-      // Close mobile menu when clicking outside
-      const header = document.querySelector('#header');
-      const headerToggle = document.querySelector('.header-toggle');
-
-      document.addEventListener('click', (e) => {
-        if (header && headerToggle && !header.contains(e.target) && !headerToggle.contains(e.target)) {
-          if (header.classList.contains('header-show')) {
-            header.classList.remove('header-show');
-            document.body.classList.remove('mobile-nav-active');
-          }
-        }
-      });
     });
 
     return {};

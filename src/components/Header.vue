@@ -3,7 +3,7 @@
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
       <router-link to="/" class="logo d-flex align-items-center">
-        <h1 class="sitename">{{ name }}</h1>
+        <span class="logo-mark">KR</span>
       </router-link>
 
       <nav id="navmenu" class="navmenu" :class="{ 'mobile-nav-active': isMobileShow }">
@@ -48,13 +48,13 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const { isDark, toggleTheme } = useTheme();
-    const name = ref("Karl Rito");
+
     const isScrolled = ref(false);
     const isMobileShow = ref(false);
 
     const navItems = ref([
       { id: "home", name: "Home", hash: "#hero", active: true },
-      { id: "about", name: "About", hash: "#about", active: false },
+
       { id: "resume", name: "Experience", hash: "#resume", active: false },
       { id: "portfolio", name: "Portfolio", hash: "#portfolio", active: false },
       { id: "blog", name: "Blog", path: "/blog", active: false },
@@ -160,7 +160,7 @@ export default {
       window.removeEventListener('scroll', handleScroll);
     });
 
-    return { name, isScrolled, isDark, isMobileShow, navItems, toggleMobileMenu, closeMobileMenu, handleNavClick, toggleTheme };
+    return { isScrolled, isDark, isMobileShow, navItems, toggleMobileMenu, closeMobileMenu, handleNavClick, toggleTheme };
   },
 };
 </script>

@@ -44,37 +44,29 @@
 <script>
 import { ref, onMounted, onUnmounted } from "vue";
 import Typed from "typed.js";
+import { featuredSkills } from "@/data/skills.js";
 
 export default {
   name: "Hero",
   setup() {
     const name = ref("Karl Louise Rito");
     const typedElement = ref(null);
-    const skills = ref([
-      { name: 'Vue.js', icon: 'bi bi-code-square' },
-      { name: 'React', icon: 'bi bi-code-slash' },
-      { name: 'Laravel', icon: 'bi bi-diagram-3' },
-      { name: 'Node.js', icon: 'bi bi-server' },
-      { name: 'JavaScript', icon: 'bi bi-filetype-js' },
-      { name: 'TypeScript', icon: 'bi bi-code' },
-      { name: 'PHP', icon: 'bi bi-filetype-php' },
-      { name: 'MySQL', icon: 'bi bi-database' },
-    ]);
+    const skills = ref(featuredSkills);
     let typedInstance = null;
 
     onMounted(() => {
       if (typedElement.value) {
         typedInstance = new Typed(typedElement.value, {
           strings: [
-  "Probably Coding",
-  "Definitely Debugging",
-  "Needs Coffee",
-  "Works on My Machine",
-  "It's Not a Bug",
-  "It's a Feature",
-  "404: Sleep Not Found",
-  "Running on Coffee",
-  "Full-Stack Developer",
+"Probably Coding",
+"Definitely Debugging",
+"Needs Coffee",
+"Works on My Machine",
+"It's Not a Bug",
+"It's a Feature",
+"404: Sleep Not Found",
+"Running on Coffee",
+"Full-Stack Developer",
 ],
           typeSpeed: 100,
           backSpeed: 50,
@@ -100,8 +92,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use '@/assets/scss/components/hero' as *;
-
 .hero {
   position: relative;
   display: flex;
@@ -109,7 +99,7 @@ export default {
   justify-content: center;
   padding: 0;
   overflow: hidden;
-  background-color: var(--background-color); // Solid minimalist dark background
+  background-color: var(--background-color);
 }
 
 .hero-background-effects {
@@ -198,7 +188,7 @@ export default {
   .arrows {
     display: flex;
     flex-direction: column;
-    
+
     span {
       width: 10px;
       height: 10px;

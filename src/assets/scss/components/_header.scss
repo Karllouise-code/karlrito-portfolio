@@ -22,13 +22,25 @@
   }
 
   .logo {
-    h1 {
-      font-size: 24px;
-      margin: 0;
-      font-weight: 700;
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #0563bb;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 800;
       font-family: "Raleway", sans-serif;
       color: #fff;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    &:hover .logo-mark {
+      background: #044a94;
+      transform: scale(1.05);
     }
   }
 }

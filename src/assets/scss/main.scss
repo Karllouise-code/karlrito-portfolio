@@ -9,10 +9,8 @@
 // 2. Layout and structure
 @use './layout';
 
-// 3. Components
+// 3. Shared utilities
+@use './utilities';
+
+// 4. Components
 @use './components/header';
-@use './components/hero';
-@use './components/skills';
-@use './components/services';
-
-

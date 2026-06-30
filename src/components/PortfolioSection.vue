@@ -7,7 +7,7 @@
 
     <div class="container">
       <div class="row g-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="col-lg-6" v-for="(project, index) in projects" :key="index">
+        <div class="col-lg-6" v-for="(project, index) in featuredProjects" :key="index">
           <div class="project-card">
             <span class="project-index">{{ String(index + 1).padStart(2, '0') }}</span>
             <div class="project-content">
@@ -38,45 +38,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed } from "vue";
+import { projects } from "@/data/projects.js";
 
-const projects = ref([
-  {
-    title: "Honda Certified Pre-Owned Cars",
-    description: "AI-powered marketplace with integrated CMS, advanced filtering, vehicle comparison, and intelligent search for Honda's pre-owned vehicles.",
-    link: "https://certifiedcars.hondaphil.com/",
-    slug: "certifiedcars.hondaphil.com",
-    tags: ["Vue", "Laravel", "AI"]
-  },
-  {
-    title: "Todo Kanban Board",
-    description: "Modern task management application with drag-and-drop interface built with Laravel 12, Vue.js 3, and Inertia.js.",
-    link: "https://kanban-todo-vh75.onrender.com/",
-    slug: "kanban-todo-vh75.onrender.com",
-    tags: ["Laravel 12", "Vue 3", "Inertia"]
-  },
-  {
-    title: "Strava Activity Visualizer",
-    description: "Interactive dashboard to analyze Strava running data with Firebase caching, weekly progress tracking, and customizable fitness goals.",
-    link: "https://karlritostrava.netlify.app/",
-    slug: "karlritostrava.netlify.app",
-    tags: ["Vue", "Firebase", "API"]
-  },
-  {
-    title: "Karlendaryo | Sinaing Scheduler",
-    description: "Vue.js scheduling app with Firebase Firestore for managing weekly tasks, featuring drag-and-drop reordering and CSV export.",
-    link: "https://karlendaryo.netlify.app/",
-    slug: "karlendaryo.netlify.app",
-    tags: ["Vue", "Firebase", "Drag & Drop"]
-  },
-  {
-    title: "Happy Kids",
-    description: "A fundraising platform for children's health and education with a Content Management System (CMS) and PayPal Payment Gateway. Built for a non-profit organization at Trimex Colleges to support their feeding program and donation drives.",
-    link: "https://github.com/Lester-Fong/Happy-Kids",
-    slug: "github.com/Lester-Fong/Happy-Kids",
-    tags: ["PHP", "CMS", "PayPal"]
-  }
-]);
+const featuredProjects = computed(() => projects.filter((p) => p.featured));
 </script>
 
 <style scoped lang="scss">
@@ -231,36 +196,6 @@ $accent: #0563bb;
 
   &:hover i {
     transform: translate(2px, -2px);
-  }
-}
-
-.btn-minimal {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 30px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  font-family: "Poppins", sans-serif;
-
-  i {
-    transition: transform 0.3s ease;
-  }
-
-  &:hover {
-    background: $accent;
-    border-color: $accent;
-    color: #fff;
-    box-shadow: 0 10px 20px rgba($accent, 0.2);
-
-    i {
-      transform: translateX(5px);
-    }
   }
 }
 

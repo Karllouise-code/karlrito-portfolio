@@ -6,6 +6,7 @@
     </div>
 
     <div class="container">
+
       <div class="stats-row" data-aos="fade-up" data-aos-delay="100">
         <div class="stat-item" v-for="stat in stats" :key="stat.label">
           <span class="stat-value">{{ stat.value }}</span>
@@ -431,36 +432,6 @@ $accent: #0563bb;
   color: $accent;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-}
-
-.btn-minimal {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 30px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  font-family: "Poppins", sans-serif;
-
-  i {
-    transition: transform 0.3s ease;
-  }
-
-  &:hover {
-    background: $accent;
-    border-color: $accent;
-    color: #fff;
-    box-shadow: 0 10px 20px rgba($accent, 0.2);
-
-    i:last-child {
-      transform: translateX(5px);
-    }
-  }
 }
 
 @media (max-width: 768px) {
