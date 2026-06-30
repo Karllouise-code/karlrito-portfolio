@@ -392,7 +392,7 @@ const submitForm = async () => {
 
 .btn-submit {
   position: relative;
-  background: linear-gradient(135deg, var(--accent-color) 0%, #149ddd 100%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(var(--accent-color-rgb), 0.7) 100%);
   color: #fff;
   border: none;
   padding: 14px 40px;
@@ -408,7 +408,7 @@ const submitForm = async () => {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #149ddd 0%, var(--accent-color) 100%);
+    background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.7) 0%, var(--accent-color) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: inherit;

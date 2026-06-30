@@ -33,7 +33,7 @@ export default {
   font-weight: 900;
   line-height: 1;
   font-family: "Raleway", sans-serif;
-  background: linear-gradient(135deg, var(--accent-color), #149ddd);
+  background: linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.6));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;

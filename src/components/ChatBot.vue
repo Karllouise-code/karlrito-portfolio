@@ -371,7 +371,7 @@ watch(open, (val) => {
     border-bottom-left-radius: 4px;
 
     :deep(a) {
-      color: #149ddd;
+      color: var(--accent-color);
       text-decoration: underline;
       text-underline-offset: 2px;
       &:hover {
@@ -387,7 +387,7 @@ watch(open, (val) => {
   }
 
   .message-icon {
-    color: #149ddd;
+    color: var(--accent-color);
     font-size: 0.9rem;
     margin-top: 2px;
     flex-shrink: 0;
@@ -412,7 +412,7 @@ watch(open, (val) => {
   .quick-btn {
     background: rgba(var(--accent-color-rgb), 0.15);
     border: 1px solid rgba(var(--accent-color-rgb), 0.25);
-    color: #149ddd;
+    color: var(--accent-color);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.8rem;

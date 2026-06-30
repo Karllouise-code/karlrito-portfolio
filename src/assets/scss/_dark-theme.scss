@@ -1,5 +1,5 @@
 // Dark theme overrides - activated via data-theme="dark" on <html>
-[data-theme="dark"] {
+html[data-theme="dark"] {
   --background-color: #1a1d23;
   --default-color: #c8cfd8;
   --heading-color: #e8ecf1;
@@ -9,27 +9,27 @@
   --accent-color-rgb: 230, 168, 23;
 }
 
-[data-theme="dark"] .dark-background {
+html[data-theme="dark"] .dark-background {
   --background-color: #13161c;
   --surface-color: #1a1d23;
 }
 
-[data-theme="dark"] .light-background {
+html[data-theme="dark"] .light-background {
   --background-color: #1a1d23;
   --surface-color: #22262e;
 }
 
-[data-theme="dark"] .stats {
+html[data-theme="dark"] .stats {
   --default-color: #c8cfd8;
   --background-color: #13161c;
   --heading-color: #e8ecf1;
 }
 
-[data-theme="dark"] .testimonials {
+html[data-theme="dark"] .testimonials {
   --background-color: #1a1d23;
 }
 
-[data-theme="dark"] body,
-[data-theme="dark"] #app {
+html[data-theme="dark"] body,
+html[data-theme="dark"] #app {
   background-color: #0d0f13;
 }
