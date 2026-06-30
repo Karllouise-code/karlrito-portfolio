@@ -92,7 +92,7 @@ const handleLogin = async () => {
 
 .lock-icon {
   font-size: 3rem;
-  color: #0563bb;
+  color: var(--accent-color);
 }
 
 .login-title {
@@ -110,7 +110,7 @@ const handleLogin = async () => {
   
   &:focus {
     background: rgba(255, 255, 255, 0.08);
-    border-color: #0563bb;
+    border-color: var(--accent-color);
     box-shadow: none;
     color: #fff;
   }
@@ -121,7 +121,7 @@ const handleLogin = async () => {
 }
 
 .btn-primary {
-  background: #0563bb;
+  background: var(--accent-color);
   border: none;
   font-weight: 600;
   border-radius: 8px;
@@ -140,7 +140,7 @@ const handleLogin = async () => {
   transition: color 0.3s ease;
   
   &:hover {
-    color: #0563bb;
+    color: var(--accent-color);
   }
 }
 </style>

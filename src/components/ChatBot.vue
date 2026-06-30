@@ -218,11 +218,11 @@ watch(open, (val) => {
   height: 50px;
   border-radius: 50%;
   border: none;
-  background: #0563bb;
+  background: var(--accent-color);
   color: #fff;
   font-size: 1.4rem;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(5, 99, 187, 0.4);
+  box-shadow: 0 4px 16px rgba(var(--accent-color-rgb), 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -260,7 +260,7 @@ watch(open, (val) => {
 }
 
 .chatbot-header {
-  background: rgba(5, 99, 187, 0.15);
+  background: rgba(var(--accent-color-rgb), 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding: 16px 20px;
   display: flex;
@@ -277,7 +277,7 @@ watch(open, (val) => {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #0563bb;
+    background: var(--accent-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -381,7 +381,7 @@ watch(open, (val) => {
   }
 
   &.user .message-bubble {
-    background: #0563bb;
+    background: var(--accent-color);
     color: #fff;
     border-bottom-right-radius: 4px;
   }
@@ -410,8 +410,8 @@ watch(open, (val) => {
   }
 
   .quick-btn {
-    background: rgba(5, 99, 187, 0.15);
-    border: 1px solid rgba(5, 99, 187, 0.25);
+    background: rgba(var(--accent-color-rgb), 0.15);
+    border: 1px solid rgba(var(--accent-color-rgb), 0.25);
     color: #149ddd;
     padding: 6px 14px;
     border-radius: 20px;
@@ -420,8 +420,8 @@ watch(open, (val) => {
     transition: all 0.2s;
 
     &:hover {
-      background: rgba(5, 99, 187, 0.3);
-      border-color: #0563bb;
+      background: rgba(var(--accent-color-rgb), 0.3);
+      border-color: var(--accent-color);
     }
   }
 }
@@ -449,7 +449,7 @@ watch(open, (val) => {
     }
 
     &:focus {
-      border-color: #0563bb;
+      border-color: var(--accent-color);
     }
   }
 
@@ -458,7 +458,7 @@ watch(open, (val) => {
     height: 40px;
     border-radius: 50%;
     border: none;
-    background: #0563bb;
+    background: var(--accent-color);
     color: #fff;
     font-size: 0.9rem;
     cursor: pointer;

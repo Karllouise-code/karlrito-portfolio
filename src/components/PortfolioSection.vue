@@ -45,7 +45,7 @@ const featuredProjects = computed(() => projects.filter((p) => p.featured));
 </script>
 
 <style scoped lang="scss">
-$accent: #0563bb;
+
 
 .portfolio {
   padding: 100px 0;
@@ -87,7 +87,7 @@ $accent: #0563bb;
     top: 0;
     width: 3px;
     height: 0;
-    background: $accent;
+    background: var(--accent-color);
     transition: height 0.35s ease;
     border-radius: 0 0 3px 3px;
     z-index: 1;
@@ -96,7 +96,7 @@ $accent: #0563bb;
   &:hover {
     transform: translateY(-6px);
     background: rgba(255, 255, 255, 0.04);
-    border-color: rgba($accent, 0.3);
+    border-color: rgba(var(--accent-color-rgb), 0.3);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 
     &::before {
@@ -104,12 +104,12 @@ $accent: #0563bb;
     }
 
     .project-title {
-      color: $accent;
+      color: var(--accent-color);
     }
 
     .project-link {
       color: #fff;
-      background: $accent;
+      background: var(--accent-color);
     }
   }
 }
@@ -161,12 +161,12 @@ $accent: #0563bb;
 .project-tag {
   display: inline-block;
   padding: 0.2rem 0.6rem;
-  background: rgba($accent, 0.08);
-  border: 1px solid rgba($accent, 0.15);
+  background: rgba(var(--accent-color-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.15);
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 600;
-  color: $accent;
+  color: var(--accent-color);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }

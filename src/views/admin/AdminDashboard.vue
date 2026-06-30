@@ -203,7 +203,7 @@ onMounted(async () => {
 .section-subtitle {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
-  color: #0563bb;
+  color: var(--accent-color);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -221,7 +221,7 @@ onMounted(async () => {
   .stat-value {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #0563bb;
+    color: var(--accent-color);
   }
   .stat-label {
     color: #a8a9b4;
@@ -265,7 +265,7 @@ onMounted(async () => {
 }
 
 .btn-primary {
-  background: #0563bb;
+  background: var(--accent-color);
   border: none;
   padding: 10px 20px;
   font-weight: 600;

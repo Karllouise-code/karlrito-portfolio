@@ -173,8 +173,7 @@ const submitForm = async () => {
 </script>
 
 <style scoped lang="scss">
-$accent: #0563bb;
-$accent-glow: rgba(5, 99, 187, 0.15);
+
 
 .contact {
   padding: 100px 0;
@@ -226,7 +225,7 @@ $accent-glow: rgba(5, 99, 187, 0.15);
     transform: translateY(-50%);
     width: 3px;
     height: 0;
-    background: $accent;
+    background: var(--accent-color);
     border-radius: 0 3px 3px 0;
     transition: height 0.3s ease;
   }
@@ -239,7 +238,7 @@ $accent-glow: rgba(5, 99, 187, 0.15);
     }
 
     .info-icon {
-      background: $accent;
+      background: var(--accent-color);
       i { color: #fff; }
     }
   }
@@ -266,7 +265,7 @@ $accent-glow: rgba(5, 99, 187, 0.15);
 .info-icon {
   width: 44px;
   height: 44px;
-  background: rgba($accent, 0.1);
+  background: rgba(var(--accent-color-rgb), 0.1);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -276,7 +275,7 @@ $accent-glow: rgba(5, 99, 187, 0.15);
 
   i {
     font-size: 1.25rem;
-    color: $accent;
+    color: var(--accent-color);
     transition: color 0.3s ease;
   }
 }
@@ -331,8 +330,8 @@ $accent-glow: rgba(5, 99, 187, 0.15);
 
     &:focus {
       background: rgba(255, 255, 255, 0.05);
-      border-color: $accent;
-      box-shadow: 0 0 0 3px $accent-glow;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.15);
     }
 
     &.has-error {
@@ -393,7 +392,7 @@ $accent-glow: rgba(5, 99, 187, 0.15);
 
 .btn-submit {
   position: relative;
-  background: linear-gradient(135deg, $accent 0%, #149ddd 100%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #149ddd 100%);
   color: #fff;
   border: none;
   padding: 14px 40px;
@@ -409,7 +408,7 @@ $accent-glow: rgba(5, 99, 187, 0.15);
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #149ddd 0%, $accent 100%);
+    background: linear-gradient(135deg, #149ddd 0%, var(--accent-color) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: inherit;
@@ -417,7 +416,7 @@ $accent-glow: rgba(5, 99, 187, 0.15);
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba($accent, 0.35);
+    box-shadow: 0 8px 25px rgba(var(--accent-color-rgb), 0.35);
 
     &::before { opacity: 1; }
 

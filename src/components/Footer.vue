@@ -35,7 +35,7 @@
 .divider-minimal {
   width: 40px;
   height: 2px;
-  background: #0563bb;
+  background: var(--accent-color);
   opacity: 0.5;
 }
 
@@ -55,7 +55,7 @@
     transition: all 0.3s ease;
     
     &:hover {
-      color: #0563bb;
+      color: var(--accent-color);
     }
   }
 }

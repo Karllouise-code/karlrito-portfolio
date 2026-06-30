@@ -101,7 +101,7 @@ onMounted(() => {
   .category-divider {
     width: 60px;
     height: 3px;
-    background: #0563bb;
+    background: var(--accent-color);
     border-radius: 2px;
   }
 }
@@ -123,11 +123,11 @@ onMounted(() => {
   &:hover {
     transform: translateY(-10px);
     background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(5, 99, 187, 0.3);
+    border-color: rgba(var(--accent-color-rgb), 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
     .skill-icon i {
-      color: #0563bb;
+      color: var(--accent-color);
       transform: scale(1.1);
     }
 

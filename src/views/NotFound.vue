@@ -33,7 +33,7 @@ export default {
   font-weight: 900;
   line-height: 1;
   font-family: "Raleway", sans-serif;
-  background: linear-gradient(135deg, #0563bb, #149ddd);
+  background: linear-gradient(135deg, var(--accent-color), #149ddd);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
@@ -56,7 +56,7 @@ export default {
 .btn-home {
   display: inline-flex;
   align-items: center;
-  background: #0563bb;
+  background: var(--accent-color);
   color: #fff;
   padding: 14px 35px;
   border-radius: 50px;
@@ -67,7 +67,7 @@ export default {
   &:hover {
     background: #0678e3;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(5, 99, 187, 0.3);
+    box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
     color: #fff;
   }
 }

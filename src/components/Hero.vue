@@ -118,7 +118,7 @@ export default {
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(5, 99, 187, 0.1) 0%, rgba(4, 11, 20, 0) 70%);
+    background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(4, 11, 20, 0) 70%);
     filter: blur(50px);
     border-radius: 50%;
   }
@@ -148,7 +148,7 @@ export default {
   font-family: "Poppins", sans-serif;
 
   .typed {
-    color: #0563bb;
+    color: var(--accent-color);
     font-weight: 600;
   }
 }
@@ -246,13 +246,13 @@ export default {
 
   i {
     font-size: 0.9rem;
-    color: #0563bb;
+    color: var(--accent-color);
     transition: color 0.25s ease;
   }
 
   &:hover {
-    background: rgba(5, 99, 187, 0.1);
-    border-color: rgba(5, 99, 187, 0.25);
+    background: rgba(var(--accent-color-rgb), 0.1);
+    border-color: rgba(var(--accent-color-rgb), 0.25);
     color: #fff;
 
     i {
@@ -279,7 +279,7 @@ export default {
 
   &:hover {
     background: rgba(0, 0, 0, 0.5);
-    border-color: #0563bb;
+    border-color: var(--accent-color);
     color: #fff;
   }
 }

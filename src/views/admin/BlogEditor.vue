@@ -285,7 +285,7 @@ watch(form, (newVal) => {
 
 <style lang="scss" scoped>
 .restore-banner {
-  background: #0563bb;
+  background: var(--accent-color);
   color: #fff;
   padding: 10px 20px;
   display: flex;
@@ -321,7 +321,7 @@ watch(form, (newVal) => {
   font-size: 1.5rem;
   transition: 0.3s;
   &:hover {
-    color: #0563bb;
+    color: var(--accent-color);
   }
 }
 
@@ -352,8 +352,8 @@ watch(form, (newVal) => {
 
     &:focus {
       background: rgba(255, 255, 255, 0.08);
-      border-color: #0563bb;
-      box-shadow: 0 0 0 0.25rem rgba(5, 99, 187, 0.25);
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 0.25rem rgba(var(--accent-color-rgb), 0.25);
     }
   }
 
@@ -370,7 +370,7 @@ watch(form, (newVal) => {
   background: rgba(255, 255, 255, 0.01);
 
   .preview-label {
-    color: #0563bb;
+    color: var(--accent-color);
     font-weight: 700;
     font-size: 0.9rem;
     text-transform: uppercase;

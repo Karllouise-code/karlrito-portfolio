@@ -155,9 +155,9 @@ onMounted(() => {
   cursor: pointer;
 
   &:hover {
-    background: #0563bb;
-    border-color: #0563bb;
-    box-shadow: 0 10px 20px rgba(5, 99, 187, 0.2);
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.2);
     transform: translateY(-2px);
   }
 }
@@ -185,7 +185,7 @@ onMounted(() => {
   
   i {
     font-size: 3rem;
-    color: #0563bb;
+    color: var(--accent-color);
     margin-bottom: 15px;
     display: block;
   }

@@ -28,7 +28,7 @@
       justify-content: center;
       width: 40px;
       height: 40px;
-      background: #0563bb;
+      background: var(--accent-color);
       border-radius: 8px;
       font-size: 16px;
       font-weight: 800;
@@ -79,7 +79,7 @@
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: #0563bb;
+      background-color: var(--accent-color);
       transition: all 0.3s ease-in-out;
     }
 
@@ -89,17 +89,17 @@
   }
 
   .btn-get-started {
-    background: #0563bb;
+    background: var(--accent-color);
     color: #fff;
     padding: 8px 25px;
     border-radius: 50px;
     font-weight: 600;
     transition: 0.3s;
-    border: 2px solid #0563bb;
+    border: 2px solid var(--accent-color);
 
     &:hover {
       background: transparent;
-      color: #0563bb;
+      color: var(--accent-color);
     }
 
     &::after { display: none; }

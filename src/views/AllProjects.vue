@@ -14,7 +14,7 @@
                 v-for="f in filters"
                 :key="f.key"
                 :class="['filter-btn', { active: activeFilter === f.key }]"
-                :style="{ '--pill-accent': f.color }"
+                :data-filter="f.key"
                 @click="setFilter(f.key)"
               >
                 <i :class="f.icon"></i>
@@ -33,7 +33,7 @@
               v-for="(project, index) in filteredProjects"
               :key="index"
             >
-              <div class="project-card" :style="{ '--card-accent': project.type === 'company' ? '#0563bb' : '#3fb950' }">
+               <div class="project-card" :class="project.type === 'company' ? 'project-card-company' : 'project-card-personal'">
                 <span class="project-index">{{ String(index + 1).padStart(2, '0') }}</span>
                 <div class="project-type-icon">
                   <i :class="project.type === 'company' ? 'bi bi-briefcase' : 'bi bi-code-slash'"></i>
@@ -76,9 +76,9 @@ const setFilter = (filter) => {
 };
 
 const filters = computed(() => [
-  { key: 'all', label: 'All', icon: 'bi bi-grid-3x3-gap', color: '#0563bb' },
-  { key: 'company', label: 'Company', icon: 'bi bi-briefcase', color: '#0563bb' },
-  { key: 'personal', label: 'Personal', icon: 'bi bi-code-slash', color: '#3fb950' },
+  { key: 'all', label: 'All', icon: 'bi bi-grid-3x3-gap' },
+  { key: 'company', label: 'Company', icon: 'bi bi-briefcase' },
+  { key: 'personal', label: 'Personal', icon: 'bi bi-code-slash' },
 ]);
 
 const filteredProjects = computed(() => {
@@ -159,13 +159,23 @@ onMounted(() => {
 
   &.active {
     color: #fff;
-    background: var(--pill-accent, #0563bb);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.3);
   }
 }
 
 .projects-grid {
   padding: 60px 0;
+}
+
+.project-card-company {
+  --card-accent: var(--accent-color);
+  --card-accent-rgb: var(--accent-color-rgb);
+}
+
+.project-card-personal {
+  --card-accent: #3fb950;
+  --card-accent-rgb: 63, 185, 80;
 }
 
 .project-card {
@@ -185,7 +195,7 @@ onMounted(() => {
     top: 0;
     width: 3px;
     height: 0;
-    background: var(--card-accent, #0563bb);
+    background: var(--card-accent);
     transition: height 0.35s ease;
     border-radius: 0 0 3px 3px;
     z-index: 1;
@@ -194,16 +204,16 @@ onMounted(() => {
   &:hover {
     transform: translateY(-6px);
     background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(var(--card-accent), 0.3);
+    border-color: rgba(var(--card-accent-rgb), 0.3);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 
     &::before { height: 100%; }
 
-    .project-title { color: var(--card-accent, #0563bb); }
+    .project-title { color: var(--card-accent); }
 
     .project-link {
       color: #fff;
-      background: var(--card-accent, #0563bb);
+      background: var(--card-accent);
     }
   }
 }
@@ -235,7 +245,7 @@ onMounted(() => {
 
   i {
     font-size: 0.9rem;
-    color: var(--card-accent, #0563bb);
+    color: var(--card-accent);
   }
 }
 

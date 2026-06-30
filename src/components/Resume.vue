@@ -165,7 +165,7 @@ const stats = computed(() => [
 </script>
 
 <style scoped lang="scss">
-$accent: #0563bb;
+
 
 .resume {
   padding: 100px 0;
@@ -208,7 +208,7 @@ $accent: #0563bb;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: rgba($accent, 0.3);
+    border-color: rgba(var(--accent-color-rgb), 0.3);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   }
@@ -218,7 +218,7 @@ $accent: #0563bb;
   display: block;
   font-size: 2.2rem;
   font-weight: 800;
-  color: $accent;
+  color: var(--accent-color);
   font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
   line-height: 1;
   margin-bottom: 0.3rem;
@@ -258,8 +258,8 @@ $accent: #0563bb;
 
   i {
     font-size: 1.2rem;
-    color: $accent;
-    background: rgba($accent, 0.1);
+    color: var(--accent-color);
+    background: rgba(var(--accent-color-rgb), 0.1);
     width: 36px;
     height: 36px;
     border-radius: 8px;
@@ -287,7 +287,7 @@ $accent: #0563bb;
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, $accent 0%, rgba($accent, 0.1) 100%);
+    background: linear-gradient(180deg, var(--accent-color) 0%, rgba(var(--accent-color-rgb), 0.1) 100%);
   }
 }
 
@@ -309,7 +309,7 @@ $accent: #0563bb;
   height: 20px;
   border-radius: 50%;
   background: var(--background-color);
-  border: 2px solid $accent;
+  border: 2px solid var(--accent-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -318,14 +318,14 @@ $accent: #0563bb;
 
   i {
     font-size: 0.5rem;
-    color: $accent;
+    color: var(--accent-color);
     transition: color 0.3s ease;
   }
 }
 
 .timeline-item:hover .timeline-dot {
-  background: $accent;
-  box-shadow: 0 0 12px rgba($accent, 0.4);
+  background: var(--accent-color);
+  box-shadow: 0 0 12px rgba(var(--accent-color-rgb), 0.4);
 
   i { color: #fff; }
 }
@@ -339,7 +339,7 @@ $accent: #0563bb;
 
   &:hover {
     background: rgba(255, 255, 255, 0.04);
-    border-color: rgba($accent, 0.2);
+    border-color: rgba(var(--accent-color-rgb), 0.2);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     transform: translateX(4px);
   }
@@ -386,7 +386,7 @@ $accent: #0563bb;
 .timeline-company {
   display: block;
   font-size: 0.9rem;
-  color: $accent;
+  color: var(--accent-color);
   font-weight: 500;
   margin-bottom: 0.75rem;
 }
@@ -402,7 +402,7 @@ $accent: #0563bb;
     padding-bottom: 4px;
 
     &::marker {
-      color: $accent;
+      color: var(--accent-color);
     }
   }
 }
@@ -424,12 +424,12 @@ $accent: #0563bb;
 .timeline-tag {
   display: inline-block;
   padding: 0.15rem 0.5rem;
-  background: rgba($accent, 0.08);
-  border: 1px solid rgba($accent, 0.15);
+  background: rgba(var(--accent-color-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.15);
   border-radius: 3px;
   font-size: 0.65rem;
   font-weight: 600;
-  color: $accent;
+  color: var(--accent-color);
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
