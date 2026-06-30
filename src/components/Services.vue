@@ -1,19 +1,20 @@
 <template>
   <section id="services" class="services section dark-background">
-    <div class="container section-title text-center mb-5" data-aos="fade-up">
-      <h2 class="display-4 fw-bold">Services</h2>
-      <p class="lead-text mx-auto">Professional development services tailored to your business needs</p>
+    <div class="container section-title text-center" data-aos="fade-up">
+      <h2>Services</h2>
+      <p>What I can build for you</p>
     </div>
 
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4 col-md-6" v-for="(service, index) in services" :key="index" data-aos="fade-up" :data-aos-delay="100 * (index + 1)">
-          <div class="service-card">
-            <div class="service-icon">
-              <i :class="service.icon"></i>
-            </div>
-            <h4 class="service-title">{{ service.title }}</h4>
-            <p class="service-description">{{ service.description }}</p>
+      <div class="services-grid">
+        <div v-for="(service, index) in services" :key="index" class="service-item" data-aos="fade-up" :data-aos-delay="100 * (index + 1)">
+          <div class="service-icon">
+            <i :class="service.icon"></i>
+          </div>
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-desc">{{ service.description }}</p>
+          <div class="service-tags">
+            <span v-for="tag in service.tags" :key="tag" class="tag">{{ tag }}</span>
           </div>
         </div>
       </div>
@@ -28,33 +29,39 @@ const services = ref([
   {
     title: "Full-Stack Development",
     icon: "bi bi-code-slash",
-    description: "End-to-end web application development using Vue.js, React, Laravel, and Node.js with modern best practices."
+    description: "End-to-end web applications from database to deployment.",
+    tags: ["Vue.js", "Laravel", "Node.js"],
   },
   {
     title: "Frontend Development",
     icon: "bi bi-palette",
-    description: "Responsive and performant user interfaces with Vue.js, React, TypeScript, and modern CSS frameworks."
+    description: "Responsive interfaces with modern frameworks and tools.",
+    tags: ["Vue 3", "React", "TypeScript", "SCSS"],
   },
   {
     title: "Backend Development",
     icon: "bi bi-server",
-    description: "Scalable server-side solutions with Laravel, Node.js, and RESTful/GraphQL APIs backed by robust databases."
+    description: "Scalable server logic, APIs, and authentication.",
+    tags: ["Laravel", "Node.js", "REST", "GraphQL"],
   },
   {
-    title: "API Development",
+    title: "API Design & Integration",
     icon: "bi bi-bezier2",
-    description: "Design and implementation of RESTful and GraphQL APIs with comprehensive documentation and testing."
+    description: "Clean, documented APIs that other devs enjoy using.",
+    tags: ["RESTful", "GraphQL", "OpenAPI"],
   },
   {
-    title: "Database Design",
+    title: "Database Architecture",
     icon: "bi bi-database",
-    description: "Efficient database architecture and optimization using MySQL, PostgreSQL, SQLite, and Firebase."
+    description: "Schema design, optimization, and data modeling.",
+    tags: ["MySQL", "PostgreSQL", "SQLite", "Firebase"],
   },
   {
-    title: "Cloud Deployment",
+    title: "Cloud & DevOps",
     icon: "bi bi-cloud-upload",
-    description: "Application deployment and management on Netlify and Render with CI/CD pipeline setup."
-  }
+    description: "CI/CD pipelines, hosting, and infrastructure management.",
+    tags: ["Netlify", "Render", "Docker"],
+  },
 ]);
 </script>
 
@@ -66,95 +73,136 @@ const services = ref([
 }
 
 .section-title {
+  margin-bottom: 4rem;
+
   h2 {
     font-family: "Raleway", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
     letter-spacing: -1px;
     background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   p {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
     font-size: 1.1rem;
     font-family: "Poppins", sans-serif;
   }
 }
 
-.service-card {
-  padding: 50px 30px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  height: 100%;
-  transition: all 0.4s ease;
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-item {
+  text-align: center;
   position: relative;
-  overflow: hidden;
+  padding-bottom: 3rem;
 
   &::after {
     content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    background: linear-gradient(225deg, rgba(5, 99, 187, 0.1) 0%, transparent 50%);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 2rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent);
     transition: all 0.4s ease;
   }
 
-  &:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(5, 99, 187, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-
-    &::after {
-      width: 100px;
-      height: 100px;
-    }
-
-    .service-icon i {
-      color: #0563bb;
-      transform: scale(1.1);
-    }
-
-    .service-title {
-      color: #fff;
-    }
+  &:hover::after {
+    width: 2rem;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0563bb, transparent);
   }
 }
 
 .service-icon {
-  margin-bottom: 25px;
-  
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: all 0.4s ease;
+
   i {
-    font-size: 2.5rem;
-    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.25);
     transition: all 0.3s ease;
-    display: inline-block;
+  }
+}
+
+.service-item:hover .service-icon {
+  border-color: #0563bb;
+  background: rgba(5, 99, 187, 0.08);
+  box-shadow: 0 0 24px rgba(5, 99, 187, 0.12);
+
+  i {
+    color: #0563bb;
   }
 }
 
 .service-title {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
-  font-size: 1.25rem;
-  margin-bottom: 15px;
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
   color: rgba(255, 255, 255, 0.9);
   transition: color 0.3s ease;
 }
 
-.service-description {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.5);
+.service-item:hover .service-title {
+  color: #fff;
+}
+
+.service-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.4);
   margin-bottom: 0;
 }
 
-@media (max-width: 576px) {
-  .service-card {
-    padding: 40px 25px;
-  }
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.65rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.service-item:hover .tag {
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(5, 99, 187, 0.25);
 }
 </style>
