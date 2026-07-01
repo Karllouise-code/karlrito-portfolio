@@ -47,8 +47,8 @@ export const projects = [
   {
     title: "Strava Activity Visualizer",
     description: "A modern web application to visualize and analyze Strava activity data. Fetches activities from Strava API, caches them in Firebase, and provides an interactive dashboard.",
-    link: "https://karlritostrava.netlify.app/",
-    slug: "karlritostrava.netlify.app",
+    link: "https://runrito.netlify.app/",
+    slug: "runrito.netlify.app",
     type: "personal",
     tags: ["Vue", "Firebase", "API"],
     featured: true,
