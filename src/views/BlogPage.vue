@@ -587,7 +587,7 @@ $blog-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
 @media (max-width: 768px) {
   .blog-hero {
-    padding: 100px 0 50px 0;
+    padding: 130px 0 50px 0 !important;
 
     h1 {
       font-size: 2.5rem;
