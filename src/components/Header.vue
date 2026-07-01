@@ -10,14 +10,14 @@
         <ul>
           <li v-for="item in navItems" :key="item.id">
             <a v-if="item.hash" :href="item.hash" :class="{ active: item.active }" @click.prevent="handleNavClick(item.hash)">
-              {{ item.name }}
+              <span class="nav-slash" :class="{ active: item.active }">/</span>{{ item.name.toLowerCase() }}
             </a>
             <router-link v-else :to="item.path" :class="{ active: item.active }" @click="closeMobileMenu">
-              {{ item.name }}
+              <span class="nav-slash" :class="{ active: item.active }">/</span>{{ item.name.toLowerCase() }}
             </router-link>
           </li>
           <li>
-            <router-link to="/resume" class="btn-get-started">Resume</router-link>
+            <router-link to="/resume" class="btn-get-started">resume</router-link>
           </li>
           <li class="theme-toggle-li">
             <button class="theme-toggle" @click="toggleTheme" :title="isDark ? 'Light mode' : 'Dark mode'">

@@ -1,48 +1,49 @@
-/**
- * Minimalist Top Navigation Bar
- * Features glassmorphism, smooth transitions, and fixed-top behavior
- */
-
 .header {
-  height: 80px;
+  height: 100px;
   z-index: 997;
-  transition: all 0.5s;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   background: transparent;
-  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
   &.header-scrolled {
-    background: rgba(4, 11, 20, 0.9);
-    backdrop-filter: blur(10px);
-    height: 70px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    height: 60px;
+    background: rgba(4, 11, 20, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   &.mobile-menu-active {
     height: 100%;
   }
 
+  .container-fluid {
+    padding-left: calc(var(--bs-gutter-x, 0.75rem) + 8px);
+    padding-right: calc(var(--bs-gutter-x, 0.75rem) + 8px);
+  }
+
   .logo {
+    text-decoration: none;
+
     .logo-mark {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: var(--accent-color);
-      border-radius: 8px;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 800;
       font-family: "Raleway", sans-serif;
       color: #fff;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
+      letter-spacing: 6px;
+      transition: opacity 0.3s ease;
     }
 
     &:hover .logo-mark {
-      background: #044a94;
-      transform: scale(1.05);
+      opacity: 0.6;
     }
   }
+}
+
+.header-scrolled .logo-mark {
+  font-size: 18px;
+  letter-spacing: 5px;
 }
 
 /* Desktop Navigation */
@@ -55,58 +56,69 @@
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 30px;
+    gap: 28px;
   }
 
   a {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 15px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11px;
     font-weight: 500;
     font-family: "Poppins", sans-serif;
-    transition: 0.3s;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: color 0.3s;
     text-decoration: none;
-    padding: 5px 0;
+    padding: 4px 0;
     position: relative;
 
-    &:hover, &.active {
+    &:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    &.active {
       color: #fff;
     }
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--accent-color);
-      transition: all 0.3s ease-in-out;
-    }
+  .nav-slash {
+    color: rgba(255, 255, 255, 0.12);
+    transition: color 0.3s;
+    margin-right: 1px;
 
-    &:hover::after, &.active::after {
-      width: 100%;
+    &.active {
+      color: var(--accent-color);
     }
   }
 
   .btn-get-started {
-    background: var(--accent-color);
-    color: #fff;
-    padding: 8px 25px;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: 0.3s;
-    border: 2px solid var(--accent-color);
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    transition: all 0.3s;
 
     &:hover {
-      background: transparent;
-      color: var(--accent-color);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.35);
+      background: none;
+    }
+
+    &.active {
+      color: #fff;
+      border-color: var(--accent-color);
     }
 
     &::after { display: none; }
   }
 }
 
-/* Theme toggle button */
+/* Theme toggle */
 .theme-toggle-li {
   display: flex;
   align-items: center;
@@ -115,21 +127,21 @@
 .theme-toggle {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 20px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 17px;
   cursor: pointer;
-  padding: 5px;
+  padding: 4px;
   line-height: 1;
   transition: color 0.3s;
   display: flex;
   align-items: center;
 
   &:hover {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.7);
   }
 }
 
-/* Mobile controls container */
+/* Mobile controls */
 .mobile-controls {
   display: flex;
   align-items: center;
@@ -137,21 +149,36 @@
   z-index: 999;
 
   .theme-toggle {
-    font-size: 22px;
+    font-size: 19px;
   }
 }
 
-/* Mobile Navigation */
 .mobile-nav-toggle {
-  color: #fff;
-  font-size: 28px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 24px;
   cursor: pointer;
   line-height: 0;
-  transition: 0.5s;
+  transition: 0.3s;
   display: none;
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 @media (max-width: 991px) {
+  .header {
+    height: 70px;
+
+    &.header-scrolled {
+      height: 60px;
+    }
+  }
+
+  .header-scrolled .wordmark {
+    font-size: 20px;
+  }
+
   .mobile-nav-toggle {
     display: block;
   }
@@ -169,25 +196,48 @@
       display: flex;
       position: fixed;
       inset: 0;
-      padding: 50px 0;
-      background: rgba(4, 11, 20, 1);
+      padding: 80px 0 40px;
+      background: rgba(4, 11, 20, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       flex-direction: column;
       overflow-y: auto;
-      scrollbar-width: none; /* Hide scrollbar in Firefox */
-      -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       transition: 0.3s;
       z-index: 998;
-      gap: 20px;
+      gap: 8px;
       text-align: center;
     }
-    
+
     ul::-webkit-scrollbar {
-      display: none; /* Hide scrollbar in Chrome/Safari */
+      display: none;
     }
 
     a {
-      font-size: 20px;
-      color: #fff;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 4px;
+
+      &.active {
+        color: #fff;
+      }
+    }
+
+    .nav-slash {
+      margin-right: 2px;
+    }
+
+    .btn-get-started {
+      font-size: 15px;
+      letter-spacing: 4px;
+      border-color: rgba(255, 255, 255, 0.1);
+      background: none;
+      margin-top: 8px;
+    }
+
+    .logo-mark {
+      font-size: 18px;
     }
 
     .theme-toggle-li {
