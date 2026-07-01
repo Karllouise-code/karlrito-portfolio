@@ -6,7 +6,7 @@
         <span class="logo-mark">KR</span>
       </router-link>
 
-      <nav id="navmenu" class="navmenu" :class="{ 'mobile-nav-active': isMobileShow }">
+      <nav id="navmenu" class="navmenu">
         <ul>
           <li v-for="item in navItems" :key="item.id">
             <a v-if="item.hash" :href="item.hash" :class="{ active: item.active }" @click.prevent="handleNavClick(item.hash)">
@@ -35,6 +35,26 @@
 
     </div>
   </header>
+
+  <!-- Mobile drawer (outside header to avoid backdrop-filter containment issues) -->
+  <div class="mobile-drawer d-lg-none" :class="{ active: isMobileShow }">
+    <div class="mobile-drawer-backdrop" @click="closeMobileMenu"></div>
+    <div class="mobile-drawer-panel">
+      <ul>
+        <li v-for="(item, index) in navItems" :key="item.id" :style="{ '--i': index }">
+          <a v-if="item.hash" :href="item.hash" :class="{ active: item.active }" @click.prevent="handleNavClick(item.hash)">
+            <span class="nav-slash" :class="{ active: item.active }">/</span>{{ item.name.toLowerCase() }}
+          </a>
+          <router-link v-else :to="item.path" :class="{ active: item.active }" @click="closeMobileMenu">
+            <span class="nav-slash" :class="{ active: item.active }">/</span>{{ item.name.toLowerCase() }}
+          </router-link>
+        </li>
+        <li :style="{ '--i': navItems.length }">
+          <router-link to="/resume" class="btn-get-started">resume</router-link>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
