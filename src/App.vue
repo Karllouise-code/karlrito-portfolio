@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <CursorGlow />
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" :key="$route.fullPath" />
@@ -13,10 +14,11 @@
 import { watch } from 'vue';
 import { useRoute } from 'vue-router';
 import ChatBot from '@/components/ChatBot.vue';
+import CursorGlow from '@/components/CursorGlow.vue';
 
 export default {
   name: "App",
-  components: { ChatBot },
+  components: { ChatBot, CursorGlow },
   setup() {
     const route = useRoute();
 
