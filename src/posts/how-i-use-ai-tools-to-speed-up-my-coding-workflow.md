@@ -4,10 +4,10 @@ date: '2026-06-27'
 author: Karl Rito
 slug: how-i-use-ai-tools-to-speed-up-my-coding-workflow
 description: >-
-  AI tools have genuinely changed how I code every day. From Gemini CLI to
-  OpenCode, and Perplexity or Comet for browser tasks, here is my honest
-  breakdown of what I actually use, why I switched, and how it all fits together
-  in my workflow.
+  AI tools have genuinely changed how I code every day. From GitHub Copilot
+  Chat to Gemini CLI to OpenCode, and Perplexity or Comet for browser tasks,
+  here is my honest breakdown of what I actually use, why I switched, and how it
+  all fits together in my workflow.
 category: Productivity
 ---
 I will be honest with you: I used to spend a huge chunk of my dev time just figuring things out. Searching docs, reading Stack Overflow, re-reading the same error message five times, and wondering if I was just slow. Turns out, I was not slow. I just did not have the right tools yet.
@@ -18,19 +18,27 @@ Here is what my actual setup looks like.
 
 ---
 
-## Where It Started: Gemini CLI
+## Where It Started: GitHub Copilot Chat
 
-My first serious AI coding tool was **Gemini CLI**. For those who haven't heard of it, it's Google's command-line tool that lets you talk to Gemini models directly from your terminal. No browser tab switching, no copy-pasting code into a chat window. Just you, your terminal, and an AI that can read your files and help you work.
+My first serious AI coding tool was **GitHub Copilot Chat**. Back in college, I got access through the GitHub Student Developer Pack, and it was a game changer. What made it stand out from regular LLMs was that it actually knew my codebase. I could ask it about a specific function, file, or pattern, and it would answer in context, not in vague generalities.
 
-I loved it. I could ask it to explain a function, generate a boilerplate, debug a cryptic error, or even help me restructure a messy component. It felt like pair programming, except my pair never got tired or needed a break.
+I used it heavily. Debugging, boilerplate, refactoring, understanding unfamiliar code — Copilot Chat handled all of it. The fact that it was integrated right in my editor and understood the project structure made it feel like pair programming with someone who actually read the code.
 
-The reason I gravitated toward the CLI over a browser-based chat was simple: **I never had to leave my workflow**. Everything stayed in the terminal. I could pipe in file contents, ask questions in context, and stay focused.
+---
+
+## The Gap After Graduation
+
+When I graduated, I lost access to the premium GitHub Copilot features. That left a real gap in my workflow. I had gotten used to having an AI that understood my codebase, and going back felt like losing a tool I genuinely relied on.
+
+That is when I found **Gemini CLI**. For those who haven't heard of it, it is Google's command-line tool that lets you talk to Gemini models directly from your terminal. No browser tab switching, no copy-pasting code into a chat window. Just you, your terminal, and an AI that can read your files and help you work.
+
+I was able to register using Google's one-year free Pro tier, so I gave it a shot. I loved the CLI experience — I could ask it to explain a function, generate boilerplate, debug a cryptic error, or restructure a messy component. The reason I gravitated toward the CLI over a browser-based chat was simple: **I never had to leave my workflow**. Everything stayed in the terminal. I could pipe in file contents, ask questions in context, and stay focused.
 
 ---
 
 ## Why I Switched to OpenCode
 
-Here's where things got a bit frustrating. Gemini CLI worked great because it supported Google account logins, specifically Google Pro. But at some point, that changed. Google dropped support for Google Pro logins in Gemini CLI, which meant I could no longer authenticate the way I had been. It just stopped working for me.
+Here is where things got frustrating again. Gemini CLI worked great for a while, but then Google stopped supporting the login method I had been using. The CLI just stopped working for me.
 
 So I started looking for alternatives and found **OpenCode**.
 
