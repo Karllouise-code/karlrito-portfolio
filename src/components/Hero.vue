@@ -29,6 +29,12 @@
       </div>
     </div>
 
+    <div class="hero-social-rail">
+      <a href="https://github.com/Karllouise-code" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/karllouise08/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <span class="hero-social-rail-line"></span>
+    </div>
+
     <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
       <div class="mouse">
         <div class="wheel"></div>
@@ -298,6 +304,41 @@ export default {
   animation: cursor-blink 1s step-end infinite;
 }
 
+.hero-social-rail {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 3;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--accent-color);
+      transform: scale(1.15);
+    }
+  }
+}
+
+.hero-social-rail-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+}
+
 @keyframes cursor-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -310,6 +351,10 @@ export default {
 
   .hero-typed-container {
     font-size: 1.2rem;
+  }
+
+  .hero-social-rail {
+    display: none;
   }
 }
 </style>
