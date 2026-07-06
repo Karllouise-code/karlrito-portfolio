@@ -1,17 +1,21 @@
 <template>
   <footer id="footer" class="footer position-relative dark-background">
+    <div class="footer-bar"></div>
     <div class="container">
-      <div class="footer-content text-center py-5">
-        <div class="divider-minimal mx-auto mb-4"></div>
-        <div class="copyright">
-          <p class="mb-0">© <span>{{ new Date().getFullYear() }}</span> <span class="fw-bold">Karl Louise Rito</span>. <span>All Rights Reserved</span></p>
+      <div class="footer-row">
+        <div class="footer-left">
+          <span class="footer-mark">&lt;/&gt;</span>
+          <p class="footer-copyright">© {{ new Date().getFullYear() }} Karl Louise Rito</p>
         </div>
-        <div class="social-links-minimal mt-3">
-          <a href="https://github.com/Karllouise-code" target="_blank" class="mx-2" aria-label="GitHub"><i class="bi bi-github"></i></a>
-          <a href="https://www.linkedin.com/in/karllouise08/" target="_blank" class="mx-2" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-        </div>
-        <div class="admin-link mt-4">
-          <router-link to="/admin" class="lock-link">
+        <div class="footer-right">
+          <div class="footer-social-group">
+            <span class="footer-label">Let's connect</span>
+            <div class="footer-social">
+              <a href="https://github.com/Karllouise-code" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+              <a href="https://www.linkedin.com/in/karllouise08/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <router-link to="/admin" class="footer-lock" aria-label="Admin">
             <i class="bi bi-lock"></i>
           </router-link>
         </div>
@@ -27,46 +31,120 @@
 <style scoped lang="scss">
 .footer {
   background-color: var(--background-color);
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  color: rgba(255, 255, 255, 0.4);
   font-family: "Poppins", sans-serif;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
 }
 
-.divider-minimal {
-  width: 40px;
+.footer-bar {
   height: 2px;
-  background: var(--accent-color);
-  opacity: 0.5;
+  background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
+  opacity: 0.35;
 }
 
-.copyright {
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  
-  span.fw-bold {
-    color: #fff;
-  }
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
 }
 
-.social-links-minimal {
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-mark {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  opacity: 0.6;
+  line-height: 1;
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+  margin: 0;
+  opacity: 0.6;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-social-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
   a {
     color: rgba(255, 255, 255, 0.3);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    text-decoration: none;
     transition: all 0.3s ease;
-    
+
     &:hover {
       color: var(--accent-color);
+      transform: translateY(-1px);
     }
   }
 }
 
-.lock-link {
+.footer-lock {
   color: rgba(255, 255, 255, 0.1);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
+  text-decoration: none;
   transition: all 0.3s ease;
-  
-  &:hover {
-    color: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+}
+
+.footer:hover .footer-lock {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .footer-row {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-left {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-right {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-social-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-lock {
+    opacity: 1;
   }
 }
 </style>
