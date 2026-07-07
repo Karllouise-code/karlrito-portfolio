@@ -3,25 +3,27 @@
   align-items: center;
   gap: 10px;
   padding: 12px 30px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   i {
     transition: transform 0.3s ease;
   }
 
   &:hover {
-    background: var(--accent-color);
+    background: rgba(var(--accent-color-rgb), 0.15);
     border-color: var(--accent-color);
     color: #fff;
-    box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.2);
+    box-shadow: 0 10px 30px rgba(var(--accent-color-rgb), 0.25), inset 0 0 20px rgba(var(--accent-color-rgb), 0.05);
 
     i:last-child {
       transform: translateX(5px);
