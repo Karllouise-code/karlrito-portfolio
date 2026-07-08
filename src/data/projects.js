@@ -74,8 +74,8 @@ export const projects = [
   {
     title: "Happy Kids",
     description: "A fundraising platform for children's health and education with a CMS and PayPal Payment Gateway. Built for a non-profit organization at Trimex Colleges.",
-    link: "https://github.com/Lester-Fong/Happy-Kids",
-    slug: "github.com/Lester-Fong/Happy-Kids",
+    link: "http://happykids.byethost16.com/",
+    slug: "happykids.byethost16.com",
     type: "personal",
     tags: ["Vue", "Laravel", "GraphQL", "PayPal"],
     featured: true,
