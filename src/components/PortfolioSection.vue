@@ -108,8 +108,8 @@ const featuredProjects = computed(() => projects.filter((p) => p.featured));
     }
 
     .project-link {
-      color: #fff;
-      background: var(--accent-color);
+      color: var(--accent-color);
+      background: rgba(var(--accent-color-rgb), 0.1);
     }
   }
 }

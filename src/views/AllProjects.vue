@@ -212,8 +212,8 @@ onMounted(() => {
     .project-title { color: var(--card-accent); }
 
     .project-link {
-      color: #fff;
-      background: var(--card-accent);
+      color: var(--card-accent);
+      background: rgba(var(--card-accent-rgb), 0.1);
     }
   }
 }
