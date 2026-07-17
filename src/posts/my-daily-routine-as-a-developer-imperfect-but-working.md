@@ -9,6 +9,7 @@ description: >-
   fasting, and the small habits that keep me going. Not optimized, not
   glamorous, but it works.
 category: Life
+image: /og-daily-routine.png
 ---
 I am not a productivity guru. I do not wake up at 4 AM, I do not have a color-coded Notion dashboard, and I definitely do not meditate for an hour every morning. What I do have is a set of habits that, somehow, keep me moving forward as a developer and as a person. This is my routine — the one that is actually working for me right now — and I just want to share it honestly.
 

@@ -24,23 +24,34 @@ export default {
 
     const updateMeta = (to) => {
       const meta = to.meta || {};
-      document.title = meta.title || "Karl Louise Rito";
+      const title = meta.title || "Karl Louise Rito";
+      const description = meta.description || "Portfolio of Karl Louise Rito, a full-stack web developer.";
+      const url = `https://karllouiserito.netlify.app${to.fullPath}`;
+      const image = meta.image || "https://karllouiserito.netlify.app/og-default.png";
 
-      let description = document.querySelector('meta[name="description"]');
-      if (!description) {
-        description = document.createElement('meta');
-        description.setAttribute('name', 'description');
-        document.head.appendChild(description);
-      }
-      description.setAttribute('content', meta.description || "Portfolio of Karl Louise Rito, a full-stack web developer.");
+      document.title = title;
 
-      let keywords = document.querySelector('meta[name="keywords"]');
-      if (!keywords) {
-        keywords = document.createElement('meta');
-        keywords.setAttribute('name', 'keywords');
-        document.head.appendChild(keywords);
-      }
-      keywords.setAttribute('content', meta.keywords || "Karl Rito, web developer, portfolio, Vue, Laravel, full-stack");
+      const setMeta = (attr, key, content) => {
+        let el = document.querySelector(`meta[${attr}="${key}"]`);
+        if (!el) {
+          el = document.createElement('meta');
+          el.setAttribute(attr, key);
+          document.head.appendChild(el);
+        }
+        el.setAttribute('content', content);
+      };
+
+      setMeta('name', 'description', description);
+      setMeta('name', 'keywords', meta.keywords || "Karl Rito, web developer, portfolio, Vue, Laravel, full-stack");
+
+      setMeta('property', 'og:title', title);
+      setMeta('property', 'og:description', description);
+      setMeta('property', 'og:url', url);
+      setMeta('property', 'og:image', image);
+
+      setMeta('name', 'twitter:title', title);
+      setMeta('name', 'twitter:description', description);
+      setMeta('name', 'twitter:image', image);
     };
 
     // Update meta on route change and initial load

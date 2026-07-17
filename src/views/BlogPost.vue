@@ -139,7 +139,34 @@ onMounted(async () => {
       rawContent: content
     };
 
-    document.title = `${post.value.title} — Karl Rito`;
+    const postTitle = `${post.value.title} — Karl Rito`;
+    const postDesc = post.value.description || `Read ${post.value.title} on Karl Rito's blog.`;
+    const postUrl = `https://karllouiserito.netlify.app/blog/${slug}`;
+    const postImage = post.value.image
+      ? `https://karllouiserito.netlify.app${post.value.image}`
+      : 'https://karllouiserito.netlify.app/og-default.png';
+
+    document.title = postTitle;
+
+    const setMeta = (attr, key, content) => {
+      let el = document.querySelector(`meta[${attr}="${key}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+
+    setMeta('name', 'description', postDesc);
+    setMeta('property', 'og:title', postTitle);
+    setMeta('property', 'og:description', postDesc);
+    setMeta('property', 'og:url', postUrl);
+    setMeta('property', 'og:image', postImage);
+    setMeta('property', 'og:type', 'article');
+    setMeta('name', 'twitter:title', postTitle);
+    setMeta('name', 'twitter:description', postDesc);
+    setMeta('name', 'twitter:image', postImage);
   } catch (e) {
     router.replace('/404');
     return;
