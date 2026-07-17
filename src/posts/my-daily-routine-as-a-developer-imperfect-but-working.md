@@ -1,5 +1,5 @@
 ---
-title: My Daily Routine as a Developer: Imperfect, But Working
+title: 'My Daily Routine as a Developer: Imperfect, But Working'
 date: '2026-07-17'
 author: Karl Rito
 slug: my-daily-routine-as-a-developer-imperfect-but-working
