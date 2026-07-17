@@ -138,6 +138,8 @@ onMounted(async () => {
       content: marked(content),
       rawContent: content
     };
+
+    document.title = `${post.value.title} — Karl Rito`;
   } catch (e) {
     router.replace('/404');
     return;
@@ -153,6 +155,7 @@ onMounted(async () => {
 });
 
 onUnmounted(() => {
+  document.title = "Karl Louise Rito";
   window.removeEventListener('scroll', updateScrollProgress);
 });
 </script>
