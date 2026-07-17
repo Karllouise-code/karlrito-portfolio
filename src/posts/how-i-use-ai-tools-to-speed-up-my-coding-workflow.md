@@ -5,7 +5,7 @@ author: Karl Rito
 slug: how-i-use-ai-tools-to-speed-up-my-coding-workflow
 description: >-
   AI tools have genuinely changed how I code every day. From GitHub Copilot
-  Chat to Gemini CLI to OpenCode, and Perplexity or Comet for browser tasks,
+  Chat to Gemini CLI to a terminal-based tool I found, and Perplexity or Comet for browser tasks,
   here is my honest breakdown of what I actually use, why I switched, and how it
   all fits together in my workflow.
 category: Productivity
@@ -36,17 +36,17 @@ I was able to register using Google's one-year free Pro tier, so I gave it a sho
 
 ---
 
-## Why I Switched to OpenCode
+## Why I Switched to Something Better
 
 Here is where things got frustrating again. Gemini CLI worked great for a while, but then Google stopped supporting the login method I had been using. The CLI just stopped working for me.
 
-So I started looking for alternatives and found **OpenCode**.
+So I started looking for alternatives and stumbled on an open-source, terminal-based AI coding assistant that supports multiple providers. I am not going to name it directly because I do not want it to blow up and get ruined, but if you dig around for "Gemini CLI alternative" you will probably find it.
 
-OpenCode is an open-source, terminal-based AI coding assistant that supports multiple AI providers. Think of it as a spiritual successor to the Gemini CLI experience, but more flexible. You are not locked into one model or one company. You can plug in different providers depending on what you need, and the core workflow stays the same: you are in your terminal, you are in context, and the AI is right there with you.
+Think of it as a spiritual successor to the Gemini CLI experience, but more flexible. You are not locked into one model or one company. You can plug in different providers depending on what you need, and the core workflow stays the same: you are in your terminal, you are in context, and the AI is right there with you.
 
 The transition was not painful. The commands feel familiar, and honestly, having model flexibility is a nice bonus. I do not have to worry about a login policy change breaking my entire setup again.
 
-If you relied on Gemini CLI with a Google Pro account and hit the same wall I did, OpenCode is worth trying.
+If you relied on Gemini CLI with a Google Pro account and hit the same wall I did, you will know the feeling. Go find it.
 
 ---
 
@@ -83,12 +83,12 @@ Here is a rough picture of how I actually use these tools day to day:
 
 | Situation | Tool I Reach For |
 |---|---|
-| Writing or debugging code in the terminal | OpenCode |
-| Understanding a cryptic error message | OpenCode or Perplexity |
+| Writing or debugging code in the terminal | That terminal tool I mentioned |
+| Understanding a cryptic error message | That terminal tool or Perplexity |
 | Researching a library or API | Perplexity Pro |
 | Confusing docs or browser UI | Comet |
 | Automating something on a webpage | Comet |
-| Quick code generation or refactoring | OpenCode |
+| Quick code generation or refactoring | That terminal tool |
 
 There is no single tool that does everything. That's the honest answer. But having the right tool for the right context makes a real difference.
 
@@ -100,7 +100,7 @@ Since building this setup, a few things have genuinely improved:
 
 **Less context switching.** Before, I would break my flow to Google something, open five tabs, read through mostly irrelevant results, and forget what I was originally doing. Now, most questions get answered without leaving my terminal or browser.
 
-**Faster debugging.** Pasting an error into OpenCode with the relevant file in context gets me to the root cause much faster than searching manually. It doesn't always get it right on the first try, but it almost always narrows things down.
+**Faster debugging.** Pasting an error into that terminal tool with the relevant file in context gets me to the root cause much faster than searching manually. It doesn't always get it right on the first try, but it almost always narrows things down.
 
 **More confidence exploring unfamiliar code.** When I land on a codebase or library I haven't seen before, having an AI I can ask questions to makes exploration less intimidating. I can move faster without worrying about breaking something I don't understand yet.
 
@@ -122,7 +122,7 @@ If you use AI tools as a replacement for understanding, you will eventually get 
 
 My current AI toolkit is not complicated:
 
-- **OpenCode** in the terminal for coding work (after transitioning away from Gemini CLI)
+- A terminal-based AI tool in the terminal for coding work (after transitioning away from Gemini CLI) — I am keeping this one unnamed on purpose
 - **Perplexity Pro** for research, documentation, and quick answers
 - **Comet** for browser tasks, automation, and anything where I need AI that can actually interact with a page
 
