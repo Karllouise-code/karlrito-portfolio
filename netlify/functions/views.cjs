@@ -14,7 +14,7 @@ exports.handler = async (event) => {
 
   try {
     connectLambda(event);
-    const store = getStore('blog-views');
+    const store = getStore('blog-views-v2');
 
     if (event.httpMethod === 'GET') {
       const slug = event.queryStringParameters && event.queryStringParameters.slug;
