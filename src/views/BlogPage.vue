@@ -520,6 +520,11 @@ $blog-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .stat-count {
     display: block;
