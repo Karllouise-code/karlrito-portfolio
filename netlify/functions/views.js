@@ -1,3 +1,5 @@
+const { getStore } = require('@netlify/blobs');
+
 const headers = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type',
@@ -10,23 +12,11 @@ exports.handler = async (event) => {
     return { statusCode: 200, headers, body: '' };
   }
 
-  // Debug: return available env vars (remove after testing)
-  if (event.httpMethod === 'GET' && event.queryStringParameters && event.queryStringParameters.debug === '1') {
-    const relevant = {};
-    for (const [k, v] of Object.entries(process.env)) {
-      if (k.includes('NETLIFY') || k.includes('SITE') || k.includes('BLOB') || k.includes('TOKEN')) {
-        relevant[k] = v ? v.substring(0, 8) + '...' : null;
-      }
-    }
-    return { statusCode: 200, headers, body: JSON.stringify(relevant) };
-  }
-
   try {
-    const { getStore } = require('@netlify/blobs');
     const store = getStore({
       name: 'blog-views',
       siteID: process.env.SITE_ID,
-      token: process.env.BLOBS_TOKEN || process.env.NETLIFY_AUTH_TOKEN,
+      token: process.env.NETLIFY_FUNCTIONS_TOKEN,
     });
 
     if (event.httpMethod === 'GET') {
