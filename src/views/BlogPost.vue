@@ -20,6 +20,10 @@
               <span class="post-date">{{ formattedDate }}</span>
               <span class="divider-dot" v-if="readingTime"></span>
               <span class="read-time" v-if="readingTime">{{ readingTime }} min read</span>
+              <template v-if="views !== null">
+                <span class="divider-dot"></span>
+                <span class="views-count"><i class="bi bi-eye"></i> {{ views }} views</span>
+              </template>
             </div>
             <h1 class="post-title">{{ post.title }}</h1>
             <div class="title-underline"></div>
@@ -89,6 +93,7 @@ const router = useRouter();
 const post = ref({});
 const loading = ref(true);
 const scrollProgress = ref(0);
+const views = ref(null);
 
 const formattedDate = computed(() => {
   if (!post.value.date) return '';
@@ -167,6 +172,15 @@ onMounted(async () => {
     setMeta('name', 'twitter:title', postTitle);
     setMeta('name', 'twitter:description', postDesc);
     setMeta('name', 'twitter:image', postImage);
+
+    fetch('/.netlify/functions/views', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug })
+    })
+      .then((r) => r.json())
+      .then((d) => { views.value = d.views; })
+      .catch(() => {});
   } catch (e) {
     router.replace('/404');
     return;
@@ -275,6 +289,10 @@ $blog-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
     .read-time i {
       margin-right: 4px;
+    }
+
+    .views-count {
+      i { margin-right: 4px; }
     }
   }
 
