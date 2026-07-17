@@ -21,7 +21,7 @@ exports.handler = async (event) => {
       if (!slug) {
         return { statusCode: 400, headers, body: JSON.stringify({ error: 'Missing slug' }) };
       }
-      const count = (await store.get(slug)) || 0;
+      const count = parseInt(await store.get(slug), 10) || 0;
       return { statusCode: 200, headers, body: JSON.stringify({ slug, views: count }) };
     }
 
@@ -30,7 +30,7 @@ exports.handler = async (event) => {
       if (!slug) {
         return { statusCode: 400, headers, body: JSON.stringify({ error: 'Missing slug' }) };
       }
-      const current = (await store.get(slug)) || 0;
+      const current = parseInt(await store.get(slug), 10) || 0;
       const next = current + 1;
       await store.set(slug, next);
       return { statusCode: 200, headers, body: JSON.stringify({ slug, views: next }) };
