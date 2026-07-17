@@ -1,8 +1,0 @@
-{
-  "name": "netlify-functions",
-  "private": true,
-  "description": "Serverless functions for Karl Rito Portfolio",
-  "dependencies": {
-    "@netlify/blobs": "^10.7.9"
-  }
-}
