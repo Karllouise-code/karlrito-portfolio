@@ -1,4 +1,4 @@
-const { getStore } = require('@netlify/blobs');
+const { getStore, connectLambda } = require('@netlify/blobs');
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -13,11 +13,8 @@ exports.handler = async (event) => {
   }
 
   try {
-    const store = getStore({
-      name: 'blog-views',
-      siteID: process.env.SITE_ID,
-      token: process.env.NETLIFY_FUNCTIONS_TOKEN,
-    });
+    connectLambda(event);
+    const store = getStore('blog-views');
 
     if (event.httpMethod === 'GET') {
       const slug = event.queryStringParameters && event.queryStringParameters.slug;
